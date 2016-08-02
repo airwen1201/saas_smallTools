@@ -1,0 +1,42 @@
+Tailorpus.controller('DesignCtrl',['$scope','$state','$rootScope','$cordovaToast','$ionicHistory','$ionicPopup','DataService',
+  function($scope,$state,$rootScope,$cordovaToast,$ionicHistory,$ionicPopup,DataService) {
+
+    //用户信息
+    var obj = JSON.parse(window.localStorage.getItem("tailorUser"));
+    $scope.goDesignDetail=function(i){
+      //window.location.href="#/DesignDetail"
+      $state.go('DesignDetail',{'designId':$scope.designList[i].id})
+    };
+    $scope.addMoreDesign=function(){
+      window.location.href="#/AddDesign"
+    };
+    $scope.searchitem='';
+    $scope.toclear = function () {
+      $scope.searchitem='';
+      console.log(1111);
+    }
+
+    $scope.designList = []
+    var getDesignList = function (){
+      var json = {
+        vipId:obj.vipId
+      }
+      console.log(angular.toJson(json));
+      var promise = DataService.getDesignList(angular.toJson(json));
+      promise.then(function (data) {
+        //具体操作
+        console.log(angular.toJson(data));
+        $scope.designList = data.list
+        //window.localStorage.setItem("tailorUser",JSON.stringify(obj));
+        //$scope.isSubmit = '0'
+        $ionicHistory.goBack();
+      }, function (data) {
+        //alert(JSON.stringify(data));
+        //$scope.isSubmit = '0'
+        $cordovaToast.showLongBottom(data.message)
+      });
+    }
+    getDesignList()
+
+  }]);
+

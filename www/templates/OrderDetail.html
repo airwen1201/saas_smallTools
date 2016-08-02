@@ -1,0 +1,86 @@
+<ion-view view-title="订单详情">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <a class="button button-icon ion-android-star-outline" ng-click=""></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content overflow-scroll="true" style="overflow:auto;">
+        <!--订单图片-->
+        <div class="detail-img" style="height:{{::height}}">
+            <div ng-click=""><img actual-src="{{::imgUrl}}" width="{{width}}" height="{{height}}" class=""/></div>
+            <div class="ititle">
+                <i>标题：南京裁缝铺网络科技有限公司</i>
+                <p style="text-align: right;color: #e42112">有效期3天</p>
+            </div>
+        </div>
+      <!--  订单基本信息-->
+        <div style="position: absolute;width: 100%;margin-top: -6px">
+            <ion-list >
+                <ion-item>
+                    <div class="row">
+                        <div class="col">
+                            订单价格<span style="color: red">￥35.00</span>
+                        </div>
+                        <div class="col">
+                            订单数量<span style="color: red">8600件</span>
+                        </div>
+                    </div>
+
+                </ion-item>
+                <ion-item>
+                    <div class="row">
+                        <div class="col">
+                            交货时间 <span>07/12</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            交货地区<span>江苏省南京市江宁区</span>
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item class="item-icon-right">
+                    <div class="row">
+                        <div class="col">
+                            发单人 <span>太阳服饰</span>
+                        </div>
+                    </div>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </ion-item>
+            </ion-list>
+            <div style="width: 100%;text-align: center">
+                <p style="width:50%;margin: 20px auto;background-color: #BCBAB6" ng-click="showMore()">点击查看更多</p>
+            </div>
+            <div style="width: 100%" ng-show="showMoreValue">
+                <div class="">
+                    <div class="directory">
+                        <a ng-class="{'pt-active':picShowValue==1||!1}" ng-click="picShow(1)">尺寸表</a>
+                        <a ng-class="{'pt-active':picShowValue==2}" ng-click="picShow(2)">数量搭配</a>
+                        <a ng-class="{'pt-active':picShowValue==3}" ng-click="picShow(3)">材料单</a>
+                    </div>
+                </div>
+                <div style="width: 100%">
+                    <img src="{{picUrl}}" style="width: 100%;height: 400px">
+                </div>
+            </div>
+
+        </div>
+
+    </ion-content>
+    <!-- 底部菜单栏-->
+    <ion-footer-bar>
+        <div class="bar bar-footer bar-stable righ">
+            <div class="row">
+                <div class="col" style="color: #e42112">
+                    总价：￥30000.00
+                </div>
+                <div class="col" style="text-align: right">
+                    <p class="" style="background-color: #e42112;width:60px;border-radius: 6px;text-align: center;color: white;float: right">抢单</p>
+                </div>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>

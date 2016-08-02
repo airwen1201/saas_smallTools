@@ -1,0 +1,59 @@
+<ion-view view-title="添加材料" class="AddMaterial">
+  <div class="bar bar-header bar-stable item-icon-left item-icon-right bar-header-top">
+    <i class="icon ion-chevron-left header-left-row"  ng-click="toClose()"></i>
+    <div class="title">添加材料</div>
+    </div>
+  <ion-content class="content has-header">
+    <div class="list">
+
+      <div class="padding">商品图片<span style="float: right">0/20</span></div>
+      <div class="swiper-container" style="height: 90px; ">
+        <div class="swiper-wrapper" style="height: 90px; ">
+          <div class="swiper-slide swiper-small-pic" ng-repeat="item in images_list" ng-init="isHide=false"
+               ng-click="isHide= !isHide">
+
+            <div class="small-pic">
+              <img ng-src="{{item}}" class="img" style="width:90px;height: 90px;">
+              <a ng-click="deleteThis($index,'pic')"><i class="icon ion-close" ng-show="isHide"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-black" ng-show="showPicRow"></div>
+        <div class="swiper-button-prev swiper-button-black" ng-show="showPicRow"></div>
+      </div>
+      <button ng-click="addAttachment()" class="button button-full button-balanced"
+              style="min-height: 40px;padding:0; height: 40px;line-height: 40px;background-color: #04BE02">点击上传图片
+      </button>
+      <div class="item item-input item-icon-right">
+        <span class="Addmaterial-input-label">名称</span>
+        <span>针织混纺面料</span>
+        <div style="width: 40%;margin-right: 15px">
+          <button class="Addmaterial-Name-Button" style="width: 48%;float: left">库存</button>
+          <button class="Addmaterial-Name-Button" style="width: 48%;float: right" ng-click="openGoodDetail()">商城</button>
+        </div>
+      </div>
+      <div class="item item-input item-icon-right" ng-click="addMaterialPrice()">
+        <span class="Addmaterial-input-label">价格</span>
+        <span>含税价，￥16.50</span>
+        <i class="icon after ion-ios-arrow-right"  ></i>
+      </div>
+      <div class="item item-input item-icon-right" ng-click="openMaterialTypeTag()">
+        <span class="Addmaterial-input-label">类型</span>
+        <span class="input-label">外套</span>
+        <i class="icon after ion-ios-arrow-right" ></i>
+      </div>
+      <div class="item item-input item-icon-right">
+        <span class="Addmaterial-input-label">颜色</span>
+        <span>黑色</span>
+      </div>
+      <div class="item item-input item-icon-right">
+        <span class="Addmaterial-input-label">成分</span>
+          <span>65%棉35%涤</span>
+      </div>
+    </div>
+    <button class="Addmaterial-Submit-Button">提交</button>
+    <button class="Addmaterial-Delete-Button">删除</button>
+  </ion-content>
+
+  </ion-view>

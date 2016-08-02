@@ -1,0 +1,324 @@
+/**
+ * Created by admin111 on 16/6/28.
+ */
+Tailorpus.controller('ModifyMaterialTypeTagCtrl', function($scope,$state,$stateParams,$rootScope,$cordovaImagePicker,$ionicActionSheet,$cordovaCamera,$ionicPlatform,$cordovaFileTransfer,$ionicLoading,$cordovaToast,$ionicHistory,$ionicPopup,DataService) {
+    $scope.openMaterialTypeList = function () {
+        $state.go('MaterialTypeList')
+    }
+    $scope.toMateriallist=function () {
+        window.location.href="#/MaterialTypeList"
+    }
+    $scope.tokucun=function () {
+        window.location.href="#/Storage"
+    }
+    $scope.toshop=function () {
+        window.location.href="#/DesignMall"
+    }
+    $scope.numIndex = $stateParams.numIndex
+    var designId = $stateParams.designId
+
+    $scope.typeList=["名字","颜色","成分","克重","纱织","宽幅","用途","季节","柔软","透气"];
+    console.log(angular.toJson($rootScope.designMaterials)+' '+$scope.numIndex)
+    $scope.inputList=[{
+        index:0,
+        label:'名字',
+        value:$scope.numIndex==null?'':$rootScope.designMaterials[$scope.numIndex].name
+    },
+        {
+            index:1,
+            label:'颜色',
+            value:$scope.numIndex==null?'':$rootScope.designMaterials[$scope.numIndex].color
+        }];
+    $scope.inputListExtra = []
+    $scope.extar={}
+    var obj={};
+
+    $scope.addType=function(index,x){
+        if (index==0||index==1)
+            return
+        for(var i=0;i<$scope.inputList.length;i++){
+            if(index==$scope.inputList[i].index){
+                $scope.inputList.splice(i,1);
+                return;
+            }
+        }
+        //console.log(angular.toJson($scope.inputList))
+        obj={
+            index:index,
+            label:x,
+            value:''
+        };
+
+        $scope.inputList.push(obj);
+    };
+    $scope.inputList2=[];
+    var count=0;
+    $scope.toadditem=function (e) {
+        // for(var i=0;i<99;i++){
+        //   $scope.inputList.splice(i);
+        // }
+        count++;
+        $scope.inputList2.push(count);
+        var l2 = {
+            index:e,
+            label:'',
+            value:''
+        }
+        $scope.inputListExtra.push(l2)
+
+    };
+
+    $scope.todeltiem=function (index) {
+        console.log(index)
+        $scope.inputList2.splice(index,1);
+    };
+    $scope.swiper = new Swiper('.swiper-container', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: 'auto',
+        spaceBetween: 5,
+        freeMode: true,
+        observer:true
+    });
+//上传图片和添加颜色的删除函数
+    $scope.deleteThis=function(index,type){
+        if(type=="pic"){
+            $scope.images_list.splice(index,1);
+            ($scope.images_list.length*90+($scope.images_list.length-1)*5-$scope.swiper[0].width>0)? $scope.showPicRow=true:$scope.showPicRow=false;
+        }else{
+            $scope.colors.splice(index,1);
+            ($scope.colors.length*60-$scope.swiper[0].width>0)? $scope.showColorRow=true:$scope.showColorRow=false;
+        }
+    };
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $scope.showAddPhoto=true;
+    //存储图片地址
+    $scope.images_list = $scope.numIndex==null?[]:angular.fromJson($rootScope.designMaterials[$scope.numIndex].img) ;
+    //存储图片名字
+    var imgNames = [];
+    //用户信息
+    var obj = JSON.parse(window.localStorage.getItem("tailorUser"));
+
+    //添加照片
+    $scope.addAttachment = function() {
+
+        if($scope.images_list.length>20){
+            $cordovaToast.showLongBottom("亲，最多只能上传20张照片~");
+            return;
+        }
+        if($scope.showAddPhoto){
+            $scope.images_list.splice(0,1);
+            $scope.showAddPhoto=false;
+        }
+
+        $ionicActionSheet.show({
+            buttons: [
+                { text: '相机' },
+                { text: '图库' }
+            ],
+            cancelText: '关闭',
+            cancel: function() {
+                return true;
+            },
+            buttonClicked: function(index) {
+
+                switch (index){
+                    case 0:
+                        takePhoto();
+                        break;
+                    case 1:
+                        pickImage();
+                        break;
+                    default:
+                        break;
+                }
+                ($scope.images_list.length*90+($scope.images_list.length-1)*5-$scope.swiper[0].width>0)? $scope.showPicRow=true:$scope.showPicRow=false;
+                return true;
+            }
+        });
+    };
+
+    //拍照
+    var takePhoto=function(){
+        var options = {
+            destinationType: Camera.DestinationType.FILE_URI,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            correctOrientation:true,
+            targetWidth: 640,
+            targetHeight: 960
+        };
+
+
+        $cordovaCamera.getPicture(options).then(function(imageURI) {
+            // alert(imageURI);
+            // $scope.imageSrc= imageURI;
+            $scope.images_list.push(imageURI);
+            uploadPhoto(imageURI);
+        }, function(err) {
+            // error
+        });
+    };
+
+    //相册选择照片
+    var pickImage = function () {
+
+        var options = {
+            maximumImagesCount: 1,
+            width: 480,
+            height: 800,
+            quality: 80
+        };
+
+        $cordovaImagePicker.getPictures(options)
+            .then(function (results) {
+                $scope.images_list.push(results[0]);
+                uploadPhoto(results[0]);
+            }, function (error) {
+                // error getting photos
+            });
+    };
+
+
+    //上传图片
+    //设置鉴权
+    var options = {
+        headers: {
+            "authorization": "Y2ZwMTIz"
+        }
+    };
+    //图片上传地址
+    var url = "http://192.168.0.12:4567/v1.0/file";
+
+    var uploadPhoto = function(img){
+        //判断是否有需要上传的图片
+        if(img==null||img==undefined){
+            $cordovaToast.showLongBottom("没有需要上传的图片");
+            return;
+        }else{
+            //显示提示
+            $rootScope.uploadMsg();
+            $cordovaFileTransfer.upload(url, img, options)
+                .then(function(result) {
+                    // Success!
+                    console.log("SUCCESS: " + JSON.stringify(result.response));
+
+                    //存储图片名字
+                    imgNames.push(JSON.parse(result.response).message);
+
+                    $rootScope.hideMsg();
+                    $cordovaToast.showLongBottom("图片上传成功！");
+                }, function(err) {
+                    $rootScope.hideMsg();
+                    $cordovaToast.showLongBottom("图片上传失败！");
+
+                    //alert("SUCCESS: " + JSON.stringify(err))
+                }, function (progress) {
+                    // constant progress updates
+                });
+        }
+    };
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $rootScope.materialType = $rootScope.designMaterials[$scope.numIndex].type
+    console.log($rootScope.designMaterials)
+    //$rootScope.type=''
+    //$scope.inputList
+    //$scope.inputListExtra
+
+    $scope.attrArray = []
+    //初始化attr列表，返回1个大数组，每个数组两个小元素
+    var reloadAttr = function (){
+        for (var i = 0;i<$scope.inputList.length;i++){
+            $scope.attrArray.push($scope.inputList[i])
+        }
+        for (var i = 0;i<$scope.inputListExtra.length;i++){
+            $scope.attrArray.push($scope.inputListExtra[i])
+        }
+        console.log(angular.toJson($scope.attrArray))
+    }
+    reloadAttr()
+
+    $scope.doSubmit = function (){
+        var property= {
+
+        }
+        for (var i = 0;i<$scope.inputList.length;i++){
+            var key = $scope.inputList[i].label
+            property[key]=$scope.inputList[i].value
+
+        }
+        for (var j = 0;j<$scope.inputListExtra.length;j++){
+            var key2 = $scope.inputListExtra[j].label
+            property[key2]=$scope.inputListExtra[j].value
+        }
+        console.log($scope.inputList.length+' '+ angular.toJson(property))
+        $rootScope.designMaterials[$scope.numIndex]={
+            type:$rootScope.materialType,
+            name:$scope.inputList[0].value,
+            color:$scope.inputList[1].value,
+            img:$scope.images_list,
+            unitConsumption:$rootScope.designMaterials[$scope.numIndex].unitConsumption,
+            price:$rootScope.designMaterials[$scope.numIndex].price,
+            hasTax:$rootScope.designMaterials[$scope.numIndex].hasTax,
+            taxRate:$rootScope.designMaterials[$scope.numIndex].taxRate,
+            cost:$rootScope.designMaterials[$scope.numIndex].cost,
+            property:property
+        }
+        console.log(angular.toJson($rootScope.designMaterials)+' '+$scope.numIndex)
+        var json = {
+            id:$stateParams.id,
+            //id:1110000,
+            designId:designId,
+            type:$rootScope.materialType,
+            name:$scope.inputList[0].value,
+            color:$scope.inputList[1].value,
+            img:angular.toJson($scope.images_list),
+            //unitConsumption:$rootScope.designMaterials[$scope.numIndex].unitConsumption,
+            //price:$rootScope.designMaterials[$scope.numIndex].price,
+            //hasTax:$rootScope.designMaterials[$scope.numIndex].hasTax,
+            //taxRate:$rootScope.designMaterials[$scope.numIndex].taxRate,
+            //cost:$rootScope.designMaterials[$scope.numIndex].cost,
+            property:angular.toJson(property)
+        }
+        console.log(angular.toJson(json))
+        var promise = DataService.modifyDesignMaterial(angular.toJson(json));
+        promise.then(function (data) {
+            //具体操作
+            console.log(angular.toJson(data));
+            //window.localStorage.setItem("tailorUser",JSON.stringify(obj));
+            $scope.isSubmit = '0'
+            $ionicHistory.goBack();
+        }, function (data) {
+            //alert(JSON.stringify(data));
+            $scope.isSubmit = '0'
+            $cordovaToast.showLongBottom(data.message)
+        });
+
+
+        //console.log(angular.toJson($rootScope.designMaterials))
+        //console.log(angular.toJson($scope.inputListExtra))
+        //$ionicHistory.goBack();
+    }
+
+    $scope.delSubmit = function (){
+        var json = {
+            id:$stateParams.id
+        }
+        console.log(angular.toJson(json))
+        var promise = DataService.deleteDesignMaterial(angular.toJson(json));
+        promise.then(function (data) {
+            //具体操作
+            console.log(angular.toJson(data));
+            //$scope.isSubmit = '0'
+            $ionicHistory.goBack();
+        }, function (data) {
+            //$scope.isSubmit = '0'
+            $cordovaToast.showLongBottom(data.message)
+        });
+    }
+
+});
+
+
+
+

@@ -1,0 +1,111 @@
+<ion-view view-title="店铺信息" class="StoreInfo">
+  <ion-content>
+  <div class="Store-Card-Container">
+    <span class="Left-Button"><a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a></span>
+    <span class="Right-Button" ><a class="button button-icon ion-ios-redo" ng-click="toClose()"></a></span>
+    <div class="Thumbnail-Container">
+      <img class="Thumbnail-Img"  ng-click="openStoreIndex()" src="http://www.runoob.com/try/demo_source/spengler.jpg" >
+      <p class="Store-Name"  ng-click="openStoreIndex()">仙来子の母婴小美屋</p>
+      <p class="Store-Name"><span class="icon ion-ios-location"></span> <span>江苏省 南京市 |</span><span> 收藏 12304</span></p>
+      <div>
+        <button class="Favorite">+收藏</button><button class="Talk">私聊</button>
+      </div>
+    </div>
+  </div>
+    <div class="bar-stable">
+      <div class="row">
+        <div class="col" style="text-align: center" ng-click="GoodShow=true" ng-init="GoodShow=true">全部商品</div>
+        <div class="col" style="text-align: center" ng-click="GoodShow=false">评价记录</div>
+      </div>
+      <div class="row">
+        <div class="col" style="text-align: center">类型</div>
+        <div class="col" style="text-align: center">排序</div>
+        <div class="col" style="text-align: center">筛选</div>
+      </div>
+    </div>
+    <!--商品列表-->
+    <ion-list class="has-header" ng-show="GoodShow">
+      <ion-item class="item-thumbnail-left" ng-click="" href="#/OrderDetail">
+        <img ng-src="img/ben.png">
+        <div class="row">
+          <p><b>针织混纺面料</b><span class="clothes">布料</span>
+        </div>
+        <div class="row" style="margin-top: 2px">
+          <div class="col">浙江杭州</div>
+        </div>
+        <div class="row">
+          <div class="col">04/09发布</div>
+          <div class="col" style="color: #C13E3E;text-align: right">￥50/6800件</div>
+        </div>
+      </ion-item>
+      <ion-item class="item-thumbnail-left" ng-click="">
+        <img ng-src="img/ben.png">
+        <div class="row">
+          <p><b>针织混纺面料</b><span class="clothes">布料</span>
+        </div>
+        <div class="row" style="margin-top: 2px">
+          <div class="col">浙江嘉兴</div>
+        </div>
+        <div class="row">
+          <div class="col">04/09发布</div>
+          <div class="col" style="color: #C13E3E;text-align: right">￥50/6800件</div>
+        </div>
+      </ion-item>
+      <ion-item class="item-thumbnail-left" ng-click="">
+        <img ng-src="img/ben.png">
+        <div class="row">
+          <p><b>针织混纺面料</b><span class="clothes">布料</span>
+        </div>
+        <div class="row" style="margin-top: 2px">
+          <div class="col">安徽芜湖</div>
+        </div>
+        <div class="row">
+          <div class="col">04/09发布</div>
+          <div class="col" style="color: #C13E3E;text-align: right">￥50/6800件</div>
+        </div>
+      </ion-item>
+      <ion-item class="item-thumbnail-left" ng-click="">
+        <img ng-src="img/ben.png">
+        <div class="row">
+          <p><b>针织混纺面料</b><span class="clothes">布料</span>
+        </div>
+        <div class="row" style="margin-top: 2px">
+          <div class="col">安徽芜湖</div>
+        </div>
+        <div class="row">
+          <div class="col">04/09发布</div>
+          <div class="col" style="color: #C13E3E;text-align: right">￥50/6800件</div>
+        </div>
+      </ion-item>
+    </ion-list>
+    <!--评价记录-->
+    <div class="Rank" ng-show="!GoodShow">
+      <div class="General-Comments">
+        <div class="row">
+          <div class="col-40">
+            <div style="float: left;margin-right: 9px">总评</div><div class="icon ion-ios-star"></div><div class="icon ion-ios-star"></div><div class="icon ion-ios-star"></div><div class="icon ion-ios-star"></div><div class="icon ion-ios-star"></div>
+          </div>
+          <div class="col-33"><div>4.8分</div></div>
+          <div class="col-33"><div>200评</div></div>
+        </div>
+        <div class="row">
+          <div class="col-40">
+            <div>发货:4.8分<span class="ion-arrow-up-c" style="color: #3CC51F"></span></div>
+          </div>
+          <div class="col-33"><div>发货:4.9分<span class="ion-arrow-up-c" style="color: #3CC51F"></span></div></div>
+          <div class="col-33"><div>配合:4.7分<span class="ion-arrow-down-c" style="color: darkred"></span></div></div>
+        </div>
+      </div>
+      <div class="Comments-Detail">
+        <ul class="list">
+          <li class="item">
+            <p class="Comments">合作愉快！发货及时！</p>
+            <div class="Order-Synopsis">
+              <span class="Buyer-Location">南京市******</span><span class="ColorAndSize">黑色 x 120米</span><span class="OrderTime">16/04/27 18:31</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,72 @@
+<ion-view view-title="报价详情" class="QuoteDetail">
+  <div class="bar bar-header bar-stable item-icon-left bar-header-top">
+
+    <i class="icon ion-chevron-left header-left-row" ng-click="toClose()"></i>
+
+    <div class="title">报价详情</div>
+  </div>
+  <ion-content class="content has-header " overflow-scroll="true" style="overflow:auto;">
+    <div class="list">
+      <div class="item item-thumbnail-left" ng-click="toquoterecord()">
+        <img src="img/adam.jpg">
+
+        <div class="list-mess">
+          <div class="list-txt">
+            <b>D1165</b>
+            <p>含税￥22.50<span>04/28</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">材料</span>
+        <span class="cell-info">￥22.3(14%)</span>
+      </div>
+      <div class="one-cell-left">
+        <span class="cell">工缴</span>
+        <span class="cell-info">￥5</span>
+      </div>
+    </div>
+    <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">样品</span>
+        <span class="cell-info">￥5</span>
+      </div>
+      <div class="one-cell-left">
+        <span class="cell">银行</span>
+        <span class="cell-info">14%</span>
+      </div>
+    </div>
+    <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">测试</span>
+        <span class="cell-info">￥1000</span>
+      </div>
+      <div class="one-cell-left">
+        <span class="cell">货运</span>
+        <span class="cell-info">14%</span>
+      </div>
+    </div>
+    <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">数量</span>
+        <span class="cell-info">100件</span>
+      </div>
+      <div class="one-cell-left">
+        <span class="cell">币种</span>
+        <span class="cell-info">美元</span>
+      </div>
+    </div>
+    <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">报价</span>
+        <span class="cell-info" style="color: #8f8f8f">$6.5(6.4)</span>
+      </div>
+      <div class="one-cell-left">
+        <span class="cell" style="color: #3CC51F">10.9%</span>
+        <span class="cell-info" style="color: #3CC51F;padding-left: 20px">$64.00</span>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

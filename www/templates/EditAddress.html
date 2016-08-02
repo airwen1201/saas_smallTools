@@ -1,0 +1,31 @@
+<!--create by chen edit by Shiqi on May 17-->
+<ion-view view-title="编辑地址">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content overflow-scroll="true" style="overflow: auto">
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">收货人</span>
+                <input type="text" placeholder="旺旺王" ng-model="addressInfo.name">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">联系电话</span>
+                <input type="text" placeholder="13888888888"  ng-model="addressInfo.tel">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">收货地址</span>
+                <input type="text" placeholder="南京市江宁区庄排路109号"  ng-model="addressInfo.address">
+            </label>
+            <div class="button button-icon icon" ng-class="{0:'ion-android-radio-button-off',1:'ion-checkmark-circled'}[addressInfo.isDefault]" ng-click="defaultAdd()" style="margin-left: 10px;-webkit-transform:scale(0.8,0.8);color: #1BBB37;float: left;margin-top: -2px;"></div>
+            <!--<div class="button button-icon icon ion-checkmark-circled" ng-if="addressInfo.isDefault == '1'" ng-click="addressInfo.isDefault=!addressInfo.isDefault" style="-webkit-transform:scale(0.8,0.8);color: #1BBB37;float: left"></div>-->
+            <!--<label ng-if="addressInfo.isDefault == '1'" style="line-height: 40px;">默认地址</label>-->
+            <label style="line-height: 40px;">设为默认</label>
+            <div style="margin: 10px">
+                <button class="button button-block button-balanced "  type="submit" ng-click="doSubmit()">提交</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

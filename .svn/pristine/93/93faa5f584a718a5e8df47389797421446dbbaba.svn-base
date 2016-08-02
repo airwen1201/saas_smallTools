@@ -1,0 +1,39 @@
+<!--create by chen edit by Shiqi on May 17-->
+<ion-view view-title="企业信息">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="goBack()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content overflow-scroll="true" style="overflow:auto;">
+        <div class="list">
+            <div class="item item-input item-icon-right" ng-click="EditCompany()">
+                <span class="input-label">名称</span>
+                <p ng-bind="comName"></p>
+                <i class="icon after ion-ios-arrow-right"></i>
+            </div>
+            <div class="item item-input item-icon-right" ng-click="toEditCompanyShortName()">
+                <span class="input-label">简称</span>
+                <p ng-bind="shortName"></p>
+                <i class="icon after ion-ios-arrow-right"></i>
+            </div>
+            <div class="item item-input item-icon-right" ng-click="toEditCompanyTel()">
+                <span class="input-label">联系电话</span>
+                <p ng-bind="tel"></p>
+                <i class="icon after ion-ios-arrow-right"></i>
+            </div>
+            <div class="item item-input item-icon-right" ng-click="toEditCompanyType()">
+                <span class="input-label">生产类型</span>
+                <p ng-bind="productionType"></p>
+                <i class="icon after ion-ios-arrow-right"></i>
+            </div>
+            <div class="item item item-input item-icon-right" ng-click="companyInfo()">
+                <!--<i class="icon after ion-ios-arrow-right"></i>-->
+
+                <span style="line-height: 40px;margin-right: 35px">相关照片</span>
+                <img class="" style="width:50px;height: 40px;margin-left: 5px"  src="{{imageArray[0]}}" ng-show="imgshow">
+                 <i class="icon after ion-ios-arrow-right"></i>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

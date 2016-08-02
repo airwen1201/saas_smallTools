@@ -1,0 +1,75 @@
+<ion-view view-title="其他费用" class="OtherCost">
+  <div class="bar bar-header bar-stable item-icon-left bar-header-top">
+
+    <i class="icon ion-chevron-left header-left-row" ng-click="toClose()"></i>
+
+    <div class="title">其他费用</div>
+  </div>
+  <ion-content class="content has-header" overflow-scroll="true" style="overflow:auto;">
+    <div class="item line-cells item-input" ng-repeat="item in totalList" ng-if="$index<6">
+      <div class="one-cell">
+        <!--<span class="cell">样品</span>-->
+        <span class="addcell" style="line-height: 30px;margin-left: -15px" ng-bind="item.title"></span>
+        <span class="label-input">￥</span>
+        <input type="number" class="adddcell-info" placeholder="1000.00" ng-model="item.worth" style="display: inline;width: 200px"/>
+      </div>
+    </div>
+    <!--<div class="item line-cells item-input">-->
+      <!--<div class="one-cell">-->
+        <!--&lt;!&ndash;<span class="cell">银行</span>&ndash;&gt;-->
+        <!--<span class="addcell" style="line-height: 30px;margin-left: -15px">银行</span>-->
+        <!--<span class="label-input">￥</span>-->
+        <!--<input type="number" class="adddcell-info" placeholder="1000.00" style="display: inline;width: 200px"/>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="item line-cells item-input">-->
+      <!--<div class="one-cell">-->
+        <!--&lt;!&ndash;<span class="cell">测试</span>&ndash;&gt;-->
+        <!--<span class="addcell" style="line-height: 30px;margin-left: -15px">测试</span>-->
+        <!--<span class="label-input">￥</span>-->
+        <!--<input type="number" class="adddcell-info" placeholder="1000.00" style="display: inline;width: 200px"/>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="item line-cells item-input">-->
+      <!--<div class="one-cell">-->
+        <!--<span class="addcell" style="line-height: 30px;margin-left: -15px">货运</span>-->
+        <!--<span class="label-input">￥</span>-->
+        <!--<input type="number" class="adddcell-info" placeholder="1000.00" style="display: inline;width: 200px"/>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="item line-cells item-input">-->
+      <!--<div class="one-cell">-->
+        <!--<span class="addcell" style="line-height: 30px;margin-left: -15px">QC</span>-->
+        <!--<span class="label-input">￥</span>-->
+        <!--<input type="number" class="adddcell-info" placeholder="1000.00" style="display: inline;width: 200px"/>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="item line-cells item-input">-->
+      <!--<div class="one-cell">-->
+        <!--<span class="addcell" style="line-height: 30px;margin-left: -15px">佣金</span>-->
+        <!--<span class="label-input">￥</span>-->
+        <!--<input type="number" class="adddcell-info" placeholder="1000.00" style="display: inline;width: 200px"/>-->
+        <!--&lt;!&ndash;<span class="cell-info">￥1000.00</span>&ndash;&gt;-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <ion-list class="list"  show-delete="false" can-swipe="true">
+     <ion-item class="item item-thumbnail-left line-cells" ng-repeat="tag in inputList">
+       <div class="one-cell">
+         <input type="text" class="addcell" placeholder="自定义" ng-model="totalList[$index+6].title" style="color: #444;">
+         <span class="label-input">￥</span>
+         <input type="text" class="adddcell-info" placeholder="" ng-model="totalList[$index+6].worth" style="color: #8c8c8c;font-family: '微软雅黑';">
+         <ion-option-button class="button-assertive icon ion-trash-a" ng-click="deleteStoEvent($index)"></ion-option-button>
+       </div>
+     </ion-item>
+    </ion-list>
+
+    <div class="icondiv" ng-click="toaddcost()">
+      <i class="icon ion-plus iconplus"></i>
+      <div class="icontxt" >添加自定义</div>
+    </div>
+    <div class="padding submit-btn">
+      <a class="button button-balanced button-block" ng-click="doSubmit()">提交</a>
+    </div>
+   </ion-content>
+  </ion-view>

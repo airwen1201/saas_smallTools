@@ -1,0 +1,23 @@
+<ion-view view-title="完善个人资料">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <form ng-submit="completeInfo()" novalidate>
+            <div class="" style="margin-top: 70px;margin-left: 20px;margin-right: 20px">
+                <label class="form-group item item-input ">
+                    <input type="text" placeholder="创建用户名" ng-model="userInfo.name"  ng-required="true">
+                </label>
+                <label class="form-group item item-input ">
+                    <input type="password" placeholder="设置密码" ng-model="userInfo.password"  ng-required="true">
+                </label>
+                <label class="">
+                    <button class="button button-block button-light" type="submit">下一步</button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
+

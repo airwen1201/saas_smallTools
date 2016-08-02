@@ -1,0 +1,50 @@
+<ion-view view-title="我要付款">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content overflow-scroll="false">
+        <div class="item item-icon-right">
+            <span>收款用户</span>
+            <span style="margin-left: 10px">久得美</span>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </div>
+        <div class="item">
+            <span>付款金额</span>
+            <span style="margin-left: 10px">31200</span>
+        </div>
+        <div class="item">
+            <span>付款方式</span>
+            <ul class="list">
+                <li class="item item-checkbox item-borderless">
+                    <label class="checkbox">
+                        <input type="checkbox" checked="">
+                    </label>
+                    在线支付
+                </li>
+                <li class="item item-checkbox item-borderless">
+                    <label class="checkbox">
+                        <input type="checkbox" checked="">
+                    </label>
+                   线下支付
+                    <p>线下支付存在风险，不会积累信用</p>
+                </li>
+            </ul>
+
+        </div>
+        <div class="item">
+            <span>付款说明</span>
+            <!-- -->
+            <label class=" ">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <textarea class="weui_textarea" placeholder="可填写付款备注~" rows="5"></textarea>
+                    <div class="weui_textarea_counter"><span>0</span>/200</div>
+                </div>
+            </label>
+        </div>
+
+
+        <button class="button button-block button-balanced" style="margin: 10px auto;width: 96%" ng-click="doSubmit()">提交</button>
+    </ion-content>
+</ion-view>

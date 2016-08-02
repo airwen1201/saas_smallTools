@@ -1,0 +1,536 @@
+.Addmaterial-containner{
+  padding-top: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+.Addmaterial-text-left{
+  position: relative;
+  font-size: 16px;
+  padding-bottom: 20px;
+}
+.Addmaterial-text-right{
+  position: absolute;
+  top:20px;
+  right: 20px;
+  color: #888;
+  font-size: 16px;
+}
+.Addmaterial-img{
+  display: block;
+  padding: 10px;
+  width: 100px;
+  height: 100px;
+  padding-top: 0px;
+}
+.Addmaterial-input-label{
+  display: table;
+  padding: 10px 10px 10px 0px;
+  max-width: 200px;
+  width: 20%;
+  color: #444;
+  font-size: 16px;
+}
+.Addmaterial-img-left-Containner{
+  position: relative;
+  left: 20px;
+  top: 20px;
+  width: 60%;
+  margin-bottom: 20px;
+}
+.Addmaterial-img-right-Containner{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+.Addmaterial-img-Count{
+  color: #888;
+  font-size: 16px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.Addmaterial-Name-Button{
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #EDEDED;
+  border: 1px solid darkgray;
+  text-align: center;
+}
+.Addmaterial-Submit-Button{
+  width: 96%;
+  margin-left: 2%;
+  margin-right: 2%;
+  font-size: 16px;
+  background-color: #04BE02;
+  color: white;
+  border: 0;
+  padding: 9px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.Addmaterial-Delete-Button{
+  width: 96%;
+  margin-left: 2%;
+  margin-right: 2%;
+  font-size: 16px;
+  background-color: #AAAAAA;
+  color: white;
+  border: 0;
+  padding: 9px;
+  border-radius: 5px;
+}
+.AddMaterial .list .item{
+  border-top-color:darkgray;
+  border-bottom-color:darkgray;
+}
+.StyleRecord-timeLine{
+  float: left;
+  padding: 0px 20px 0px 20px ;
+}
+.StyleRecord-EditTime{
+  padding-bottom: 60px;
+  color: #9B9B9B;
+}
+.StyleRecord-EditTime{
+  padding-bottom: 1px;
+}
+.StyleRecord-Detail{
+  color: #3ACF7D;
+}
+.StyleRecord-timeLine-Arrow{
+  margin-bottom: -8px;
+}
+.StyleRecord-timeLine-Arrow-Containner{
+  padding-left: 20px;
+}
+/*.AddStyle-Material-Name {
+  font-weight: bolder;
+  color: black;
+  float: left;
+  font-size: 20px;
+}
+.AddStyle-Material-Cate{
+  background-color: #EDEDED;
+  color: #2689AD;
+  float: left;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 16px;
+}
+.AddStyle-Material-Source{
+  background-color: #EDEDED;
+  color: #2689AD;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-right: 15px;
+  font-size: 16px;
+}*/
+.GoodDetail ion-header-bar{
+  background-color: black;
+  color: white;
+}
+.GoodDetail .ion-ios-arrow-back{
+  color: white;
+}
+.GoodDetail-Img-Container{
+  width: 100%;
+  position: relative;
+}
+.GoodDetail-Img{
+  width: 100%;
+  height: 100%;
+}
+.GoodDetail-Name-Bar{
+  position: absolute;
+  bottom: 4px;
+  width: 100%;
+  height: 60px;
+  background: rgba(0,0,0,0.6);
+}
+.GoodDetail-Name{
+  color: white;
+  font-weight: bolder;
+  font-family: 微软雅黑;
+  padding-left: 20px;
+}
+.GoodDetail .Details-spec{
+  width: 100%;
+}
+.GoodDetail-ReleaseTime{
+  position: absolute;
+  color: white;
+  right: 0;
+  font-size: 16px;
+  bottom: 0px;
+  margin: 0;
+}
+.GoodDetail-Price-Select{
+  width: 33%;
+  text-align: center;
+  float: left;
+}
+.GoodDetail-Price{
+  color: #CB2730;
+  font-weight: bolder;
+  font-size: 17px;
+  margin-top: 0px;
+}
+.GoodDetail-Priceif{
+  margin: 0;
+  padding-top: 10px;
+  color: #444444;
+  font-family: 微软雅黑;
+}
+.GoodDetail .options .row{
+  text-align: center;
+  background-color:#EDEDED
+}
+.GoodDetail .line-cells .one-cell{
+  float: left;
+  width: 50%;
+  padding-left: 10px;
+}
+.GoodDetail .line-cells .cell {
+  color: #444444;
+  line-height: 30px;
+}
+.GoodDetail .line-cells .cell-info {
+  font-family: 微软雅黑;
+  padding: 0px 5px 0px 10px;
+  line-height: 30px;
+  color: #AAAAAA;
+}
+.GoodDetail .Details-property{
+margin-left: 10px;
+  margin-right: 10px;
+
+}
+.GoodDetail .Details-property-Tag-Container{
+  position: relative;
+  padding-left: 5px;
+  padding-top: 20px;
+  width: 75px;
+  float: left;
+  margin-left: 10px;
+}
+.GoodDetail .Details-property-Tag{
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);		/* IE 9 */
+  -webkit-transform: rotate(180deg);	/* Safari and Chrome */
+  -o-transform: rotate(180deg);		/* Opera */
+  -moz-transform: rotate(180deg);
+  width: 100%;
+}
+.GoodDetail .Details-property-Tag-Container .Details-property-Tag-Text{
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  font-family: 微软雅黑;
+  color:#444444
+}
+.GoodDetail .ion-ios-star{
+  color: #FF9800;
+  transform: scale(1.8);
+  -moz-transform: scale(1.8);
+  -webkit-transform: scale(1.8);
+  -o-transform:scale(1.8);
+  float: left;
+  padding-right: 10px;
+}
+.GoodDetail .Rank-Points{
+  color: #FF9800;
+  font-weight: bolder;
+  font-size: 20px;
+  float: left;
+  margin-right: 20px;
+}
+.GoodDetail .input-label{
+  padding-left: 4px;
+
+}
+.GoodDetail .input-label .Rank-Counts{
+  color: #B8B8B8;
+  padding-left: 10px;
+}
+.GoodDetail .GoodDetail-Init .item{
+  position: relative;
+  /*margin-bottom: 50px;*/
+  padding-bottom: 50px;
+}
+.GoodDetail .Rank-Info{
+  margin-left: 6%;
+}
+.GoodDetail .bar,.bar-footer{
+  width: 100%;
+  bottom: 0;
+  margin-bottom: 10px;
+}
+.GoodDetail .Small-Tab-Item-Container{
+  width:15%;
+  height: 50px;
+  float: left;
+  text-align: center;
+  background-color: #EDEDED;
+}
+.GoodDetail  .Big-Tab-Item-Container-Add,.Big-Tab-Item-Container-Order{
+  width:35%;
+  height: 50px;
+  float: left;
+  text-align: center;
+  line-height:50px;
+  font-size: 16px;
+  font-weight: bolder;
+  font-family: 微软雅黑;
+}
+.GoodDetail a{
+  color: darkgray;
+}
+.GoodDetail i{
+  display: block;
+  transform: scale(1.8);
+  -moz-transform: scale(1.8);
+  -webkit-transform: scale(1.8);
+  -o-transform:scale(1.8);
+  color: darkgray;
+}
+.GoodDetail .Big-Tab-Item-Container-Add{
+  background-color:#F5E0BE;
+  color: #FF9800;
+}
+.GoodDetail .Big-Tab-Item-Container-Order{
+  background-color:#FF9800;
+  color: white;
+}
+.GoodDetail .Item-Favorite i{
+  transform: scale(1.8);
+  -moz-transform: scale(1.8);
+  -webkit-transform: scale(1.8);
+  -o-transform:scale(1.8);
+}
+.GoodDetail .GoodDetail-Slide-Up .Spec-Title{
+  color: #444444;
+  padding: 0px 5px 0px 20px;
+  line-height: 30px;
+  font-family: 微软雅黑;
+}
+.GoodDetail .GoodDetail-Slide-Up .Spec-Detail{
+  font-family: 微软雅黑;
+  padding: 0px 5px 0px 10px;
+  line-height: 30px;
+  color: #AAAAAA;
+}
+.GoodDetail .Slide-Up-Rank .ion-ios-star{
+  transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -o-transform:scale(1.5);
+  padding-right: 5px;
+}
+.GoodDetail .Slide-Up-Rank .General-Comments{
+  border-bottom: 1px solid #dddddd;
+}
+.GoodDetail .Slide-Up-Rank .Comments-Detail .Comments{
+  color: black;
+}
+.GoodDetail .Order-Synopsis{
+  font-size: 14px;
+}
+.GoodDetail .Order-Synopsis .ColorAndSize{
+  color: #AAAAAA;
+}
+.GoodDetail .Order-Synopsis .Buyer-Location{
+  margin-right: 7%;
+  color: #AAAAAA;
+}
+.GoodDetail .Order-Synopsis .OrderTime{
+  float: right;
+  color: #AAAAAA;
+}
+.GoodDetail .BacktoTop{
+  position: fixed;
+  right: 20px;
+  bottom: 60px;
+}
+.GoodDetail .BacktoTopImg{
+  width: 35px;
+}
+.GoodDetail .ion-ios-telephone{
+  color:#04BE02;
+}
+.StoreInfo .Store-Card-Container{
+  background-image: url('https://modao.cc/uploads/images/3305933/raw_1462962985.jpeg');
+  background-repeat: no-repeat;
+  width: 100%;
+  margin-top: 0px;
+  height: 210px;
+  background-size: 100%;
+}
+.StoreInfo .Thumbnail-Container{
+  height: 60px;
+  text-align:center;
+  padding-top: 20px
+}
+.StoreInfo .Thumbnail-Container .Thumbnail-Img{
+  border-radius: 50%;
+  width: 20%;
+}
+.StoreInfo .Thumbnail-Container .Store-Name{
+  color: white;
+  font-size: 16px;
+  font-family: microsoft Yahei;
+}
+.StoreInfo .Left-Button a{
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  color: white;
+  transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -o-transform:scale(1.5);
+}
+.StoreInfo .Right-Button a{
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  color: white;
+  transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -o-transform:scale(1.5);
+}
+.StoreInfo .Favorite{
+  width: 18%;
+  margin-right: 5%;
+  background-color: rgba(0,0,0,0);
+  border: 1px solid white;
+  color:white;
+  height: 25px;
+}
+.StoreInfo .Talk{
+  width: 18%;
+  margin-left: 5%;
+  background-color: rgba(0,0,0,0);
+  border: 1px solid white;
+  color:white;
+  height: 25px;
+}
+.StoreInfo .Rank .ion-ios-star{
+  transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -o-transform:scale(1.5);
+  padding-right: 5px;
+}
+.StoreInfo .Rank .General-Comments{
+  border-bottom: 1px solid #dddddd;
+}
+.StoreInfo .Rank .Comments-Detail .Comments{
+  color: black;
+}
+.StoreInfo .Rank .ion-ios-star{
+  transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -o-transform:scale(1.5);
+  padding-right: 5px;
+  color: #FF9800;
+  float: left;
+}
+.StoreIndex .StoreIndex-Thumbnail p{
+  float: left;
+}
+.StoreIndex .StoreIndex-Thumbnail h2{
+  font-size: 14px;
+  padding-top: 10px;
+  font-weight: bolder;
+}
+.StoreIndex .StoreIndex-Thumbnail .Store-Add-Favorite{
+  margin-left: 30%;
+  background-color: rgba(0,0,0,0);
+  border: 1px solid black;
+  padding: 0px 10px 0px 8px;
+}
+.StoreIndex ion-header-bar{
+  background-color: black;
+  color: white;
+}
+.StoreIndex  .ion-ios-telephone{
+color: #04BE02;
+}
+.StoreIndex  .ion-ios-arrow-back{
+  color: white;
+}
+.StoreIndex .StoreService{
+  margin: 10px 5% 10px 5%;
+  border-bottom: 1px solid #ddd;
+}
+.StoreIndex .StoreService .StoreServiceItem{
+  width:40%;
+  float:left;
+}
+.StoreIndex .list{
+  border-top: 10px solid #ddd;
+}
+.StoreIndex .list p{
+  margin: 10px 0 10px 10px;
+  font-weight: bolder;
+  color: #444444;
+}
+.StoreIndex .list .StoreServiceItem{
+  margin: 5px 10px 5px 10px;
+  width: 40%;
+  float: left;
+}
+.StoreIndex .list .clearfix{
+  clear: both;
+}
+.StoreIndex .list h6{
+  margin: 5px 5px 5px 10px;
+}
+.StoreIndex .Rank-Line {
+  margin:5px 5px 5px 10px
+}
+.StoreIndex .Rank-Line .detail{
+  margin-left: 10%;
+  color: #CB2730;
+}
+.StoreIndex .Label-Container{
+  position: relative;
+  width: 80px;
+  float: left;
+  margin: 5px 5px 5px 5px;
+}
+.StoreIndex .Label-Container .Label{
+  width: 80px;
+  transform: rotate(180deg);
+}
+.StoreIndex .Label-Container .Label-Text{
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  color: #ACB2C3;
+}
+.InStorage .row{
+  text-align: center;
+}
+.InStorage .row input{
+  text-align: center;
+  border: 1px solid #bbbbbb;
+  width: 80%;
+  margin: auto;
+  height: 30px;
+  line-height: 30px;
+}
+.InStorage .ion-trash-a{
+  font-size: 23px;
+  color: #D3484F;
+}
+.outStockDetail .active{
+  color:blue;
+}
+.outStockDetail .lostactive{
+  color:#000;
+}

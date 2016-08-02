@@ -1,0 +1,25 @@
+<ion-view view-title="销售记录">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content overflow-scroll="false">
+        <div class="list">
+            <div class="item item-divider">
+                今日￥150
+            </div>
+            <div class="item item-thumbnail-left">
+                <img ng-src="img/ben.png">
+                <div class="row">
+                    <div class="col">D11165</div>
+                    <div class="col" style="color: #C13E3E;text-align: right">已付款</div>
+                </div>
+                <div class="row">
+                    <div class="col">04/09 出库</div>
+                    <div class="col" style="color: #C13E3E;text-align: right">￥500000</div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

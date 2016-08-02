@@ -1,0 +1,44 @@
+/**
+ * Created by GY on 2016/6/12.
+ */
+Tailorpus.controller('QuoteCtrl', ['$scope', '$state', '$rootScope', '$cordovaToast', '$ionicHistory', '$ionicPopup', 'DataService',
+  function($scope, $state, $rootScope, $cordovaToast, $ionicHistory, $ionicPopup, DataService) {
+
+    //用户信息
+    var obj = JSON.parse(window.localStorage.getItem("tailorUser"));
+    $scope.searchitem2 = '';
+    $scope.toclear2 = function() {
+        $scope.searchitem2 = '';
+        console.log(1111);
+    }
+    $scope.goQuoteDetail = function() {
+        window.location.href = "#/QuoteDetail"
+    }
+    $scope.goaddQuote = function(i) {
+        $state.go('AddQuote',{'keyId':$scope.offerList[i].id})
+        //window.location.href = "#/AddQuote"
+    }
+
+      $scope.getImageAdd = function(i){
+
+          return angular.fromJson($scope.offerList[i].designImg)
+      }
+    //获取报价列表
+    var getOfferList = function() {
+        var param = {
+            vipId : obj.vipId
+        }
+        var promise = DataService.getOfferList(angular.toJson(param));
+        promise.then(function (data) {
+            //具体操作
+            console.log(angular.toJson(data));
+            $scope.offerList = data.list;
+            //$scope.newImageAdd = angular.fromJson($scope.offerList.designImg)
+            //$ionicHistory.goBack();
+        }, function (data) {
+            $cordovaToast.showLongBottom(data.message);
+        });
+    }
+
+    getOfferList();
+}]);

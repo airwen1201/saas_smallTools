@@ -1,0 +1,97 @@
+<ion-view view-title="材料详情" class="MaterialDetail">
+  <div class="bar bar-header bar-stable item-icon-left item-icon-right item-icon-right bar-header-top">
+
+    <i class="icon ion-chevron-left header-left-row"  ng-click="toClose()"></i>
+    <div class="title">材料详情</div>
+  </div>
+  <ion-content class="content has-header" overflow-scroll="true" style="overflow:auto;">
+    <div class="padding">材料图片</div>
+    <div class="swiper-container" style="height: 90px;margin-bottom: 12px;">
+      <div class="swiper-wrapper" style="height: 90px; overflow-X: scroll;overflow-y: hidden">
+        <!--<ion-scroll direction="x" ng-style="myHeight" scrollbar-x="false" >-->
+        <div class="swiper-slide swiper-small-pic" ng-repeat="item in images_list">
+          <div class="small-pic">
+            <img ng-src="{{item}}" class="img" style="width:90px;height: 90px;">
+          </div>
+        </div>
+        <div class="swiper-slide swiper-small-pic" ng-repeat="item in images_list">
+          <div class="small-pic">
+            <img ng-src="{{item}}" class="img" style="width:90px;height: 90px;">
+          </div>
+        </div>
+        <div class="swiper-slide swiper-small-pic" ng-repeat="item in images_list">
+          <div class="small-pic">
+            <img ng-src="{{item}}" class="img" style="width:90px;height: 90px;">
+          </div>
+        </div>
+        <div class="swiper-slide swiper-small-pic" ng-repeat="item in images_list">
+          <div class="small-pic">
+            <img ng-src="{{item}}" class="img" style="width:90px;height: 90px;">
+          </div>
+        </div>
+        <div class="swiper-slide swiper-small-pic" ng-repeat="item in images_list">
+          <div class="small-pic">
+            <img ng-src="{{item}}" class="img" style="width:90px;height: 90px;">
+          </div>
+        </div>
+        <!--</ion-scroll>-->
+    </div>
+    </div>
+    <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">单耗</span>
+        <span class="cell-info" ng-bind="materialDetailItem.unitConsumption+'米'"></span>
+      </div>
+      <div class="one-cell">
+        <span class="cell">单价</span>
+        <span class="cell-info" ng-bind="'￥'+materialDetailItem.price+' （库存）'"></span>
+      </div>
+    </div>
+    <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">税费</span>
+        <span class="cell-info" ng-bind="'含税价，'+materialDetailItem.taxRate+'%'"></span>
+      </div>
+      <div class="one-cell">
+        <span class="cell">成本</span>
+        <span class="cell-info" ng-bind="'￥'+materialDetailItem.cost"></span>
+      </div>
+    </div>
+
+      <div class="line-cells cell-top">
+      <div class="one-cell">
+        <span class="cell cell-unitem">类型</span>
+        <span class="cell-info" ng-bind="materialDetailItem.type"></span>
+      </div>
+      <div class="one-cell">
+        <span class="cell ">颜色</span>
+        <span class="cell-info" ng-bind="materialDetailItem.color"></span>
+      </div>
+    </div>
+    <div class="line-cells">
+      <div class="one-cell">
+        <span class="cell cell-unitem">成分</span>
+        <span class="cell-info">65%棉35%涤纶</span>
+      </div>
+      <div class="one-cell">
+        <span class="cell">克重</span>
+        <span class="cell-info">140(g/㎡)</span>
+      </div>
+    </div>
+    <div class="line-cells">
+      <div class="one-cell">
+        <span class="cell cell-unitem">纱织</span>
+        <span class="cell-info">32S</span>
+      </div>
+      <div class="one-cell">
+        <span class="cell">幅宽</span>
+        <span class="cell-info">185CM</span>
+      </div>
+    </div>
+    <div class="line-cells">
+      <span class="cell-linecell">用途</span>
+      <span class="cell-info">家居服,时装,休闲服,T恤,精品男装</span>
+    </div>
+    </div>
+    </ion-content>
+</ion-view>

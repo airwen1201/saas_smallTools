@@ -1,0 +1,9 @@
+/**
+ * Created by GY on 2016/6/2.
+ */
+Tailorpus.controller('MaterialPriceCtrl', function($scope) {
+  $scope.backDesign=function () {
+    window.location.href="#/AddDesign"
+
+  }
+});

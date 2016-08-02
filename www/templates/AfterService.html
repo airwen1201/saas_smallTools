@@ -1,0 +1,54 @@
+<ion-view view-title="售后">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="goBack()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content overflow-scroll="true" style="overflow: auto" >
+        <div class="content ionic-pseudo">
+            <div style="height: 34px;background-color: #F9F9F9">
+                <div class="item item-input item-select" style="float: left;width: 34%;height: 36px;background-color: #F9F9F9">
+                    <select style="background-color: #F9F9F9;">
+                        <option value="" disabled selected>买家</option>
+                        <option value="">买家</option>
+                        <option value="">卖家</option>
+                    </select>
+                </div>
+                <div class="item item-input item-select" style="float: left;width: 33%;height: 36px;background-color: #F9F9F9">
+                    <select style="background-color: #F9F9F9">
+                        <option value="" disabled selected>状态</option>
+                        <option value="">全部</option>
+                        <option value="">未抢单</option>
+                        <option value="">已抢单</option>
+                        <option value="">待签合同</option>
+                    </select>
+                </div>
+                <div class="item item-input item-select" style="float: left;width: 34%;height: 36px;background-color: #F9F9F9">
+                    <select style="background-color: #F9F9F9">
+                        <option value="" disabled selected>排序</option>
+                        <option value="email">E-Mail</option>
+                        <option value="twitter">Twitter</option>
+                        <option value="linkedin">LinkedIn</option>
+                    </select>
+                </div>
+            </div>
+            <div class="list">
+                <div style="background-color: #9B9B9B" ng-repeat="1 in [2]">
+                    <a class="item item-thumbnail-left" href="#">
+                        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+                        <img src="http://www.runoob.com/try/demo_source/blue-album.jpg">
+                        <h2 style="font-size: 20px;height: 40px;line-height: 40px;float: left">D1165</h2>
+                        <p style="font-weight: bolder;color: red;float: right;height: 40px;line-height: 40px">待确认</p>
+                        <p style="clear: both;float: left">久得美</p>
+                        <p style="float: right">成交额 212133</p>
+                        <p style="clear: both;float: left">04/09 交货</p>
+                        <p style="float: right;font-weight: bolder;color: red">￥35/8600件</p>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

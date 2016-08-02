@@ -1,0 +1,27 @@
+<!--create by SQ on XXX-->
+
+<ion-view view-title="编辑性别" class="editSex">
+
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <a class="button button-icon ion-checkmark-circled" ng-click="doSubmit()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  
+
+  <ion-content class="content has-header" overflow-scroll="true" style="overflow:auto;">
+    <div class="item item-input item-select" style="padding-left: 20px;right: -4px;border-bottom: 1px solid #ddd">
+      <div class="input-label">
+        性别
+      </div>
+        <select ng-model="selected" ng-change="change(selected)" style="background: #F9F9F9;right: 45px;">
+          <option ng-selected="">男</option>
+          <option>女</option>
+        </select>
+    </div>
+  </ion-content>
+
+</ion-view>

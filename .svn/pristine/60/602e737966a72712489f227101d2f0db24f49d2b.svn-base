@@ -1,0 +1,40 @@
+<!--create by SQ on May 28-->
+<ion-view view-title="详细资料" >
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content overflow-scroll="true" style="overflow:auto;">
+    <!--内容列表-->
+    <ion-list>
+      <div class=""></div>
+      <ion-item class="item-thumbnail-left" ng-click="toBasicInfo()">
+        <img class="my_basicInfo_item" ng-src="{{num.headImg}}" src="img/contact_default.png">
+        <h2 style="margin-top: 10px" ng-bind="num.name"></h2>
+
+        <p style="font-size: 12px;margin-top: 10px"></p>
+        <p style="font-size: 12px"><span style="float: left"></span></p>
+      </ion-item>
+      <div class="tableView_space"></div>
+      <div class="item item-input item-icon-right" ng-click="">
+        <span class="input-label">联系电话</span>
+        <p ng-bind="num.phone"></p>
+        <!--<i class="icon after ion-ios-arrow-right"></i>-->
+      </div>
+      <div class="item item-input item-icon-right" ng-click="">
+        <span class="input-label">收货地址</span>
+        <p ng-bind="num.address"></p>
+        <!--<i class="icon after ion-ios-arrow-right"></i>-->
+      </div>
+      <!--<div class="item item-input item-icon-right" ng-click="">-->
+        <!--<span class="input-label">标签</span>-->
+        <!--<p>店铺</p>-->
+        <!--<i class="icon after ion-ios-arrow-right"></i>-->
+      <!--</div>-->
+      <div style="margin: 10px">
+        <button class="button button-block button-balanced "  type="submit" ng-click="callPhone()">拨打电话</button>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

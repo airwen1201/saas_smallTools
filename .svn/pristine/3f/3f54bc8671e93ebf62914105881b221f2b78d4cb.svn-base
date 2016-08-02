@@ -1,0 +1,121 @@
+/**
+* Created by GY on 2016/6/2.
+*/
+<ion-view view-title="材料类型列表" class="material-type-list">
+  <div class="bar bar-header  bar-stable item-icon-left"  style="background:white !important;">
+    <div class="top">
+      <i class="icon ion-chevron-left header-left-row" ng-click="toClose()"></i>
+      <div>类型</div>
+    </div>
+    <div class="list list-inset">
+      <div class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+       <div class="search-div"><input type="text" placeholder="搜索" ng-model="searchtext"></div>
+
+    </div>
+      <button class="icon ion-close-circled close-search-icon" ng-click="doclear()" ng-show="(searchtext=='')?false:true"></button>
+  </div>
+    </div>
+
+
+  <ion-content class="content has-header">
+    <ion-scroll direction="y" class="left" ng-style="myHeight" scrollbar-y="false" >
+       <ul class="list" >
+        <li class="item" ng-repeat="item in materialList" ng-click="leftClick($index)" style=""><b ng-bind="item.label"></b></li>
+      </ul>
+    </ion-scroll>
+    <ion-scroll direction="y" class="right" ng-style="myHeight" scrollbar-y="false">
+      <ul class="list" >
+        <li class="item" ng-repeat="item in materialList[isChooseLest].contact track by $index" ng-click="chooseType($index)"><b ng-bind="item"></b></li>
+      </ul>
+    </ion-scroll>
+
+  <!--  <div class="left" ng-style="myHeight">
+      <ul class="list">
+        <li class="item"><b>纽qqq1</b></li>
+        <li class="item"><b>纽扣2</b></li>
+        <li class="item"><b>纽扣3</b></li>
+        <li class="item"><b>纽扣4</b></li>
+        <li class="item"><b>纽扣5</b></li>
+        <li class="item"><b>纽扣6</b></li>
+        <li class="item"><b>纽扣7</b></li>
+        <li class="item"><b>纽扣8</b></li>
+        <li class="item"><b>纽扣9</b></li>
+        <li class="item"><b>纽扣0</b></li>
+        <li class="item"><b>纽1</b></li>
+        <li class="item"><b>纽扣2</b></li>
+        <li class="item"><b>纽扣3</b></li>
+        <li class="item"><b>纽扣4</b></li>
+        <li class="item"><b>纽扣5</b></li>
+        <li class="item"><b>纽扣6</b></li>
+        <li class="item"><b>纽扣7</b></li>
+        <li class="item"><b>纽扣8</b></li>
+        <li class="item"><b>纽扣9</b></li>
+        <li class="item"><b>纽扣0</b></li>
+        <li class="item"><b>纽扣11</b></li>
+        <li class="item"><b>纽扣12</b></li>
+        <li class="item"><b>纽扣13</b></li>
+        <li class="item"><b>纽扣14</b></li>
+        <li class="item"><b>纽扣15</b></li>
+        <li class="item"><b>纽1</b></li>
+        <li class="item"><b>纽扣2</b></li>
+        <li class="item"><b>纽扣3</b></li>
+        <li class="item"><b>纽扣4</b></li>
+        <li class="item"><b>纽扣5</b></li>
+        <li class="item"><b>纽扣6</b></li>
+        <li class="item"><b>纽扣7</b></li>
+        <li class="item"><b>纽扣8</b></li>
+        <li class="item"><b>纽扣9</b></li>
+        <li class="item"><b>纽扣0</b></li>
+        <li class="item"><b>纽扣11</b></li>
+        <li class="item"><b>纽扣12</b></li>
+        <li class="item"><b>纽扣13</b></li>
+        <li class="item"><b>纽扣14</b></li>
+        <li class="item"><b>纽扣15dddd</b></li>
+      </ul>
+    </div>
+    <div class="right"  ng-style="myHeight">
+      <ul class="list">
+        <li class="item">纽扣1qqqqqqqqq</li>
+        <li class="item">纽扣2</li>
+        <li class="item">纽扣3</li>
+        <li class="item">纽扣4</li>
+        <li class="item">纽扣5</li>
+        <li class="item">纽扣6</li>
+        <li class="item">纽扣7</li>
+        <li class="item">纽扣8</li>
+        <li class="item">纽扣9</li>
+        <li class="item">纽扣1</li>
+        <li class="item">纽扣1</li>
+        <li class="item">纽扣2</li>
+        <li class="item">纽扣3</li>
+        <li class="item">纽扣4</li>
+        <li class="item">纽扣5</li>
+        <li class="item">纽扣6</li>
+        <li class="item">纽扣7</li>
+        <li class="item">纽扣8</li>
+        <li class="item">纽扣9</li>
+        <li class="item">纽扣1</li>
+        <li class="item">纽扣2</li>
+        <li class="item">纽扣3</li>
+        <li class="item">纽扣4</li>
+        <li class="item">纽扣5</li>
+        <li class="item">纽扣6</li>
+        <li class="item">纽扣7</li>
+        <li class="item">纽扣8</li>
+        <li class="item">纽扣9</li>
+        <li class="item">纽扣1</li>
+        <li class="item">纽扣2</li>
+        <li class="item">纽扣3</li>
+        <li class="item">纽扣4</li>
+        <li class="item">纽扣5</li>
+        <li class="item">纽扣6</li>
+        <li class="item">纽扣7</li>
+        <li class="item">纽扣8</li>
+        <li class="item">纽扣9dddddddddd</li>
+      </ul>
+
+    </div>-->
+
+  </ion-content>
+</ion-view>

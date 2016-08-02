@@ -1,0 +1,16 @@
+/*create by SQ on May 27*/
+.my_basicInfo_item{
+    border-radius: 8px;
+    height: 64px;
+    width: 64px;
+    left: 20px;
+}
+
+.tableView_space{
+  height: 15px;
+  background-color: #ededed;
+}
+
+.basicInfo_cell1{
+  margin-top: 20px;
+}

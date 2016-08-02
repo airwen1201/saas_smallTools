@@ -1,0 +1,27 @@
+<!--create by shiqi on May 30-->
+<ion-view view-title="添加联系人">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content overflow-scroll="true" style="overflow:auto;">
+    <label class="item item-input">
+      <span class="input-label">姓名</span>
+      <input type="text" placeholder="请输入姓名" ng-model="contact.name" ng-required="true">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">联系电话</span>
+      <input type="number" placeholder="请输入联系电话" ng-model="contact.tel" ng-required="true" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">收货地址</span>
+      <input type="text" placeholder="请输入收货地址" ng-model="contact.address" ng-required="true">
+    </label>
+    <small style="color: red;float: right;" ng-show="messerr">请将信息填写完整！</small>
+    <small style="color: red;float: right;" ng-show="phoneerr">请输入正确手机号码！</small>
+    <div style="margin: 10px">
+      <button class="button button-block button-balanced "  type="submit" ng-click="doSubmit()">提交</button>
+    </div>
+  </ion-content>
+</ion-view>

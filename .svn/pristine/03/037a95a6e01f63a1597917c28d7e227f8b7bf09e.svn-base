@@ -1,0 +1,61 @@
+<ion-view view-title="订单">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="goBack()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+  <div class="bar bar-subheader" style="border: 0;padding: 0">
+    <div style="height: 34px; background-color: #F9F9F9">
+      <div class="item item-input item-select" style="float: left;width: 34%;height: 36px;background-color: #F9F9F9">
+        <select ng-change="chooseCustomer(x)" ng-model="x" style="background-color: #F9F9F9;">
+          <option value="B" ng-selected="1">买家</option>
+          <option value="S">卖家</option>
+        </select>
+      </div>
+      <div class="item item-input item-select" style="float: left;width: 33%;height: 36px;background-color: #F9F9F9">
+        <select style="background-color: #F9F9F9">
+          <option value="" selected>全部</option>
+          <option value="">未抢单</option>
+          <option value="">已抢单</option>
+          <option value="">待签合同</option>
+        </select>
+      </div>
+      <div class="item item-input item-select" style="float: left;width: 34%;height: 36px;background-color: #F9F9F9">
+        <select style="background-color: #F9F9F9">
+          <option value="" disabled selected>排序</option>
+          <option value="email">E-Mail</option>
+          <option value="twitter">Twitter</option>
+          <option value="linkedin">LinkedIn</option>
+        </select>
+      </div>
+    </div>
+  </div>
+    <ion-content overflow-scroll="true" style="overflow:auto;margin-top: 35px">
+      <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+        <div class="content ionic-pseudo">
+            <div class="list">
+                <div style="background-color: #9B9B9B" ng-repeat="item in orderList">
+                    <a class="item item-thumbnail-left" ng-click="openOrderInfo($index)">
+                        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+                        <img src="{{imgUrlProcess(item.img[0],120,120,80)}}" ng-if="item.img.length!=0">
+                        <img src="img/ic_default.png" ng-if="item.img.length==0">
+                        <h2 style="font-size: 20px;height: 40px;line-height: 40px;float: left">{{item.name}}</h2>
+                        <h2 style="color: red;font-size: 17px;height: 40px;line-height: 40px;float: right">{{item.totalNum}}件</h2>
+                        <p style="font-weight: bolder;float: left;height: 40px;line-height: 40px;clear: both" ng-if="item.status == ORDER_STATUS_PICKING">
+                          拣货中
+                        </p>
+                        <p style="font-weight: bolder;float: left;height: 40px;line-height: 40px;clear: both" ng-if="item.status == ORDER_STATUS_LOGISTICS">
+                          已发货
+                        </p>
+                        <p style="font-weight: bolder;float: left;height: 40px;line-height: 40px;clear: both" ng-if="item.status == ORDER_STATUS_END">
+                          确认收货
+                        </p>
+                        <p style="float: right;height: 40px;line-height: 40px;">{{stringToDate(item.createTime)| date:"MM/dd" }}</p>
+                    </a>
+                    <div style="height: 15px;background-color: #F9F9F9"></div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

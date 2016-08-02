@@ -1,0 +1,90 @@
+/**
+ * Created by airwen on 16/5/17.
+ */
+//编辑地址
+Tailorpus.controller('EditAddressCtrl', ['$scope', '$rootScope','$stateParams','$ionicHistory','DataService',
+    function($scope,$rootScope,$stateParams,$ionicHistory,DataService) {
+
+    //地址列表的index
+    var index = $stateParams.index;
+
+    //获取地址列表
+    var obj = JSON.parse(window.localStorage.getItem("tailorUser"));
+     //console.log(JSON.stringify(obj))
+    $scope.addressList = obj.baseInfo.address;
+
+        //排序收获地址
+        $scope.reloadAddress = function(){
+            for (var i = 0;i < $scope.addressList.length;i++){
+                if (i==0)
+                    continue
+                if ($scope.addressList[i].isDefault=='1'){
+                    $scope.addressList.unshift($scope.addressList[i])
+                    $scope.addressList.splice(i+1,1)
+                    break
+                }
+            }
+            console.log(angular.toJson($scope.addressList))
+        }
+        $scope.reloadAddress()
+    //初始化数据
+    var itemAddress = {};
+    for(var i=0;i<$scope.addressList.length;i++){
+        if(index==i){
+           itemAddress = $scope.addressList[i];
+        }
+    }
+    //console.log(JSON.stringify(itemAddress))
+    $scope.addressInfo = {
+        "name": itemAddress.name,
+        "tel": itemAddress.tel,
+        "address": itemAddress.address,
+        "isDefault": itemAddress.isDefault
+    };
+
+
+    $scope.defaultAdd = function(){
+        if ($scope.addressInfo.isDefault == '1'){
+            $scope.addressInfo.isDefault = '0';
+        }else {
+            $scope.addressInfo.isDefault = '1';
+        }
+    }
+
+    //console.log(itemAddress)
+    //提交按钮
+    $scope.doSubmit = function(){
+
+        //alert( JSON.stringify($scope.addressInfo));
+
+        //修改本地json数据
+        obj.baseInfo.address[index].name =  $scope.addressInfo.name;
+        obj.baseInfo.address[index].tel =  $scope.addressInfo.tel;
+        obj.baseInfo.address[index].address =  $scope.addressInfo.address;
+        if ($scope.addressInfo.isDefault == '1'){
+            for (var i = 0;i<obj.baseInfo.address.length;i++){
+                if (obj.baseInfo.address[i].isDefault=='1'){
+                    obj.baseInfo.address[i].isDefault='0';
+                }
+            }
+        }
+        obj.baseInfo.address[index].isDefault =  $scope.addressInfo.isDefault;
+
+        var json = {
+            "address":obj.baseInfo.address
+        };
+
+        DataService.modifyUserInfo().update({vipId:obj.vipId},json,function(data){
+           // alert("成功");
+            //存储修改后的json数据
+            window.localStorage.setItem("tailorUser",JSON.stringify(obj));
+            $ionicHistory.goBack();
+        },function(data){
+            console.log(JSON.stringify(data));
+        });
+
+       //  console.log(JSON.stringify(JSON.parse(window.localStorage.getItem("tailorUser"))));
+       // Replies.giveAReply($scope.reply);    //保存回复
+                   //返回上一页
+    }
+}]);

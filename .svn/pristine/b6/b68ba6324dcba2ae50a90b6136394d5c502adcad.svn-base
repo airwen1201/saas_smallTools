@@ -1,0 +1,23 @@
+<ion-view view-title="首页">
+    <ion-content>
+        <!--图片-->
+        <div  >
+            <img ng-src="http://www.pp3.cn/uploads/201509/2015091507.jpg"width="{{width}}" height="{{height}}" />
+            <div style="text-align: center">
+                <img src="img/home_logo.png">
+                <p>可浏览海量订单信息</p>
+            </div>
+
+        </div>
+
+        <!--  底部-->
+        <div class="row" style="margin-top: 30px">
+            <div class="col col-50">
+                <div style="width: 70%;margin: auto"><button class="button" style="width: 100%" ng-click="toLogin()">登录</button></div>
+            </div>
+            <div class="col col-50">
+              <div style="width: 70%;margin: auto"><button class="button" style="width: 100%" ng-click="toRegister()">注册</button></div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

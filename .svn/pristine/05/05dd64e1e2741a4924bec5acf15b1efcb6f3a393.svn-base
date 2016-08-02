@@ -1,0 +1,77 @@
+<ion-view view-title="报价详情" class="QuoteDetail">
+  <div class="bar bar-header bar-stable item-icon-left bar-header-top">
+
+    <i class="icon ion-chevron-left header-left-row" ng-click="toClose()"></i>
+
+    <div class="title">报价详情</div>
+  </div>
+  <ion-content class="content has-header " overflow-scroll="true" style="overflow:auto;">
+    <div class="list">
+      <div class="item item-thumbnail-left" ng-click="toquoterecord()">
+        <img src="{{getTitleImage(abstract.designImg)[0]}}" ng-if="getTitleImage(abstract.designImg).length!=0">
+        <img src="img/ic_default.png" ng-if="getTitleImage(abstract.designImg).length==0">
+        <div class="list-mess">
+          <div class="list-txt">
+            <b ng-bind="abstract.designName"></b>
+            <p><b ng-bind="(abstract.hasTax=='Y'?'含税':'不含税')+'¥ '+abstract.taxPrice"></b><span ng-bind="timeslicer()"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">材料</span>
+        <span class="cell-info" ng-bind="'¥ '+quoteList.materialPrice+(quoteList.hasTax!='N' ? ('('+quoteList.taxRate+'%' +')'):'')" ng-show="quoteList.materialPrice"></span>
+      </div>
+      <div class="one-cell-left">
+        <span class="cell">工缴</span>
+        <span class="cell-info" ng-bind="'¥ '+offerDetail.workersPay"></span>
+      </div>
+    </div>
+    <!--<div class="item line-cells">-->
+      <!--<div class="one-cell">-->
+        <!--<span class="cell">样品</span>-->
+        <!--<span class="cell-info" ng-bind="'¥'+(jsonOtherDetail[0].worth?jsonOtherDetail[0].worth:0)"></span>-->
+      <!--</div>-->
+      <!--<div class="one-cell-left">-->
+        <!--<span class="cell">银行</span>-->
+        <!--<span class="cell-info" ng-bind="'¥'+(jsonOtherDetail[1].worth?jsonOtherDetail[1].worth:0)"></span>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="item" style="padding: 0; margin: 0;">
+    <div class="item line-cells" ng-repeat="item in jsonOtherDetail" style="float: left;border-left: 0;width: 50%;border-right: 0;">
+      <div class="one-cell"   ><span ng-bind="item.title"></span><span ng-bind="'¥ '+(item.worth?item.worth:0)" style="padding-left: 40px;"></span></div>
+    </div>
+    </div>
+    <!--<div class="item line-cells">-->
+      <!--<div class="one-cell">-->
+        <!--<span class="cell">测试</span>-->
+        <!--<span class="cell-info" ng-bind="'¥'+(jsonOtherDetail[2].worth?jsonOtherDetail[2].worth:0)"></span>-->
+      <!--</div>-->
+      <!--<div class="one-cell-left">-->
+        <!--<span class="cell">货运</span>-->
+        <!--<span class="cell-info" ng-bind="'¥'+(jsonOtherDetail[3].worth?jsonOtherDetail[3].worth:0)"></span>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">数量</span>
+        <span class="cell-info" ng-bind="quoteList.number"></span>
+      </div>
+      <div class="one-cell-left">
+        <span class="cell">币种</span>
+        <span class="cell-info" ng-bind="currencytype==1?'美元':'人民币'"></span>
+      </div>
+    </div>
+    <div class="item line-cells">
+      <div class="one-cell" style="width: 45%;">
+        <span class="cell">报价</span>
+        <span class="cell-info" ng-bind="(currencytype==1?'$':'¥ ')+quoteList.price" ng-show="quoteList.price"></span>
+      </div>
+      <div class="one-cell-left">
+        <span class="cell" style="color: #3CC51F" ng-bind="quoteList.profitRate"></span>
+        <span class="cell-info" style="color: #3CC51F;padding-left: 20px" ng-bind="quoteList.profitTotal"></span>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

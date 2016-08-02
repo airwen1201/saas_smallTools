@@ -1,0 +1,86 @@
+<ion-view view-title="商城">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="goBack()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <!--图片轮播-->
+        <div class="tplb" style="height:{{::height+30}}">
+            <ion-slide-box  does-continue="true" auto-play="true" slide-interval="3000">
+                <ion-slide ng-repeat="adv in advList">
+                    <div ng-click=""><img actual-src="{{::adv.imgUrl}}" width="{{width}}" height="{{height}}" class=""/></div>
+                   <!-- <div class="ptitle"><i>标题：南京裁缝铺网络科技有限公司</i></div>-->
+                </ion-slide>
+            </ion-slide-box>
+        </div>
+        <!--筛选栏-->
+        <div class="bar-stable">
+           <div class="row">
+               <div class="col" style="text-align: center">类型</div>
+               <div class="col" style="text-align: center">排序</div>
+               <div class="col" style="text-align: center">筛选</div>
+           </div>
+        </div>
+
+        <!--商品列表-->
+        <ion-list class="has-header">
+            <ion-item class="item-thumbnail-left" ng-click="" href="#/OrderDetail">
+                <img ng-src="img/ben.png">
+                <div class="row">
+                        <h2 style="margin-left: 4px">售后</h2>
+                </div>
+                <div class="row" style="margin-top: 2px">
+                    <div class="col">江苏地区</div>
+                    <div class="col">STR验厂</div>
+                </div>
+                <div class="row">
+                    <div class="col">04/09交货</div>
+                    <div class="col" style="color: #C13E3E;text-align: right">￥50/6800件</div>
+                </div>
+            </ion-item>
+            <ion-item class="item-thumbnail-left" ng-click="">
+                <img ng-src="img/ben.png">
+                <div class="row">
+                    <h2 style="margin-left: 4px">售后</h2>
+                </div>
+                <div class="row" style="margin-top: 2px">
+                    <div class="col">江苏地区</div>
+                    <div class="col">STR验厂</div>
+                </div>
+                <div class="row">
+                    <div class="col">04/09交货</div>
+                    <div class="col" style="color: #C13E3E;text-align: right">￥50/6800件</div>
+                </div>
+            </ion-item>
+            <ion-item class="item-thumbnail-left" ng-click="">
+                <img ng-src="img/ben.png">
+                <div class="row">
+                    <h2 style="margin-left: 4px">售后</h2>
+                </div>
+                <div class="row" style="margin-top: 2px">
+                    <div class="col">江苏地区</div>
+                    <div class="col">STR验厂</div>
+                </div>
+                <div class="row">
+                    <div class="col">04/09交货</div>
+                    <div class="col" style="color: #C13E3E;text-align: right">￥50/6800件</div>
+                </div>
+            </ion-item>
+            <ion-item class="item-thumbnail-left" ng-click="">
+                <img ng-src="img/ben.png">
+                <div class="row">
+                    <h2 style="margin-left: 4px">售后</h2>
+                </div>
+                <div class="row" style="margin-top: 2px">
+                    <div class="col">江苏地区</div>
+                    <div class="col">STR验厂</div>
+                </div>
+                <div class="row">
+                    <div class="col">04/09交货</div>
+                    <div class="col" style="color: #C13E3E;text-align: right">￥50/6800件</div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

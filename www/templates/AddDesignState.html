@@ -1,0 +1,81 @@
+<ion-view view-title="材料类型" class="material-type-tag">
+    <div class="bar bar-header bar-stable item-icon-left item-icon-right bar-header-top" >
+        <i class="icon ion-chevron-left header-left-row"  ng-click="toClose()"></i>
+        <div class="title">材料类型</div>
+        <i class="icon" >
+
+            <img src="img/kucun_white.png" style="width: 30px;height: auto" ng-click="tokucun()">
+            <img src="img/mall_white.png" style="width: 30px;height: auto" ng-click="toshop()">
+        </i>
+        <!-- <i class="icon" ng-click="toshop()"></i>-->
+    </div>
+    <!--<ion-content class="content has-header" overflow-scroll="true" style="overflow: auto;overflow-x: hidden;">-->
+        <ion-content class="content has-header" style="overflow: auto;overflow-x: hidden;">
+        <div class="padding">材料图片<span style="float: right">{{images_list.length}}/20</span></div>
+        <div class="swiper-container" style="height: 90px; ">
+            <div class="swiper-wrapper" style="height: 90px; ">
+                <div class="swiper-slide swiper-small-pic" ng-repeat="item in images_list" ng-init="isHide=false"
+                     ng-click="isHide= !isHide">
+
+                    <div class="small-pic">
+                        <img ng-src="{{item}}" class="img" style="width:90px;height: 90px;">
+                        <a ng-click="deleteThis($index,'pic')"><i class="icon ion-close" ng-show="isHide"></i></a>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next swiper-button-black" ng-show="showPicRow"></div>
+            <div class="swiper-button-prev swiper-button-black" ng-show="showPicRow"></div>
+        </div>
+        <button ng-click="addAttachment()" class="button button-full button-balanced"
+                style="min-height: 40px;padding:0; height: 40px;line-height: 40px;background-color: #04BE02">点击上传图片
+        </button>
+        <a class="item item-icon-right" ng-click="openMaterialTypeList()">
+            类型<span class="itemtxt" ng-bind="materialType">面料</span>
+            <i class="icon ion-chevron-right" ng-click="toMateriallist()"></i>
+        </a>
+        <div class="options">
+            <div class="row">
+                <div class="col col-50" ng-click="isHide=true" ng-init="isHide=false" >属性</div>
+                <div class="col col-50" ng-click="isHide=false" ng-init="isHide=true">自定义</div>
+            </div>
+        </div>
+        <div class="Details-spec" ng-show="isHide">
+            <div class="line-cells" ng-repeat="item in inputList3" ng-if="$index%2==0">
+                <!--<span class="cell-linecell" ng-bind="item.label"></span>-->
+                <!--<span class="cell-info" ng-bind="item.value"></span>-->
+                <div class="one-cell" ng-if="inputList3[$index].value!=''">
+                    <span class="cell" ng-bind="inputList3[$index].label">纱织</span>
+                    <span class="cell-info" ng-bind="inputList3[$index].value">32S</span>
+                </div>
+                <div class="one-cell" ng-if="($index+1<=inputList3.length)&&inputList3[$index].value!=''">
+                    <span class="cell" ng-bind="inputList3[$index+1].label">幅宽</span>
+                    <span class="cell-info" ng-bind="inputList3[$index+1].value">185CM</span>
+                </div>
+            </div>
+        </div>
+        <ul ng-show="!isHide">
+            <li ng-repeat="x in typeList" ng-click="addType($index,x);($index==0||$index==1)?addColor=addColor:addColor=!addColor" ng-init="($index==0||$index==1)?addColor=true:addColor=isChooseType($index)" ng-class="{true:'addColor'}[addColor]">
+                <div class="cell" >
+                    <i></i>
+                    <span>{{x}}</span>
+                </div>
+            </li>
+            <i class="icon ion-plus ion-item-plus" ng-click="toadditem()"></i>
+            <div class="padding-left padding-right padding-bottom" ng-repeat="item in inputList">
+                <div class="item-labeldiv"><span class="tag-itemspan">{{item.label}}</span></div><input type="text" ng-model="item.value">
+            </div>
+            <div class="padding-left padding-right padding-bottom" ng-repeat="tag in inputList2 track by $index">
+                <div class="item-label2div"><span class=""><input type="text" class="tagname-div" ng-model="inputListExtra[$index].label"></span></div>
+                <input class="tag-state" type="text" ng-model="inputListExtra[$index].value" style="float: left;">
+                <div class="icon-trash-float"><i class="icon ion-trash-a trash-input" ng-click="todeltiem($index)"></i></div>
+            </div>
+        </ul>
+        <div class="padding">
+            <a class="button button-balanced button-block" ng-click="doSubmit()">提交</a>
+            <!--<a class="button button-stable button-block button-del" style="color: white">删除</a>-->
+        </div>
+    </ion-content>
+</ion-view>
+

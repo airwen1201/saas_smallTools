@@ -1,0 +1,59 @@
+<ion-view view-title="款式" class="design">
+  <div class="bar bar-header bar-stable item-icon-left item-icon-right bar-header-top">
+    <i class="icon ion-chevron-left header-left-row" ng-click="goBack()"></i>
+    <div class="title">款式</div>
+    <i class="icon ion-plus-round" ng-click="addMoreDesign()"></i>
+  </div>
+
+  <div class="list list-inset design-list-div" style="height: 48px; top:64px;padding: 7px 0px 7px 10px;">
+    <label class="item item-input item-input-lab">
+      <i class="icon ion-search placeholder-icon"></i>
+      <div class="search-div">
+        <form ng-submit="dosearch()">
+          <div class="form-group">
+              <input type="text" placeholder="搜索" ng-model="searchitem" >
+          </div>
+        </form>
+      </div>
+    </label>
+    <div class="icon ion-close-circled close-search-icon" ng-click="toclear()"
+         ng-show="(searchitem=='')?false:true"></div>
+  </div>
+  <ion-content class="content has-header design-content" style="top:112px !important;">
+    <ion-list show-delete="false" can-swipe="true">
+      <div class="list" ng-repeat="item in designList">
+      <ion-item class="item item-thumbnail-left" ng-click="goDesignDetail($index)">
+        <img src="{{getTitleImage(designList[$index].img)[0]}}" ng-if="getTitleImage(designList[$index].img).length!=0">
+        <img src="img/ic_default.png" ng-if="getTitleImage(designList[$index].img).length==0">
+        <div class="list-mess">
+          <div class="list-txt">
+            <p><span ng-bind="item.name"></span><b class="red" ng-bind="'￥'+item.totalPrice" ng-if="item.isReasonable=='Y'"></b></p>
+            <p><b ng-bind="item.lastName+'￥'+item.lastPrice" ng-if="item.lastPrice!=''"></b><span ng-bind="timeSlicer($index)"></span></p>
+          </div>
+        </div>
+        <div class="padding" style="text-align: right;border-top: 1px solid #ddd;padding-bottom: 0px">
+          <button class="button button-outline button-small" ng-click="modifyDesign($index);$event.stopPropagation();">材料成本</button>
+        </div>
+        <ion-option-button class="button-assertive icon ion-trash-a" ng-click="deleteDesign($index)"></ion-option-button>
+      </ion-item>
+        </div>
+
+      <!--<ion-tabs class="tabs-positive tabs-icon-only">-->
+
+        <!--<ion-tab title="首页" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline">-->
+          <!--&lt;!&ndash; 标签 1 内容 &ndash;&gt;111-->
+        <!--</ion-tab>-->
+
+        <!--<ion-tab title="关于" icon-on="ion-ios7-clock" icon-off="ion-ios7-clock-outline">-->
+          <!--&lt;!&ndash; 标签 2 内容 &ndash;&gt;222-->
+        <!--</ion-tab>-->
+
+        <!--<ion-tab title="设置" icon-on="ion-ios7-gear" icon-off="ion-ios7-gear-outline">-->
+          <!--&lt;!&ndash; 标签 3 内容 &ndash;&gt;333-->
+        <!--</ion-tab>-->
+
+    <!--</ion-tabs>-->
+
+    </ion-list>
+  </ion-content>
+</ion-view>

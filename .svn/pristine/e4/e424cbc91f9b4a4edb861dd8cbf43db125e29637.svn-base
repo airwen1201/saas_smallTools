@@ -1,0 +1,14 @@
+<ion-view view-title="图片" >
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="row" ng-repeat="row in hang track by $index" >
+            <img class="col col-33" src="{{images[$index*3+0]}}" style="height: 120px" ng-if="getImgUrl($index,0)">
+            <img class="col col-33" src="{{images[$index*3+1]}}" style="height: 120px"ng-if="getImgUrl($index,1)">
+            <img class="col col-33" src="{{images[$index*3+2]}}" style="height: 120px" ng-if="getImgUrl($index,2)">
+        </div>
+    </ion-content>
+</ion-view>

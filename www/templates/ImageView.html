@@ -1,0 +1,22 @@
+<ion-view view-title="图片" >
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="row" ng-repeat="row in hang track by $index" >
+            <img class="col col-33" src="{{images[$index*3+0]}}" style="height: 120px" ng-if="getImgUrl($index,0)" ng-click="showBigImage($index*3)">
+            <img class="col col-33" src="{{images[$index*3+1]}}" style="height: 120px"ng-if="getImgUrl($index,1)" ng-click="showBigImage($index*3+1)">
+            <img class="col col-33" src="{{images[$index*3+2]}}" style="height: 120px" ng-if="getImgUrl($index,2)" ng-click="showBigImage($index*3+2)">
+        </div>
+    </ion-content>
+    <button id="rightDisplay" ng-if="bigImage" class="popover-backdrop"
+            style="position: fixed;top: 0;left: 0;z-index: 10; width: 100%;height: 100%;background-color: #181818;border: none;"
+            ng-click="hideBigImage()">
+        <img class="img-responsive"
+             style="/*position: absolute;*/z-index: 10;height: auto;width:auto;max-width: 100%;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);"
+             src="{{Url}}"/>
+    </button>
+</ion-view>

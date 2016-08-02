@@ -1,0 +1,188 @@
+<ion-view view-title="商城详情" class="GoodDetail" >
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <a class="button button-icon ion-ios-telephone" ng-click="onDial()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content  on-swipe-down="SlideDown()" overflow-scroll="true" style="overflow: auto">
+    <div class="GoodDetail-Init" ng-show=!SlideUpShow >
+  <div class="GoodDetail-Img-Container">
+    <img class="GoodDetail-Img" src="https://modao.cc/uploads/images/3519022/raw_1464175964.png">
+  <div class="GoodDetail-Name-Bar">
+    <h4 class="GoodDetail-Name">针织混纺面料</h4>
+    <p class="GoodDetail-ReleaseTime">04/09发布</p>
+    </div>
+  </div>
+    <div class="GoodDetail-Price-Container">
+      <div class="GoodDetail-Price-Select">
+        <p class="GoodDetail-Priceif">一米起批</p>
+        <p class="GoodDetail-Price">¥ 18.00</p>
+      </div>
+      <div class="GoodDetail-Price-Select">
+        <p class="GoodDetail-Priceif">101-1000米</p>
+        <p class="GoodDetail-Price">¥ 16.50</p>
+      </div>
+      <div class="GoodDetail-Price-Select">
+        <p class="GoodDetail-Priceif">≥1001米</p>
+        <p class="GoodDetail-Price">¥ 16.00</p>
+      </div>
+    </div>
+    <div class="options">
+    <div class="row">
+      <div class="col col-50" ng-click="isHide=true" ng-init="isHide=false" >规格</div>
+      <div class="col col-50" ng-click="isHide=false"ng-init="isHide=true">属性</div>
+    </div>
+    </div>
+    <div class="Details-spec" ng-show="isHide"  on-drag-up="SlideUp()">
+        <div class="line-cells">
+          <div class="one-cell">
+          <span class="cell">类型</span>
+          <span class="cell-info">针织面料</span>
+            </div>
+          <div class="one-cell">
+          <span class="cell">颜色</span>
+          <span class="cell-info">31#,10#,9#</span>
+            </div>
+        </div>
+      <div class="line-cells">
+      <div class="one-cell">
+        <span class="cell">成分</span>
+        <span class="cell-info">65%棉35%涤纶</span>
+      </div>
+      <div class="one-cell">
+        <span class="cell">克重</span>
+        <span class="cell-info">140(g/㎡)</span>
+      </div>
+    </div>
+      <div class="line-cells">
+        <div class="one-cell">
+          <span class="cell">纱织</span>
+          <span class="cell-info">32S</span>
+        </div>
+        <div class="one-cell">
+          <span class="cell">幅宽</span>
+          <span class="cell-info">185CM</span>
+        </div>
+      </div>
+      <div class="line-cells">
+        <span class="cell" style="padding-left: 10px">用途</span>
+        <span class="cell-info">家居服,时装,休闲服,T恤,精品男装</span>
+      </div>
+      </div>
+      <div class="Details-property" ng-show="!isHide">
+        <div class="Details-property-Tag-Container">
+          <img class="Details-property-Tag" src="https://modao.cc/uploads/images/3541262/raw_1464315729.png" >
+          <div class="Details-property-Tag-Text">柔软</div>
+        </div>
+        <div class="Details-property-Tag-Container">
+          <img class="Details-property-Tag" src="https://modao.cc/uploads/images/3541262/raw_1464315729.png" >
+          <div class="Details-property-Tag-Text">防水</div>
+        </div>
+        <div class="Details-property-Tag-Container">
+          <img class="Details-property-Tag" src="https://modao.cc/uploads/images/3541262/raw_1464315729.png" >
+          <div class="Details-property-Tag-Text">透气</div>
+        </div>
+      </div>
+    <div class="item item-input item-icon-right">
+      <div class="input-label">评价 <span class="Rank-Counts">9人评价</span></div>
+      <div class="Rank-Info">
+        <div class="Rank-Points">5.0</div><div class="ion-ios-star"></div><div class="ion-ios-star"></div><div class="ion-ios-star"></div><div class="ion-ios-star"></div><div class="ion-ios-star"></div>
+        </div>
+    </div>
+      </div>
+    <!--上滑展示规格与评价开始-->
+    <div class="GoodDetail-Slide-Up" id="Top" style="margin-bottom: 50px;" ng-show=SlideUpShow >
+      <div class="options">
+        <div class="row">
+          <div class="col col-50" ng-click="SildeUpSpecShow=true" ng-init="SildeUpSpecShow=false" >规格</div>
+          <div class="col col-50" ng-click="SildeUpSpecShow=false"ng-init="SildeUpSpecShow=true">评价</div>
+        </div>
+      </div>
+      <!--上滑页面规格详细展示开始-->
+      <div class="Slide-Up-Details-spec" ng-show="SildeUpSpecShow">
+        <div class="Details-spec-line">
+          <span class="Spec-Title">类型</span><span class="Spec-Detail">针织面料</span>
+      </div>
+      <div class="Slide-Up-Details-Label">
+        <div class="Details-property-Tag-Container">
+          <img class="Details-property-Tag" src="https://modao.cc/uploads/images/3541262/raw_1464315729.png" >
+          <div class="Details-property-Tag-Text">柔软</div>
+        </div>
+        </div>
+      </div>
+      <!--上滑页面规格详细展示结束-->
+      <!--上滑页面评价详细展示开始-->
+      <div class="Slide-Up-Rank" ng-show="!SildeUpSpecShow">
+        <div class="General-Comments">
+          <div class="row">
+            <div class="col-40">
+             <div style="float: left;margin-right: 9px">总评</div><div class="icon ion-ios-star"></div><div class="icon ion-ios-star"></div><div class="icon ion-ios-star"></div><div class="icon ion-ios-star"></div><div class="icon ion-ios-star"></div>
+            </div>
+            <div class="col-33"><div>4.8分</div></div>
+            <div class="col-33"><div>200评</div></div>
+          </div>
+          <div class="row">
+            <div class="col-40">
+              <div>发货:4.8分<span class="ion-arrow-up-c" style="color: #3CC51F"></span></div>
+            </div>
+            <div class="col-33"><div>发货:4.9分<span class="ion-arrow-up-c" style="color: #3CC51F"></span></div></div>
+            <div class="col-33"><div>配合:4.7分<span class="ion-arrow-down-c" style="color: darkred"></span></div></div>
+          </div>
+        </div>
+        <div class="Comments-Detail">
+          <ul class="list">
+            <li class="item">
+              <p class="Comments">合作愉快！发货及时！</p>
+              <div class="Order-Synopsis">
+                <span class="Buyer-Location">南京市******</span><span class="ColorAndSize">黑色 x 120米</span><span class="OrderTime">16/04/27 18:31</span>
+              </div>
+            </li>
+            <li class="item">
+            <p class="Comments">合作愉快！发货及时！</p>
+            <div class="Order-Synopsis">
+              <span class="Buyer-Location">南京市******</span><span class="ColorAndSize">黑色 x 120米</span><span class="OrderTime">16/04/27 18:31</span>
+            </div>
+          </li>
+            <li class="item">
+              <p class="Comments">合作愉快！发货及时！</p>
+              <div class="Order-Synopsis">
+                <span class="Buyer-Location">南京市******</span><span class="ColorAndSize">黑色 x 120米</span><span class="OrderTime">16/04/27 18:31</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        </div>
+      <!--上滑页面评价详细展示结束-->
+      </div>
+<!--    <ion-infinite-scroll
+      ng-if="moreDataCanBeLoaded()"
+      on-infinite="SlideUp()"
+      distance="1%">
+    </ion-infinite-scroll>-->
+  </ion-content>
+  <div class="BacktoTop" ng-show="SlideUpShow"><img class="BacktoTopImg" src="https://modao.cc/uploads/images/3552063/raw_1464340982.png" ng-click="scrollTop()"></div>
+  <div class="bar bar-footer">
+    <div class="Small-Tab-Item-Container">
+      <a class="Item-Favorite">
+        <i class="icon ion-android-star-outline"></i>
+        收藏
+      </a>
+    </div>
+    <div class="Small-Tab-Item-Container">
+      <a class="Item-Shop " ng-click="openStoreInfo()"><!--用于测试-->
+        <i class="icon ion-ios-home"></i>
+        店铺
+      </a>
+    </div>
+    <div class="Big-Tab-Item-Container-Add">
+      添加材料
+    </div>
+    <div class="Big-Tab-Item-Container-Order" ng-click="openGoodInfo()">
+      立即订购
+    </div>
+  </div>
+
+</ion-view>

@@ -1,0 +1,25 @@
+<ion-view view-title="通讯录" >
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <a class="button button-icon ion-plus" ng-click="toAddContact()"></a>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content overflow-scroll="true" style="overflow:auto;">
+       <!-- 没有联系人-->
+        <div style="width: 100%;height: 100%;text-align: center" ng-if="noContact">
+            没有联系人~~
+        </div>
+        <!--联系人列表-->
+        <ion-list>
+            <ion-item class="item-avatar" ng-repeat="contact in contactsList" ng-click="toContactsDetail($index) ">
+                <img ng-src="{{contact.headImg}}" src="img/contact_default.png">
+                <h2 >{{contact.name}}</h2>
+                <p>{{contact.address}}</p>
+            </ion-item>
+        </ion-list>
+       <!-- <button class="button button-balanced" ng-click="modifyUserInfo()">test</button>-->
+    </ion-content>
+</ion-view>

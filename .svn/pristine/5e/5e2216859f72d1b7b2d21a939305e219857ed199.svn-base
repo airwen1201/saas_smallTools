@@ -1,0 +1,75 @@
+<ion-view view-title="库存详情">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <a class="button button-icon ion-plus-round" ng-click="openInStorage()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content overflow-scroll="true" style="overflow:auto;">
+    <div style="background-color: #9B9B9B">
+      <a class="item item-thumbnail-left">
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+        <img src="{{imgUrlProcess(stock.img[0],80,80,80)}}" ng-click="toStorageImages()" ng-if="stock.img.length!=0">
+        <img src="img/ic_default.png" ng-if="stock.img.length==0">
+        <h2 style="font-size: 20px;height: 40px;line-height: 40px;float: left"ng-click="toStorageRecords()">{{stock.name}}</h2>
+        <!--<h2 style="color: red;font-size: 17px;height: 40px;line-height: 40px;float: right">1000件</h2>-->
+        <p style="float: left;height: 40px;line-height: 40px;clear: both;width: 70%" ng-bind="stock.track.from+stock.track.event" ng-click="toStorageRecords()"></p>
+        <p style="float: right;height: 40px;line-height: 40px;" ng-click="toStorageRecords()">{{stringToDate(stock.createTime)| date:"MM/dd" }}</p>
+      </a>
+    </div>
+    <div class="list">
+      <div style="width: 100%" ng-show="showMoreValue">
+        <div class="">
+          <div class="directory" style="background-color: #ededed">
+            <a ng-class="{'pt-active':picShowValue==1||!1}" ng-click="picShow(1)">库存</a>
+            <a ng-class="{'pt-active':picShowValue==2}" ng-click="picShow(2)">入库</a>
+            <a ng-class="{'pt-active':picShowValue==3}" ng-click="picShow(3)">出库</a>
+          </div>
+        </div>
+        <div style="width: 100%">
+          <div class="item" ng-show="picShowValue==1">
+            <p style="float: left;">汇总明细</p>
+            <p style="float: right">剩余数量 <span style="color: #3CC51F">{{stock.number}}</span></p>
+            <img ng-src="{{stock.skuImg}}" style="width: 100%;height: auto;display: block;">
+          </div>
+          <div class="item" ng-show="picShowValue==1">
+            <div ng-repeat="item in stock.stockIn">
+              <!--<div ng-repeat="1 in [1]">-->
+              <p style="float: left;">入库单号 {{item.stockInId}}</p>
+              <p style="float: right;">{{item.from.name}}</p>
+              <p style="float: left;clear: both;" ng-bind="'入库时间 '+getCreateTime($index)"></p>
+              <p style="float: right;">剩余数量 <span style="color: #3CC51F">{{item.leftNumber}}</span>/{{item.number}}</p>
+              <img ng-src="{{item.skuImg}}" style="width: 100%;height: auto;display: block;">
+              <div style="margin: 10px">
+                <input type="button" value="出库" ng-click="toOutputView(item.stockInId)" style="padding: 2px 5px; border-radius:5px;background-color: white;border:1px solid gray;float: right;margin-right: 10px">
+                <input type="button" value="盘点" ng-disabled="1" ng-click="toCheckStock(item.stockInId)" style="padding: 2px 5px; border-radius:5px;background-color: white;border:1px solid gray;float: right;margin-right: 10px">
+                <input type="button" value="出库记录" ng-click="toOutputRecord(item.stockInId)" style="padding: 2px 5px; border-radius:5px;background-color: white;border:1px solid gray;float: right;margin-right: 10px">
+              </div>
+            </div>
+          </div>
+          <div class="item" ng-show="picShowValue==2">
+            <div ng-repeat="item in stock.stockIn">
+              <p style="float: left;">入库单号 {{item.stockInId}}</p>
+              <p style="float: right;">{{item.from.name}}</p>
+              <p style="float: left;clear: both;" ng-bind="'入库时间 '+getCreateTime($index)"></p>
+              <p style="float: right;">入库数量 <span style="color: #3CC51F" ng-bind="item.number"></span></p>
+              <img ng-src="{{item.skuImg}}" style="width:100%;height: auto;display: block">
+            </div>
+          </div>
+          <div class="item" ng-show="picShowValue==3">
+            <div ng-repeat="item in stock.stockOut">
+              <p style="float: left;" ng-bind="'出库单号 '+item.stockOutId+'('+item.stockInId+')'"></p>
+              <p style="float: right;">{{item.to.name}}</p>
+              <p style="float: left;clear: both;" ng-bind="'出库时间 '+getCreateOutTime($index)"></p>
+              <p style="float: right;">出库数量 <span style="color: #3CC51F">{{item.number}}</span></p>
+              <img ng-src="{{item.skuImg}}" style="width: 100%;height: auto;display: block">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

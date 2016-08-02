@@ -1,0 +1,59 @@
+<ion-view view-title="物流信息">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="list">
+      <div class="item" style="height: 50px">
+        <span>运输方式</span>
+        <button id="deliver" class="button button-icon icon balanced" ng-class="{'ion-android-radio-button-off':deliveryType!=1,'ion-checkmark-circled':deliveryType==1}" ng-click="chooseDelivery(1)" style="-webkit-transform:scale(0.6,0.6);top: -10px;"></button>
+        <label for="deliver" style="margin-left: -10px">物流</label>
+        <button id="homeDelivery" class="button button-icon icon balanced" ng-class="{'ion-android-radio-button-off':deliveryType!=2,'ion-checkmark-circled':deliveryType==2}" ng-click="chooseDelivery(2)" style="-webkit-transform:scale(0.6,0.6);top: -10px;"></button>
+        <label for="homeDelivery" style="margin-left: -10px">送货上门</label>
+        <button id="invite" class="button button-icon icon balanced" ng-class="{'ion-android-radio-button-off':deliveryType!=3,'ion-checkmark-circled':deliveryType==3}" ng-click="chooseDelivery(3)" style="-webkit-transform:scale(0.6,0.6);top: -10px;"></button>
+        <label for="invite" style="margin-left: -10px">自提</label>
+      </div>
+      <label class="item item-input">
+        <span class="input-label">收货人</span>
+        <input type="text" ng-model="tempLogistics.name" ng-readonly="true" placeholder="请输入收货人">
+        <!--<i class="icon after ion-ios-arrow-right"></i>-->
+      </label>
+      <label class="item item-input">
+        <span class="input-label">联系电话</span>
+        <input type="text" ng-model="tempLogistics.phone" ng-readonly="true"  placeholder="请输入联系电话">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">收货地址</span>
+        <input type="text" ng-model="tempLogistics.address" ng-readonly="true"  placeholder="请输入收货地址">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">发货时间</span>
+        <input type="text" ng-model="tempLogistics.deliveryTime" ng-readonly="true"  placeholder="请在下方选择发货时间">
+        <!--<i class="icon after ion-ios-arrow-right"></i>-->
+      </label>
+      <div class="padding">
+        <onezone-datepicker datepicker-object="onezoneDatepicker">
+          <button class="button button-block button-outline button-positive " ng-click="showDatepicker()">
+            {{onezoneDatepicker.date | date:'yyyy-MM-dd'}}
+          </button>
+        </onezone-datepicker>
+      </div>
+      <label class="item item-input" ng-show="deliveryType==1">
+        <span class="input-label">物流单号</span>
+        <input type="text" ng-model="tempLogistics.logisticsNo" >
+        <!-- <i class="icon after ion-ios-arrow-right"></i>-->
+      </label>
+      <label class="item item-input" ng-show="deliveryType==1">
+        <span class="input-label">物流公司</span>
+        <input type="text" ng-model="tempLogistics.logisticsName" >
+        <!--<i class="icon after ion-camera" style="margin-right: 20px"></i>-->
+      </label>
+      <div class="content padding has-header">
+        <button class="button button-block button-balanced" ng-click="doSubmit()">提交</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+

@@ -1,0 +1,173 @@
+@font-face {
+    font-family: 'tailorpusfont';
+    src:
+        url('fonts/tailorpusfont.ttf?e4imbe') format('truetype'),
+        url('fonts/tailorpusfont.woff?e4imbe') format('woff'),
+        url('fonts/tailorpusfont.svg?e4imbe#tailorpusfont') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="tpicon-"], [class*=" tpicon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'tailorpusfont' !important;
+    /*speak: none;*/
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.tpicon-heart:before {
+    content: "\e900";
+}
+.tpicon-cloud:before {
+    content: "\e901";
+}
+.tpicon-star:before {
+    content: "\e902";
+}
+.tpicon-tv:before {
+    content: "\e903";
+}
+.tpicon-sound:before {
+    content: "\e904";
+}
+.tpicon-video:before {
+    content: "\e905";
+}
+.tpicon-trash:before {
+    content: "\e906";
+}
+.tpicon-user:before {
+    content: "\e907";
+}
+.tpicon-key:before {
+    content: "\e908";
+}
+.tpicon-search:before {
+    content: "\e909";
+}
+.tpicon-settings:before {
+    content: "\e90a";
+}
+.tpicon-camera:before {
+    content: "\e90b";
+}
+.tpicon-tag:before {
+    content: "\e90c";
+}
+.tpicon-lock:before {
+    content: "\e90d";
+}
+.tpicon-bulb:before {
+    content: "\e90e";
+}
+.tpicon-pen:before {
+    content: "\e90f";
+}
+.tpicon-diamond:before {
+    content: "\e910";
+}
+.tpicon-display:before {
+    content: "\e911";
+}
+.tpicon-location:before {
+    content: "\e912";
+}
+.tpicon-eye:before {
+    content: "\e913";
+}
+.tpicon-bubble:before {
+    content: "\e914";
+}
+.tpicon-stack:before {
+    content: "\e915";
+}
+.tpicon-cup:before {
+    content: "\e916";
+}
+.tpicon-phone:before {
+    content: "\e917";
+}
+.tpicon-news:before {
+    content: "\e918";
+}
+.tpicon-mail:before {
+    content: "\e919";
+}
+.tpicon-like:before {
+    content: "\e91a";
+}
+.tpicon-photo:before {
+    content: "\e91b";
+}
+.tpicon-note:before {
+    content: "\e91c";
+}
+.tpicon-clock:before {
+    content: "\e91d";
+}
+.tpicon-paperplane:before {
+    content: "\e91e";
+}
+.tpicon-params:before {
+    content: "\e91f";
+}
+.tpicon-banknote:before {
+    content: "\e920";
+}
+.tpicon-data:before {
+    content: "\e921";
+}
+.tpicon-music:before {
+    content: "\e922";
+}
+.tpicon-megaphone:before {
+    content: "\e923";
+}
+.tpicon-study:before {
+    content: "\e924";
+}
+.tpicon-lab:before {
+    content: "\e925";
+}
+.tpicon-food:before {
+    content: "\e926";
+}
+.tpicon-t-shirt:before {
+    content: "\e927";
+}
+.tpicon-fire:before {
+    content: "\e928";
+}
+.tpicon-clip:before {
+    content: "\e929";
+}
+.tpicon-shop:before {
+    content: "\e92a";
+}
+.tpicon-calendar:before {
+    content: "\e92b";
+}
+.tpicon-wallet:before {
+    content: "\e92c";
+}
+.tpicon-vynil:before {
+    content: "\e92d";
+}
+.tpicon-truck:before {
+    content: "\e92e";
+}
+.tpicon-world:before {
+    content: "\e92f";
+}
+.tpicon-home2:before {
+    content: "\e930";
+}
+

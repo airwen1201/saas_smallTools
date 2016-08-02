@@ -1,0 +1,98 @@
+<ion-view view-title="报价" class="Quote">
+  <div class="bar bar-header bar-stable item-icon-left bar-header-top">
+
+    <i class="icon ion-chevron-left header-left-row" ng-click="goBack()"></i>
+
+    <div class="title">报价</div>
+  </div>
+  <div class="list list-inset design-list-div" style="height: 48px; top:43px;padding: 7px 0px 7px 10px;">
+      <label class="item item-input item-input-lab">
+        <i class="icon ion-search placeholder-icon"></i>
+        <div class="search-div">
+          <input  type="text" placeholder="搜索" ng-model="searchitem2">
+        </div>
+      </label>
+    <button class="icon ion-close-circled close-search-icon" ng-click="toclear2()" ng-show="(searchitem2=='')?false:true"></button>
+  </div>
+
+
+  <ion-content class="content has-header quote-content" style="top:90px !important;">
+
+      <div class="list">
+        <div class="item item-thumbnail-left" ng-click="goQuoteDetail()">
+          <img src="img/adam.jpg">
+
+          <div class="list-mess">
+            <div class="list-txt">
+              <p><b>D1165</b><b class="red">￥22.50</b></p>
+              <p>含税￥22.50<span>04/28</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="padding" style="text-align: right">
+          <button class="button button-outline button-small" ng-click="goaddQuote()">报价</button>
+        </div>
+      </div>
+      <div class="list" >
+        <div class="item item-thumbnail-left" ng-click="goQuoteDetail()">
+          <img src="img/adam.jpg">
+
+          <div class="list-mess">
+            <div class="list-txt">
+              <p><b>D1165</b><b class="red">￥22.50</b></p>
+              <p>含税￥22.50<span>04/28</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="padding" style="text-align: right">
+          <button class="button button-outline button-small" ng-click="goaddQuote()">报价</button>
+        </div>
+      </div>
+      <div class="list" >
+        <div class="item item-thumbnail-left" ng-click="goQuoteDetail()">
+          <img src="img/adam.jpg">
+
+          <div class="list-mess">
+            <div class="list-txt">
+              <p><b>D1165</b><b class="red">￥22.50</b></p>
+              <p>含税￥22.50<span>04/28</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="padding" style="text-align: right">
+          <button class="button button-outline button-small" ng-click="goaddQuote()">报价</button>
+        </div>
+      </div>
+      <div class="list" >
+        <div class="item item-thumbnail-left" ng-click="goQuoteDetail()">
+          <img src="img/adam.jpg">
+
+          <div class="list-mess">
+            <div class="list-txt">
+              <p><b>D1165</b><b class="red">￥22.50</b></p>
+              <p>含税￥22.50<span>04/28</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="padding" style="text-align: right">
+          <button class="button button-outline button-small" ng-click="goaddQuote()">报价</button>
+        </div>
+      </div>
+      <div class="list" >
+        <div class="item item-thumbnail-left" ng-click="goQuoteDetail()">
+          <img src="img/adam.jpg">
+
+          <div class="list-mess">
+            <div class="list-txt">
+              <p><b>D1165</b><b class="red">￥22.50</b></p>
+              <p>含税￥22.50<span>04/28</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="padding" style="text-align: right">
+          <button class="button button-outline button-small" ng-click="goaddQuote()">报价</button>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>

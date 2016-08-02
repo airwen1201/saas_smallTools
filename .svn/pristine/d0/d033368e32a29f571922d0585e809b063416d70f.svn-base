@@ -1,0 +1,16 @@
+/**
+ * Created by GY on 2016/6/12.
+ */
+Tailorpus.controller('QuoteCtrl', function($scope) {
+  $scope.searchitem2='';
+  $scope.toclear2 = function () {
+    $scope.searchitem2 ='';
+    console.log(1111);
+  }
+  $scope.goQuoteDetail=function(){
+    window.location.href="#/QuoteDetail"
+  }
+  $scope.goaddQuote=function(){
+    window.location.href="#/AddQuote"
+  }
+});

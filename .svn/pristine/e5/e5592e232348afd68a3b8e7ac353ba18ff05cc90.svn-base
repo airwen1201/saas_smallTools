@@ -1,0 +1,56 @@
+<ion-view view-title="新增款式" class="addstorage design-detail add-design">
+  <div class="bar bar-header bar-stable item-icon-left item-icon-right bar-header-top">
+      <i class="icon ion-chevron-left header-left-row"  ng-click="toClose()"></i>
+    <div class="title">新增款式</div>
+  </div>
+  <ion-content class="content has-header" overflow-scroll="scroll">
+    <div class="padding">款式图片<span style="float: right">{{images_list.length}}/20</span></div>
+    <div class="swiper-container" style="height: 90px; ">
+      <div class="swiper-wrapper" style="height: 90px; ">
+        <div class="swiper-slide swiper-small-pic" ng-repeat="item in images_list" ng-init="isHide=false"
+             ng-click="isHide= !isHide">
+
+          <div class="small-pic">
+            <img ng-src="{{item}}" class="img" style="width:90px;height: 90px;">
+            <a ng-click="deleteThis($index,'pic')"><i class="icon ion-close" ng-show="isHide"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Add Arrows -->
+      <div class="swiper-button-next swiper-button-black" ng-show="showPicRow"></div>
+      <div class="swiper-button-prev swiper-button-black" ng-show="showPicRow"></div>
+    </div>
+    <button ng-click="addAttachment()" class="button button-full button-balanced"
+            style="min-height: 40px;padding:0; height: 40px;line-height: 40px;background-color: #04BE02">点击上传图片
+    </button>
+    <div style="background-color: #EDEDED;overflow: hidden;">
+      <div class="padding" style="margin-bottom: 10px;background-color: white;" >款式名称 <input ng-model="design.name" type="text" placeholder="请输入款式名称" style="display: inline;margin-left: 20px" /></div>
+    </div>
+
+    <div class="list mar mar-list" ng-repeat="item in designMaterials">
+      <div class="item item-thumbnail-left">
+        <img src="img/ic_default.png" ng-if="item.img.length==0">
+        <img src="{{item.img[0]}}" ng-if="item.img.length!=0">
+        <div class="list-mess">
+          <div class="list-txt">
+            <p><span ng-bind="item.name"></span></p>
+            <p ng-bind="item.color"><span><b class="red">￥2.00</b></span></p>
+          </div>
+        </div>
+      </div>
+      <div class="padding padding-adddesign" style="text-align: right">
+        <button class="button button-outline button-small" ng-click="addPrice($index)">材料成本</button>
+        <button class="button button-outline button-small" ng-click="modifyDesignState($index)" style="width: 15%;">属性</button>
+      </div>
+    </div>
+
+    <div>
+      <button class="button button-block button-outline addbar" ng-click="addDesignState()">
+          <b><i class="icon ion-plus-round"></i></b>
+          <div>添加材料</div>
+      </button>
+      <button class="button button-block button-balanced tj-bar" type="submit" ng-click="doSubmit()">提交</button>
+    </div>
+    <div style="height:20px;"></div>
+  </ion-content>
+</ion-view>

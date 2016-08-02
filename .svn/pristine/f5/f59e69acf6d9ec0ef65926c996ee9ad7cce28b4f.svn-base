@@ -1,0 +1,139 @@
+<ion-view view-title="出库明细">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content overflow-scroll="true" style="overflow:auto;">
+      <div class="item item-thumbnail-left">
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+        <img src="http://www.runoob.com/try/demo_source/blue-album.jpg">
+        <h2 style="font-size: 20px;height: 40px;line-height: 40px;float: left">CK0000001</h2>
+        <h2 style="font-size: 17px;height: 40px;line-height: 40px;float: right">久得美</h2>
+        <p style="font-weight: bolder;float: left;height: 40px;line-height: 40px;clear: both">04/09出库</p>
+        <p style="font-weight: bolder;float: right;height: 40px;line-height: 40px;">出库数量 <span style="color: green">600</span></p>
+      </div>
+
+    <table class="borderTable" style="margin: 10px auto">
+      <tr>
+        <td class="borderTable">尺码\颜色</td>
+        <td class="borderTable">2</td>
+        <td class="borderTable">4</td>
+        <td class="borderTable">6</td>
+        <td class="borderTable">8</td>
+        <td class="borderTable">10</td>
+        <td class="borderTable">12</td>
+        <td class="borderTable">14</td>
+        <td class="borderTable">16</td>
+      </tr>
+      <tr>
+        <td class="borderTable">红色</td>
+        <td class="borderTable">10</td>
+        <td class="borderTable">20</td>
+        <td class="borderTable">15</td>
+        <td class="borderTable">25</td>
+        <td class="borderTable">20</td>
+        <td class="borderTable">10</td>
+        <td class="borderTable">15</td>
+        <td class="borderTable">20</td>
+      </tr>
+      <tr>
+        <td class="borderTable">蓝色</td>
+        <td class="borderTable">40</td>
+        <td class="borderTable">30</td>
+        <td class="borderTable">20</td>
+        <td class="borderTable">15</td>
+        <td class="borderTable">15</td>
+        <td class="borderTable">15</td>
+        <td class="borderTable">20</td>
+        <td class="borderTable">15</td>
+      </tr>
+      <tr>
+        <td class="borderTable">白色</td>
+        <td class="borderTable">20</td>
+        <td class="borderTable">45</td>
+        <td class="borderTable">20</td>
+        <td class="borderTable">20</td>
+        <td class="borderTable">10</td>
+        <td class="borderTable">15</td>
+        <td class="borderTable">15</td>
+        <td class="borderTable">15</td>
+      </tr>
+    </table>
+    <div style="width: 100%" ng-show="showMoreValue">
+      <div class="">
+        <div class="directory">
+          <a ng-class="{'pt-active':picShowValue==1||!1}" ng-click="picShow(1)">红色</a>
+          <a ng-class="{'pt-active':picShowValue==2}" ng-click="picShow(2)">蓝色</a>
+          <a ng-class="{'pt-active':picShowValue==3}" ng-click="picShow(3)">白色</a>
+        </div>
+      </div>
+      <div style="width: 100%">
+        <div class="row">
+          <div class="col" style="width: 100%;text-align: center">尺码</div>
+          <div class="col" style="width: 100%;text-align: center">出库数量</div>
+          <div class="col" style="width: 100%;text-align: center">差额数量</div>
+          <div class="col" style="width: 100%;text-align: center">收货数量</div>
+        </div>
+        <div class="row">
+          <div class="col" style="width: 100%;text-align: center">
+            <!--<input type="number" style="width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="1">-->
+            <p>1</p>
+          </div>
+          <div class="col" style="width: 100%;text-align: center">
+            <p>10</p>
+            <!--<input type="text" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="#149白色">-->
+          </div>
+          <div class="col" style="width: 100%;text-align: center">
+            <p>1</p>
+            <!--<input type="number" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="50">-->
+          </div>
+          <div class="col" style="width: 100%;text-align: center">
+            <input type="number" style="border: 1px solid gray;width: 80%;margin-left: 10%">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="width: 100%;text-align: center">
+            <!--<input type="number" style="width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="1">-->
+            <p>1</p>
+          </div>
+          <div class="col" style="width: 100%;text-align: center">
+            <p>10</p>
+            <!--<input type="text" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="#149白色">-->
+          </div>
+          <div class="col" style="width: 100%;text-align: center">
+            <p>1</p>
+            <!--<input type="number" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="50">-->
+          </div>
+          <div class="col" style="width: 100%;text-align: center">
+            <input type="number" style="border: 1px solid gray;width: 80%;margin-left: 10%">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="width: 100%;text-align: center">
+            <!--<input type="number" style="width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="1">-->
+            <p>1</p>
+          </div>
+          <div class="col" style="width: 100%;text-align: center">
+            <p>10</p>
+            <!--<input type="text" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="#149白色">-->
+          </div>
+          <div class="col" style="width: 100%;text-align: center">
+            <p>1</p>
+            <!--<input type="number" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="50">-->
+          </div>
+          <div class="col" style="width: 100%;text-align: center">
+            <input type="number" style="border: 1px solid gray;width: 80%;margin-left: 10%">
+          </div>
+        </div>
+        <div>
+          <p style="float: right;margin: 5px 20px 0 0;font-size: 14px">收货数量:<span style="font-size: 18px;color: green;font-weight: bold">1000件</span></p>
+        </div>
+        <div class="content padding has-header">
+          <button class="button button-block button-balanced">提交</button>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

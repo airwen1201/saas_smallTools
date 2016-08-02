@@ -1,0 +1,55 @@
+<!--create by chen edit by Shiqi on May 17-->
+<ion-view view-title="收货地址">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content overflow-scroll="true" style="overflow: auto">
+        <div class="list">
+            <div class="" ng-repeat="add in addArray track by $index">
+                <div class="item">
+                    <h2 style="float: left;margin-left: 10px">{{add.name}}</h2>
+                    <h2 style="margin-left: 20px;float: left">{{add.tel}}</h2>
+                    <p style="clear: left;margin: 25px 0 0 10px">{{add.address}}</p>
+                </div>
+                <div class="item" style="height: 44px;padding: 0;padding-right: 16px;">
+                    <div class="button button-icon icon ion-checkmark-circled" ng-if="add.isDefault == '1'" style="-webkit-transform:scale(0.8,0.8);color: #1BBB37;margin-top: -2px;margin-left: 20px;"></div>
+                    <label ng-if="add.isDefault == '1'" style="line-height: 40px;">默认地址</label>
+                    <!--<div class="button button-icon icon ion-android-radio-button-off" ng-if="add.isDefault == '0'" style="-webkit-transform:scale(0.8,0.8);color: #1BBB37"></div>-->
+                    <!--<label ng-if="add.isDefault == '0'" style="line-height: 40px;">设为默认</label>-->
+
+                        <label style="line-height: 40px;float: right">删除</label>
+                        <div class="button button-icon icon ion-ios-trash-outline" style="float: right" ng-click="showConfirm($index)"></div>
+                        <label for="editBtn" style="line-height: 40px;float: right">编辑</label>
+                        <div class="button button-icon icon ion-compose" id="editBtn" style="float: right" ng-click="editReceive($index)"></div>
+                </div>
+                <div style="height: 15px;background-color: #F9F9F9"></div>
+            </div>
+            <!--<div class="">-->
+                <!--<div class="item">-->
+                    <!--<h2 style="float: left;margin-left: 10px">王旺旺</h2>-->
+                    <!--<h2 style="margin-left: 20px;float: left">138****8888</h2>-->
+                    <!--<p style="clear: left;margin: 25px 0 0 10px">江苏省南京市江宁区庄排路109号</p>-->
+                <!--</div>-->
+                <!--<div class="item" style="height: 60px">-->
+                    <!--<div class="button button-icon icon ion-android-radio-button-off" style="-webkit-transform:scale(0.8,0.8);color: #1BBB37"></div>-->
+                    <!--<label style="line-height: 40px;">设为默认</label>-->
+                    <!--<label style="line-height: 40px;float: right">删除</label>-->
+                    <!--<div class="button button-icon icon ion-ios-trash-outline" style="float: right"></div>-->
+                    <!--<label style="line-height: 40px;float: right">编辑</label>-->
+                    <!--<div class="button button-icon icon ion-compose" style="float: right" ng-click="editReceive()"></div>-->
+                <!--</div>-->
+                <!--<div style="height: 15px;background-color: #F9F9F9"></div>-->
+            <!--</div>-->
+            <div class="add-Container">
+                <button class="button button-block button-light" style="width: 90%;border-radius:5px !important;margin: 20px auto; line-height:20px;border-radius: 0;border-color: darkgrey;color: darkgrey;" ng-click="addBtnClick()">
+                <!--  <p class="icon ion-android-add" style="margin: 0;transform: scale(1.8);-moz-transform: scale(1.8);
+                   -webkit-transform: scale(1.8);-o-transform:scale(1.8);"></p>-->
+                  <div style="height: 29px;"><i class="icon ion-plus" style="    margin-top: -7px;display: block; height: 48px;"></i></div>
+                  添加新收货地址
+                </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

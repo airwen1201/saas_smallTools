@@ -1,0 +1,46 @@
+<ion-view view-title="相关图片" >
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <a class="button button-icon ion-checkmark-circled" ng-click="doSubmit()"></a>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content overflow-scroll="true" style="overflow:auto;">
+      <div class="weui_cell">
+        <div class="weui_uploader" style="width: 100%;">
+          <div class="weui_uploader_hd weui_cell" style="color: #888;">
+            <div class="weui_cell_bd weui_cell_primary">照片能够让供应商尽快找到你</div>
+            <div class="weui_cell_ft" ng-bind="imageArray.length"></div>/20
+          </div>
+          <div class="weui_uploader_bd">
+            <ul class="weui_uploader_files">
+
+              <li class="weui_upiloader_file imglist" style="float: left" ng-repeat="image in imageArray">
+                <img src="{{image}}" class="uploadimg" ng-click="showBigImage($index)">
+                <div ng-click="deleteThis($index,'pic')" class="upload-div">
+                  <i class="icon ion-close-circled icon-top" ></i></div>
+              </li>
+              <li class="weui_upiloader_file iconlist">
+                <div class="icon-div" ng-click="addAttachment()"><i class="icon ion-plus imgicon"></i></div>
+              </li>
+              <!--<li class="weui_upiloader_file" style="float: left" ng-repeat="img in images_list" >-->
+                <!--<img ng-src="{{img}}" style="width: 80px;height: 80px;margin-bottom: 8px;margin-left: 8px">-->
+              <!--</li>-->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  <!--<button style="position:absolute;width: 96%;padding:2.5%;border:0;border-radius:5px;background-color: #04BE02;bottom: 2px;-->
+  <!--font-size: 16px;color: white ;margin-left:2%;margin-right: 2% " ng-click="addAttachment()">拍照</button>-->
+  <button id="rightDisplay" ng-if="bigImage" class="popover-backdrop"
+       style="position: fixed;top: 0;left: 0;z-index: 10; width: 100%;height: 100%;background-color: #181818;border: none;"
+       ng-click="hideBigImage()">
+    <img class="img-responsive"
+         style="/*position: absolute;*/z-index: 10;height: auto;width:auto;max-width: 100%;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);"
+         src="{{Url}}"/>
+  </button>
+</ion-view>

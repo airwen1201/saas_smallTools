@@ -1,0 +1,52 @@
+<ion-view view-title="报价记录" class="QuoteDRecord">
+  <div class="bar bar-header bar-stable item-icon-left bar-header-top">
+
+    <i class="icon ion-chevron-left header-left-row" ng-click="toClose()"></i>
+
+    <div class="title">报价记录</div>
+  </div>
+<ion-content class="content has-header ">
+  <div class="list">
+    <div class="StyleRecord-timeLine-Arrow-Containner">
+      <img class="StyleRecord-timeLine-Arrow" src="img/timeLineArrow.png">
+    </div>
+    <!--以下内容暂时填充，实现业务逻辑时改为<ng-repeat>标签-->
+    <div class="StyleRecord-Info-Containner">
+      <img class="StyleRecord-timeLine" src="img/timeLine.png">
+      <span>我</span><span class="StyleRecord-Detail"> 含税14%，￥22.28</span>
+      <p class="StyleRecord-EditTime"><span>04/25 11:08</span></p>
+    </div>
+    <div class="StyleRecord-Info-Containner">
+      <img class="StyleRecord-timeLine" src="img/timeLine.png">
+      <span>我</span><span class="StyleRecord-Detail"> 含税14%，￥26.38</span>
+      <p class="StyleRecord-EditTime"><span>04/25 11:06</span></p>
+    </div>
+    <div class="StyleRecord-Info-Containner">
+      <img class="StyleRecord-timeLine" src="img/timeLine.png">
+      <span>我</span><span class="StyleRecord-Detail"> 含税14%，￥25.30</span>
+      <p class="StyleRecord-EditTime"><span>04/24 12:47</span></p>
+    </div>
+    <div class="StyleRecord-Info-Containner">
+      <img class="StyleRecord-timeLine" src="img/timeLine.png">
+      <span>我</span><span class="StyleRecord-Detail"> 含税14%，￥23.80</span>
+      <p class="StyleRecord-EditTime"><span>04/23 12:03</span></p>
+    </div>
+    <div class="StyleRecord-Info-Containner">
+      <img class="StyleRecord-timeLine" src="img/timeLine.png">
+      <span>我</span><span class="StyleRecord-Detail"> 含税14%，￥23.34</span>
+      <p class="StyleRecord-EditTime"><span>04/23 07:55</span></p>
+    </div>
+    <div class="StyleRecord-Info-Containner">
+      <img class="StyleRecord-timeLine" src="img/timeLine.png">
+      <span>我</span><span class="StyleRecord-Detail"> 含税14%，￥23.30</span>
+      <p class="StyleRecord-EditTime"><span>04/21 12:06</span></p>
+    </div>
+    <div class="StyleRecord-Info-Containner">
+      <img class="StyleRecord-timeLine" src="img/timeLine.png">
+      <span>我</span><span class="StyleRecord-Detail"> 含税14%，￥22.50 </span>
+      <p class="StyleRecord-EditTime"><span>04/21 11:27</span></p>
+    </div>
+    <!--以上内容暂时填充，实现业务逻辑时改为<ng-repeat>标签-->
+  </div>
+</ion-content>
+</ion-view>

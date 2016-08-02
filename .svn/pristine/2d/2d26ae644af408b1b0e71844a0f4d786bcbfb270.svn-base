@@ -1,0 +1,51 @@
+<ion-view view-title="材料价格" class="material-price">
+  <div class="bar bar-header bar-stable item-icon-left item-icon-right bar-header-top">
+    <i class="icon ion-chevron-left header-left-row"  ng-click="toClose()"></i>
+    <div class="title">材料价格</div>
+  </div>
+  <ion-content class="content has-header" overflow-scroll="false">
+    <div class="item item-input">
+      <span class="input-label">单耗</span>
+      <input type="text" placeholder="请输入单耗" ng-model="materialPrice.unitConsumption">
+    </div>
+    <div class="item item-input">
+      <span class="input-label">单价</span>
+      <input type="text" placeholder="请输入单价" ng-model="materialPrice.price">
+    </div>
+    <!--<ion-toggle ion-toggle-text ng-model="simple" toggle-class="toggle-my-theme" ng-disabled="true">-->
+      <!--Disabled Example: <b>{{ simple || false }}</b>-->
+    <!--</ion-toggle>-->
+    <ion-toggle ion-toggle-text="除税价;含税价"  ng-model="materialPrice.customText" toggle-class="toggle-my-theme">税费
+      <!--<input class="input-label" placeholder="税率" />-->
+    </ion-toggle>
+    <!--<div class="item item-toggle toggle-large ng-empty ng-valid">-->
+        <!--<span class="toggle-span">税费</span>-->
+      <!--<label class="toggle disable-user-behavior">-->
+        <!--<input type="checkbox" ng-model="pushNotification" ng-change="pushNotificationChange()"-->
+               <!--class="ng-pristine ng-untouched ng-valid ng-empty" ng-true-value="'含税价'"-->
+               <!--ng-false-value="'除税价'" >-->
+      <!--<div class="track track-toggle">-->
+        <!--<pre ng-bind="pushNotification"></pre>-->
+        <!--<div class="handle handle-toggle">-->
+      <!--</div>-->
+      <!--</div>-->
+    <!--</label>-->
+    <!--</div>-->
+
+    <!--<label class="item item-input">-->
+      <!--<span class="input-label">品名</span>-->
+      <!--<input type="text" placeholder="如：牛仔布" ng-model="goodInfo.name">-->
+    <!--</label>-->
+    <div class="item item-input">
+      <span class="input-label">税率</span>
+      <input type="text" placeholder="请输入税率" ng-model="materialPrice.taxRate">
+    </div>
+    <div class="item ">
+      <span class="input-label" style="float: left;padding: 0px 10px 0px 0px;">成本</span>
+      <span ng-bind="materialPrice.price*(1-materialPrice.taxRate/100)"></span>
+      <!--<span>{{materialPrice.price}}</span>-->
+      <!--<span>{{(1-materialPrice.taxRate/100)}}</span>-->
+    </div>
+    <button class="button button-submit button-balanced"  ng-click="toSubmit()">提交</button>
+  </ion-content>
+</ion-view>

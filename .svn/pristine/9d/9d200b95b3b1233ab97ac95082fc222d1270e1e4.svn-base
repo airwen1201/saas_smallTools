@@ -1,0 +1,66 @@
+<ion-view view-title="入库" class="InStorage">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="content has-header has-footer" overflow-scroll="true" style="overflow: auto">
+    <div style="background-color: #9B9B9B">
+      <a class="item item-thumbnail-left" ng-click="">
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+        <img src="{{imgUrlProcess(stock.img[0],80,80,80)}}" ng-click="toStorageImages()" ng-if="stock.img.length!=0">
+        <img src="img/ic_default.png" ng-if="stock.img.length==0">
+        <h2 style="font-size: 20px;height: 40px;line-height: 40px;float: left">{{stock.name}}</h2>
+        <!--<h2 style="color: red;font-size: 17px;height: 40px;line-height: 40px;float: right">1000件</h2>-->
+        <p style="float: left;height: 40px;line-height: 40px;clear: both;width: 70%" ng-bind="stock.track.from+stock.track.event" ng-click="toStorageRecords()"></p>
+        <!--<p style="float: right;height: 40px;line-height: 40px;" ng-click="toStorageRecords()">{{stringToDate(stock.createTime)| date:"MM/dd" }}</p>-->
+        <p style="float: right;height: 40px;line-height: 40px;">{{stringToDate(stock.createTime)| date:"MM/dd" }}</p>
+      </a>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-50 padding-left" style="margin-top: 6px;">
+        <input type="text" class="add-sto-input" placeholder="颜色" ng-model="goodInfo.color">
+        <a class="add-sto-a" ng-click="addColor()"><i class="icon ion-plus" style="color: #444444;font-size: 20px;line-height: 34px" ></i></a>
+      </div>
+      <div class="col-50 padding-left" style="margin-top: 6px;">
+        <input type="text" class="add-sto-input" placeholder="尺码" ng-model="goodInfo.size">
+        <a class="add-sto-a" ng-click="addSize()"><i class="icon ion-plus" style="color: #444444;font-size: 20px;line-height: 34px" ></i></a>
+      </div>
+    </div>
+    <div style="height: 32px;line-height: 32px;background-color: #EDEDED">
+
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide swiper-color" ng-repeat="color in myColors" ng-init="isHide=false"
+               ng-click="isHide= !isHide">
+
+            <div ng-class="{'selected-color':selectedVal==$index}" style="display: initial;"  ng-click="seclectColor($index)">{{color}}</div>
+            <a ng-click="delColor($index)"><i class="icon ion-close-circled" ng-show="true"></i></a>
+
+
+          </div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-black" style="background-size: 10px 30px;" ng-show="showColorRow"></div>
+        <div class="swiper-button-prev swiper-button-black" style="background-size: 10px 30px;" ng-show="showColorRow"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-33">尺码</div>
+      <div class="col-33">库存数量</div>
+      <div class="col-33"></div>
+    </div>
+    <div ng-repeat="item in myColors" ng-show="$index==selectIndex" ng-init="par_index=$index">
+      <div class="row" ng-repeat="obg in mySizes">
+        <div class="col-33" style="line-height: 36px;">{{obg}}</div>
+        <div class="col-33 icon-trash-div"><input type="number" class="num-put" value="0" ng-keyup="myRealModel[getListNum(par_index)+$index].num = reg(myRealModel[getListNum(par_index)+$index].num);" ng-model="myRealModel[getCountForModel(par_index)+$index].num"></div>
+        <!--<div class="col-33"><input type="text" class="num-put" ng-model="colors[par_index].sizelist[$index].num"></div>-->
+        <div class="col-33 icon-trash-div"><a ng-click="delSize($index)"><i class="icon ion-trash-a trash-add-sto"></i></a></div>
+      </div>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer" style="padding-bottom: 0;">
+    <button class="button button-block button-positive" ng-disabled="isSubmit=='1'" style="margin-top: 0;margin-bottom: 0;font-size: 16px;background-color: #04BE02" type="submit" ng-click="doSubmit()">提交</button>
+  </div>
+</ion-view>

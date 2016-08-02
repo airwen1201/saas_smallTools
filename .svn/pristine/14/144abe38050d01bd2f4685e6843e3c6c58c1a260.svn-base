@@ -1,0 +1,695 @@
+angular.module('starter.services', ['ngResource'])
+ //test数据
+.factory('Chats', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var chats = [{
+    id: 0,
+    name: 'Ben Sparrow',
+    lastText: 'You on your way?',
+    face: 'img/ben.png'
+  }, {
+    id: 1,
+    name: 'Max Lynx',
+    lastText: 'Hey, it\'s me',
+    face: 'img/max.png'
+  }, {
+    id: 2,
+    name: 'Adam Bradleyson',
+    lastText: 'I should buy a boat',
+    face: 'img/adam.jpg'
+  }, {
+    id: 3,
+    name: 'Perry Governor',
+    lastText: 'Look at my mukluks!',
+    face: 'img/perry.png'
+  }, {
+    id: 4,
+    name: 'Mike Harrington',
+    lastText: 'This is wicked good ice cream.',
+    face: 'img/mike.png'
+  }];
+
+  return {
+    all: function() {
+      return chats;
+    },
+    remove: function(chat) {
+      chats.splice(chats.indexOf(chat), 1);
+    },
+    get: function(chatId) {
+      for (var i = 0; i < chats.length; i++) {
+        if (chats[i].id === parseInt(chatId)) {
+          return chats[i];
+        }
+      }
+      return null;
+    }
+  };
+})
+.factory('UpdateService', ['$resource',
+  function ($resource) {
+    return $resource('http://www.tailorpus.com:4567/v1.0/vip/:vipId', {}, {
+      update: { method: "PUT"}
+    });
+
+}])
+.factory('DataService', DataService);	//后台通信服务
+
+DataService.$injector = ['$q', '$resource'];	// 注入相关的服务
+
+//var domain = 'http://192.168.10.123:4567/v1.0/';
+var domain = 'http://www.tailorpus.com:4567/v1.0/';
+// var domain = 'http://192.168.0.228:8080/'
+var domain1 = 'http://192.168.0.12:10021/saas/';
+//var domain1 = 'http://localhost:8080/';
+//var domain = 'http://localhost:4567/v1.0/';
+
+
+function DataService ($q, $resource,$http) {
+
+  return {
+    GetTest : GetTest,
+    doLogin:doLogin,//登录
+    getVerifyCode:getVerifyCode,//获取验证码
+    doRegister:doRegister,//注册
+    completeInfo:completeInfo,//完善信息
+    modifyUserInfo:modifyUserInfo,//修改用户信息
+    addStocks:addStocks,//新增库存
+    getStocksList:getStocksList,//获取库存列表
+    modifyStocks:modifyStocks,//修改库存
+   //修改报价
+    modifyOffer:modifyOffer,
+    //获取报价详情
+    getOfferDetail:getOfferDetail,
+    //获取订单列表
+    getOrderList : getOrderList,
+    //获取库存详情
+    getStockDetail : getStockDetail,
+    //获取入库详情
+    getStockInDetail : getStockInDetail,
+    //获取用户联系人列表
+    getContactList : getContactList,
+    //添加联系人
+    addContact : addContact,
+    //意见反馈
+    feedBack:feedBack,
+    //出库
+    stockOut:stockOut,
+    getOrderDetail:getOrderDetail,
+    logistics:logistics,
+    modifyOrder:modifyOrder,
+    modifyOrderRe:modifyOrderRe,
+    //获取账户列表
+    getAccountList : getAccountList,
+    //获取应收列表
+    getReceivableList : getReceivableList,
+    //获取应付列表
+    getPayableList : getPayableList,
+    //获取应收详情列表
+    getReceivableDetailList : getReceivableDetailList,
+    //获取应付详情列表
+    getPayableDetailList : getPayableDetailList,
+    //获取出库详情
+    getStockOutsDetail:getStockOutsDetail,
+    //获取用户出入库详情
+    getStockOutInDetail:getStockOutInDetail,
+    //新增入库
+    addStockIn:addStockIn,
+    //新增款式
+    addDesign:addDesign,
+    //获取款式列表
+    getDesignList:getDesignList,
+    //删除款式
+    deleteDesign:deleteDesign,
+    //获取款式详情
+    getDesignDetail:getDesignDetail,
+    //新增款式材料
+    addDesignMaterial:addDesignMaterial,
+    //删除款式材料
+    deleteDesignMaterial:deleteDesignMaterial,
+    //修改款式材料
+    modifyDesignMaterial:modifyDesignMaterial,
+    //修改款式
+    modifyDesign:modifyDesign,
+
+    //获取报价列表
+    getOfferList : getOfferList
+  };
+
+  //test
+  function GetTest () {
+    var deferred = $q.defer(); // 声明延后执行，表示要去监控后面的执行
+
+    $resource("http://www.163.com").get(
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;   // 返回承诺，这里并不是最终数据，而是访问最终数据的API
+  }
+
+
+  //登录接口
+  function doLogin(phone,verifyCode){
+    var deferred = $q.defer();
+
+    var url = domain+"vip?phone="+phone+"&verifyCode="+verifyCode;
+
+    $resource(url).get(
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //注册接口
+  function doRegister(json){
+    var deferred = $q.defer();
+
+    var url = domain+"vip";
+    //alert(url);
+    $resource(url).save(
+        json,
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+
+  //获取验证码
+  function getVerifyCode(phone){
+
+    var deferred = $q.defer();
+
+    var url = domain+"verifyCode?phone="+phone;
+    //alert(url);
+    $resource(url).get(
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //完善个人资料
+  function completeInfo(){
+    var url = domain+"vip/:vipId";
+    return $resource(url, {}, {
+      update: { method: "PUT"}
+    });
+  }
+
+  //修改用户信息
+  function modifyUserInfo(){
+    var url = domain+"vip/:vipId"+"/baseinfo";
+    return $resource(url, {}, {
+      update: { method: "PUT"}
+    });
+  }
+
+
+  //新增库存
+  function addStocks(json){
+    var deferred = $q.defer();
+
+    var url = domain+"stocks";
+    //alert(url);
+    $resource(url).save(
+        json,
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+
+  //获取库存列表
+  function getStocksList(vipId,page){
+    var deferred = $q.defer();
+    var url = domain+"stocks?vipId="+vipId+"&page="+page;
+    $resource(url).get(
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //修改库存/删除库存
+  function modifyStocks() {
+    var url = domain + "stocks/:stockId";
+    return $resource(url, {}, {
+      update: { method : "PUT"},
+      delete: { method : "DELETE"},
+    });
+  }
+
+  //获取库存详情
+  function getStockDetail(stockId) {
+    var deferred = $q.defer();
+    var url = domain + "stocks/" + stockId;
+    $resource(url).get(
+      function (data) {
+        deferred.resolve(data);
+      }, function (data) {
+        deferred.reject(data);
+      });
+    return deferred.promise;
+  }
+
+  //获取入库详情
+  function getStockInDetail(stockInId) {
+    var deferred = $q.defer();
+    var url = domain + "stockIns/" + stockInId;
+    $resource(url).get(
+      function (data) {
+        deferred.resolve(data);
+      }, function (data) {
+        deferred.reject(data);
+      });
+    return deferred.promise;
+  }
+
+  //获取联系人列表
+  function getContactList(vipId){
+    var deferred = $q.defer();
+    var url = domain + "vips/" + vipId + "/contact";
+    $resource(url).get(
+      function (data) {
+        deferred.resolve(data);
+      }, function (data) {
+        deferred.reject(data);
+      });
+    return deferred.promise;
+  }
+
+  //添加联系人
+  function addContact(vipId,json) {
+
+    var deferred = $q.defer();
+    var url = domain + "vips/"+vipId+ "/contact";
+    //alert(url);
+    $resource(url).save(
+      json,
+      function (data) {
+        deferred.resolve(data);
+      }, function (data) {
+        deferred.reject(data);
+      });
+    return deferred.promise;
+  }
+
+  //意见反馈
+  function feedBack(vipId,json) {
+
+    var deferred = $q.defer();
+    var url = domain + "vips/"+vipId+ "/complain";
+    //alert(url);
+    $resource(url).save(
+      json,
+      function (data) {
+        deferred.resolve(data);
+      }, function (data) {
+        deferred.reject(data);
+      });
+    return deferred.promise;
+  }
+
+  //出库
+  function stockOut(vipId, json) {
+    var deferred = $q.defer();
+
+    var url = domain + "stockIns/"+vipId+ "/stockout";
+
+    //alert(url);
+    $resource(url).save(
+      json,
+      function (data) {
+        deferred.resolve(data);
+      }, function (data) {
+        deferred.reject(data);
+      });
+    return deferred.promise;
+  }
+
+  /**
+   * 获取订单列表
+   * @param vipId 用户ID
+   * @param page 当前分页数
+   * @param role 角色 "B":买家  "S":卖家
+   * @returns 订单列表
+   */
+  function getOrderList(vipId, page, role)
+  {
+    var deferred = $q.defer();
+    var url = domain + "orders?vipId=" + vipId + "&page=" + page + "&role=" + role;
+    $resource(url).get(
+      function (data) {
+        deferred.resolve(data);
+      }, function (data) {
+        deferred.reject(data);
+      });
+    return deferred.promise;
+  }
+
+  /**
+   * 获取订单详情
+   * @param orderId 订单Id
+   * @returns 订单详情列表
+   */
+  function getOrderDetail(orderId)
+  {
+    var deferred = $q.defer();
+    var url = domain + "orders/" + orderId;
+    $resource(url).get(
+      function (data) {
+        deferred.resolve(data);
+      }, function (data) {
+        deferred.reject(data);
+      });
+    return deferred.promise;
+  }
+
+  /**
+   * 修改物流信息
+   * @param orderId 订单Id
+   */
+  //修改用户信息
+  function logistics(){
+    var url = domain + "orders/:orderId"+"/logistics";
+    return $resource(url, {}, {
+      update: { method: "PUT"}
+    });
+  }
+
+  /**
+   * 修改订单
+   * @param orderId 订单Id
+   */
+  //修改用户信息
+  function modifyOrder(){
+    var url = domain + "orders/:orderId";
+    return $resource(url, {}, {
+      update: { method: "PUT"}
+    });
+  }
+
+  function modifyOrderRe(){
+    var url = domain + "orders/:orderId?action=getGoods";
+    return $resource(url, {}, {
+      update: { method: "PUT"}
+    });
+  }
+
+  //获取账户列表
+  function  getAccountList(vipId){
+    var deferred = $q.defer();
+    var url = domain + "vips/" + vipId+"/account";
+    $resource(url).get(
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //获取应收列表
+  function getReceivableList(vipId){
+    var deferred = $q.defer();
+    var url = domain + "vips/" + vipId+"/receiveables";
+    $resource(url).get(
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //获取应付列表
+  function getPayableList(vipId){
+    var deferred = $q.defer();
+    var url = domain + "vips/" + vipId+"/payables";
+    $resource(url).get(
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //获取应收详情列表
+  function getReceivableDetailList(vipId1,vipId2){
+    var deferred = $q.defer();
+    var url = domain + "vips/" + vipId1+"/receiveables/"+vipId2;
+    $resource(url).get(
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //获取应付详情列表
+  function getPayableDetailList(vipId1,vipId2){
+    var deferred = $q.defer();
+    var url = domain + "vips/" + vipId1+"/payables/"+vipId2;
+    $resource(url).get(
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //获取出库详情
+  function getStockOutsDetail(stockOutId){
+    var deferred = $q.defer();
+    var url = domain + "stockOuts/" + stockOutId;
+    $resource(url).get(
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+//获取出入库详情
+  function getStockOutInDetail(vipId){
+    var deferred = $q.defer();
+    var url = domain + "vips/" + vipId+"/stock";
+    $resource(url).get(
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //新增入库
+  function addStockIn(stockId,json) {
+
+    var deferred = $q.defer();
+    var url = domain + "stocks/"+stockId+ "/stockIns";
+    //alert(url);
+    $resource(url).save(
+        json,
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //新增款式 design/addDesign.do
+  function addDesign(json) {
+    var deferred = $q.defer();
+    var url = domain1 + "design/addDesign.do";
+    console.log(json)
+    $resource(url).save(
+        json,
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //获取款式列表
+  function getDesignList(json,q) {
+    var param = ''
+    if(q){
+      param += 'q=' + q
+    }
+    var deferred = $q.defer();
+    var url = domain1 + "design/getDesignList.do?"+param;
+    console.log(json)
+    $resource(url).save(
+        json,
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //获取款式详情
+  function getDesignDetail(json) {
+    var deferred = $q.defer();
+    var url = domain1 + "design/getDesignDetail.do";
+    console.log(json)
+    $resource(url).save(
+        json,
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //新增款式材料
+  function addDesignMaterial(json) {
+    var deferred = $q.defer();
+    var url = domain1 + "designMaterial/addDesignMaterial.do";
+    console.log(json)
+    $resource(url).save(
+        json,
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //删除款式材料
+  function deleteDesignMaterial(json) {
+    var deferred = $q.defer();
+    var url = domain1 + "designMaterial/deleteDesignMaterial.do";
+    console.log(json)
+    $resource(url).save(
+        json,
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //修改款式材料
+  function modifyDesignMaterial(json) {
+    var deferred = $q.defer();
+    var url = domain1 + "designMaterial/modifyDesignMaterial.do";
+    console.log(json)
+    $resource(url).save(
+        json,
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //修改款式
+  function modifyDesign(json){
+    var deferred = $q.defer();
+    var url = domain1 + "design/modifyDesign.do";
+    console.log(json)
+    $resource(url).save(
+        json,
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+  //删除款式
+  function deleteDesign(json) {
+    var deferred = $q.defer();
+    var url = domain1 + "design/deleteDesign.do";
+    console.log(json)
+    $resource(url).save(
+      json,
+      function (data) {
+        deferred.resolve(data);
+      }, function (data) {
+        deferred.reject(data);
+      });
+    return deferred.promise;
+  }
+
+    //获取报价列表
+    function getOfferList(json,q)
+    {
+        var param =''
+      if(q){
+        param += 'q=' + q
+      }
+        var deferred = $q.defer();
+        var url = domain1 + "offer/getOfferList.do?"+param;
+      console.log(url);
+      console.log(json)
+        $resource(url).save(
+          json,
+            function (data) {
+                deferred.resolve(data);
+            },
+            function (data) {
+                deferred.reject(data);
+        });
+        return deferred.promise;
+    }
+  //提交报价
+  function modifyOffer(json) {
+    var deferred =$q.defer();
+    var url = domain1 + "offer/modifyOffer.do"
+    $resource(url).save(
+      json,
+      function (data) {
+        deferred.resolve(data);
+      },function (data) {
+      deferred.reject(data);
+    });
+    return deferred.promise
+  }
+  //获取报价详情
+   function  getOfferDetail(id) {
+     var deferred =$q.defer();
+     var url = domain1 + "offer/getOfferDetail.do"
+     $resource(url).save(
+       id,
+       function (data) {
+         deferred.resolve(data);
+       },function (data) {
+         deferred.reject(data);
+       });
+     return deferred.promise
+   }
+}
+
+

@@ -1,0 +1,27 @@
+<ion-view view-title="意见反馈" >
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <a class="button button-icon ion-help-circled" ng-click=""></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <form>
+            <div style="margin: 20px">
+                <!-- 反馈内容-->
+                <label class="item item-input ">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <textarea class="weui_textarea" placeholder="请输入您对裁缝铺的问题与建议，谢谢您~" rows="5" ng-model="feedBack.content"></textarea>
+                        <div class="weui_textarea_counter"><span>0</span>/200</div>
+                    </div>
+                </label>
+
+                <label class="">
+                    <button class="button button-block button-balanced" type="submit" ng-click="doSubmit()">提交</button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

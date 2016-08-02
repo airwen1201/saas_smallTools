@@ -1,0 +1,40 @@
+<ion-view view-title="款式" class="design">
+  <div class="bar bar-header bar-stable item-icon-left item-icon-right bar-header-top">
+    <i class="icon ion-chevron-left header-left-row" ng-click="goBack()"></i>
+    <div class="title">款式</div>
+    <i class="icon ion-plus-round" ng-click="addMoreDesign()"></i>
+  </div>
+
+  <div class="list list-inset design-list-div" style="height: 48px; top:64px;padding: 7px 0px 7px 10px;">
+    <label class="item item-input item-input-lab">
+      <i class="icon ion-search placeholder-icon"></i>
+      <div class="search-div">
+        <input type="text" placeholder="搜索" ng-model="searchitem">
+      </div>
+    </label>
+
+    <div class="icon ion-close-circled close-search-icon" ng-click="toclear()"
+         ng-show="(searchitem=='')?false:true"></div>
+  </div>
+  <ion-content class="content has-header design-content" style="top:112px !important;">
+    <div class="list" ng-repeat="item in designList">
+    <!--<div class="list" ng-repeat="1 in [1]">-->
+      <div class="item item-thumbnail-left" ng-click="goDesignDetail($index)">
+        <img src="img/adam.jpg">
+
+        <div class="list-mess">
+          <div class="list-txt">
+            <p><b ng-bind="item.name"></b><b class="red">￥22.50</b></p>
+
+            <p>针织混纺面料￥16.5<span>04/28</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="padding" style="text-align: right">
+        <button class="button button-outline button-small" ng-click="modifyDesign($index)">材料成本</button>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

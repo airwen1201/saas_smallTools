@@ -1,0 +1,22 @@
+<ion-view view-title="库存记录">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+    <div class="list">
+      <div class="StyleRecord-timeLine-Arrow-Containner">
+        <img class="StyleRecord-timeLine-Arrow" src="img/timeLineArrow.png">
+      </div>
+      <!--以下内容暂时填充，实现业务逻辑时改为<ng-repeat>标签-->
+      <div class="StyleRecord-Info-Containner" ng-repeat="item in data.trackList | reverse">
+        <img class="StyleRecord-timeLine" src="img/timeLine.png">
+        <span ng-bind="item.from"></span><span class="StyleRecord-Detail" ng-bind="item.event"></span>
+        <p class="StyleRecord-EditTime"><span ng-bind="getListTime(item.createTime)"></span></p>
+      </div>
+      <!--以上内容暂时填充，实现业务逻辑时改为<ng-repeat>标签-->
+    </div>
+  </ion-content>
+</ion-view>

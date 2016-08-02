@@ -1,0 +1,46 @@
+<ion-view view-title="数量">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="row">
+            <div class="col" style="width: 100%;text-align: center">尺码</div>
+            <div class="col" style="width: 100%;text-align: center">颜色</div>
+            <div class="col" style="width: 100%;text-align: center">数量</div>
+            <div class="col" style="width: 100%;text-align: center"></div>
+        </div>
+        <div class="row">
+            <div class="col" style="width: 100%;text-align: center">
+                <input type="number" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="1">
+            </div>
+            <div class="col" style="width: 100%;text-align: center">
+                <input type="text" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="#149白色">
+            </div>
+            <div class="col" style="width: 100%;text-align: center">
+                <input type="number" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="50">
+            </div>
+            <div class="col" style="width: 100%;text-align: center;padding-top: 10px">
+                删除
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" style="width: 100%;text-align: center">
+                <input type="number" style="border: 1px solid gray;width: 80%;margin-left: 10%">
+            </div>
+            <div class="col" style="width: 100%;text-align: center">
+                <input type="text" style="border: 1px solid gray;width: 80%;margin-left: 10%">
+            </div>
+            <div class="col" style="width: 100%;text-align: center">
+                <input type="number" style="border: 1px solid gray;width: 80%;margin-left: 10%">
+            </div>
+            <div class="col" style="width: 100%;text-align: center;padding-top: 10px">
+                添加
+            </div>
+        </div>
+        <div class="content padding has-header">
+            <button class="button button-block button-balanced">提交</button>
+            </div>
+    </ion-content>
+</ion-view>

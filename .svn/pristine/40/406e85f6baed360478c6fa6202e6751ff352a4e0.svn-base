@@ -1,0 +1,28 @@
+<ion-view title="注册" cache-view="false" class="rigister">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content class="has-tabs">
+        <form ng-submit="doRegister()" novalidate>
+            <div>
+                <div class="fill">
+                    <div class="check form-group"><!--^1[3|4|5|7|8][0-9]\d{8}$-->
+                        <label class="item item-input">
+                            <input type="text" class="form-control " placeholder="请输入手机号" ng-model="info.phone"  ng-required="true" ng-required-err-type="phoneReq">
+                        </label>
+                        <button class="button button-small"  ng-click="getVerifyCode()" ng-disabled="showTime">发送验证码<i ng-if="showTime">{{time}}</i></button>
+                    </div>
+                    <label class="form-group item item-input">
+                        <input type="text" ng-model="info.verifyCode" placeholder="请输入验证码" ng-required="true" ng-required-err-type="codeReq"/>
+                    </label>
+                    <label class="">
+                        <button class="button button-block button-light" type="submit">注册</button>
+                    </label>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

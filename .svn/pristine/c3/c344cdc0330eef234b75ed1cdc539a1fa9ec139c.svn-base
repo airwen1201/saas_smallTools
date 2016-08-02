@@ -1,0 +1,82 @@
+/**
+ * Created by GY on 2016/6/2.
+ */
+Tailorpus.controller('MaterialPriceCtrl', function($scope,$rootScope,$stateParams,$ionicHistory) {
+  $scope.backDesign=function () {
+    window.location.href="#/AddDesign"
+
+  }
+
+  $scope.numIndex = $stateParams.numIndex
+  $scope.materialPrice = {
+    unitConsumption:$rootScope.designMaterials[$scope.numIndex].unitConsumption,
+    taxRate:$rootScope.designMaterials[$scope.numIndex].taxRate,
+
+    price:$rootScope.designMaterials[$scope.numIndex].price,
+    customText:($rootScope.designMaterials[$scope.numIndex].hasTax=='Y')?true:false
+  }
+  //$scope.materialPrice.cost=$scope.materialPrice.price*(1-$scope.materialPrice.taxRate/100)
+  console.log(angular.toJson($rootScope.designMaterials[$scope.numIndex]))
+
+  $scope.toSubmit = function (){
+
+    $rootScope.designMaterials[$scope.numIndex].unitConsumption=$scope.materialPrice.unitConsumption
+    $rootScope.designMaterials[$scope.numIndex].price=$scope.materialPrice.price
+    $rootScope.designMaterials[$scope.numIndex].hasTax=$scope.materialPrice.customText==false?'N':'Y'
+    if ($rootScope.designMaterials[$scope.numIndex].hasTax=='Y'){
+      $rootScope.designMaterials[$scope.numIndex].taxRate=$scope.materialPrice.taxRate
+      $rootScope.designMaterials[$scope.numIndex].cost=$rootScope.designMaterials[$scope.numIndex].price * (1 - $rootScope.designMaterials[$scope.numIndex].taxRate / 100)
+
+    }else {
+      //$rootScope.designMaterials[$scope.numIndex].taxRate=0
+      $rootScope.designMaterials[$scope.numIndex].cost=$rootScope.designMaterials[$scope.numIndex].price
+
+    }
+
+
+    var param = {
+      id : $rootScope.designMaterials[$scope.numIndex].id,
+      unitConsumption:$rootScope.designMaterials[$scope.numIndex].unitConsumption,
+      price:$rootScope.designMaterials[$scope.numIndex].price,
+      hasTax:$rootScope.designMaterials[$scope.numIndex].hasTax,
+
+
+    }
+    if ($rootScope.designMaterials[$scope.numIndex].hasTax=='Y'){
+      param.taxRate=$rootScope.designMaterials[$scope.numIndex].taxRate
+      param.cost=$scope.materialPrice.price*(1-$scope.materialPrice.taxRate/100)
+    }else {
+      param.cost=$scope.materialPrice.price
+    }
+
+    console.log(angular.toJson(param))
+    return
+    var promise = DataService.modifyDesign(angular.toJson(param));
+    promise.then(function (data) {
+      //具体操作
+      console.log(angular.toJson(data));
+      $scope.offerList = data.list;
+      //$scope.newImageAdd = angular.fromJson($scope.offerList.designImg)
+      $ionicHistory.goBack();
+    }, function (data) {
+      $cordovaToast.showLongBottom(data.message);
+    });
+
+  //  console.log(angular.toJson(json));
+  //  var promise = DataService.modifyDesignMaterial(angular.toJson(json));
+  //  promise.then(function (data) {
+  //    //具体操作
+  //    console.log(angular.toJson(data));
+  //
+  //    //window.localStorage.setItem("tailorUser",JSON.stringify(obj));
+  //    //$scope.isSubmit = '0'
+  //    $ionicHistory.goBack();
+  //  }, function (data) {
+  //    //alert(JSON.stringify(data));
+  //    //$scope.isSubmit = '0'
+  //    $cordovaToast.showLongBottom(data.message)
+  //  });
+  }
+
+
+});

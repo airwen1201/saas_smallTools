@@ -1,0 +1,36 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-view view-title="裁缝铺" class="list-index">
+  <!--<div class="bar bar-header bar-stable item-icon-right bar-header-top"></div>-->
+  <ion-content style="background-image: url(img/小工具背景.png);background-size: cover">
+    <div>
+      <div class="row" style="margin-top: 200px">
+        <div class="col col-50">
+          <a class="tab-item" ng-click="toQuote()" style="color: white">
+            <div><img src="img/报价 .png" class="foot-img" style="width: 50%"></div>
+            报价
+          </a>
+        </div>
+        <div class="col col-50">
+          <a class="tab-item" ng-click="toDesign()" style="color: white">
+            <div><img src="img/款式.png" class="foot-img" style="width: 50%"></div>
+            款式
+          </a>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 50px">
+        <div class="col col-50">
+          <a class="tab-item" ng-click="toMy()" style="color: white">
+            <div><img src="img/设置.png" class="foot-img" style="width: 50%"></div>
+            设置
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <!-- 底部菜单栏-->
+
+</ion-view>

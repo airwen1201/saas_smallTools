@@ -1,0 +1,36 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="tabs-icon-top tabs-color-active-positive common-footer">
+
+  <!-- Dashboard Tab -->
+  <ion-tab title="裁缝铺" icon-off="ion-clock" icon-on="ion-lock-combination" href="#/tab/dash" >
+    <ion-nav-view name="tab-dash"></ion-nav-view>
+  </ion-tab>
+
+  <!-- community Tab -->
+ <!-- <ion-tab title="订阅箱" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/community">
+    <ion-nav-view name="tab-community"></ion-nav-view>
+  </ion-tab>-->
+  <ion-tab title="商圈" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/community">
+
+    <ion-nav-view name="tab-community"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Chats Tab -->
+  <!--<ion-tab title="生意圈" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chats">
+    <ion-nav-view name="tab-chats"></ion-nav-view>
+  </ion-tab>-->
+  <ion-tab title="关注" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chats">
+    <ion-nav-view name="tab-chats"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Account Tab -->
+  <ion-tab title="我" icon-off="ion-paper-airplane" icon-on="ion-link" href="#/tab/my">
+    <ion-nav-view name="tab-my"></ion-nav-view>
+  </ion-tab>
+
+
+</ion-tabs>

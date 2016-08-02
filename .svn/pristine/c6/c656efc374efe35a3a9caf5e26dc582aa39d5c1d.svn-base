@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/weui/css/weui.css" rel="stylesheet">
+    <link href="lib/ionic/css/swiper-3.3.1.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/Heshuo.css" rel="stylesheet">
+    <link href="css/GYstyle.css" rel="stylesheet">
+    <!--   <link href="css/ionic.app.css" rel="stylesheet">-->
+    <script src="lib/ionic/js/swiper-3.3.1.min.js"></script>
+    <!--自定义字体图标-->
+    <link href="lib/tailorpus/style.css" rel="stylesheet">
+    <link href="css/SQStyle.css" rel="stylesheet">
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+      <script src="lib/ionic/js/angular/angular-resource.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+
+    <!--第三方库-->
+    <script src="lib/ionic-image-lazy-load.min.js"></script>
+    <script src="lib/jcs-auto-validate.min.js"></script>
+    <script src="lib/md5.js"></script>
+    <script src="lib/CallNumber.js"></script>
+    <script src="lib/onezone-datepicker.min.js"></script>
+<!--    <script src="lib/datepicker/templates.min.js"></script>
+    <script src="lib/datepicker/ionic-datepicker.min.js"></script>-->
+  <!--  <script src="lib/ionic/js/togglemodule.js"></script>-->
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controller/LoginCtrl.js"></script>
+    <script src="js/controller/RegisterCtrl.js"></script>
+    <script src="js/controller/CompleteInfoCtrl.js"></script>
+      <script src="js/controller/AccountCtrl.js"></script>
+      <script src="js/controller/AfterServiceCtrl.js"></script>
+      <script src="js/controller/AskPriceCtrl.js"></script>
+      <script src="js/controller/ChatDetailCtrl.js"></script>
+      <script src="js/controller/ChatsCtrl.js"></script>
+      <script src="js/controller/CommunityCtrl.js"></script>
+      <script src="js/controller/DashCtrl.js"></script>
+      <script src="js/controller/HomeCtrl.js"></script>
+      <script src="js/controller/MallCtrl.js"></script>
+      <script src="js/controller/MyCtrl.js"></script>
+      <script src="js/controller/OrderCtrl.js"></script>
+      <script src="js/controller/OrderDetailCtrl.js"></script>
+      <script src="js/controller/ReleaseOrderCtrl.js"></script>
+      <script src="js/controller/ReleaseSelectCtrl.js"></script>
+      <script src="js/controller/StorageCtrl.js"></script>
+      <script src="js/controller/ReleaseCount.js"></script>
+      <script src="js/controller/BasicInfoCtrl.js"></script>
+      <script src="js/controller/CompanyInfoCtrl.js"></script>
+      <script src="js/controller/ContactsCtrl.js"></script>
+      <script src="js/controller/SystemSettingsCtrl.js"></script>
+      <script src="js/controller/FeedBackCtrl.js"></script>
+      <script src="js/controller/CurrentDetailCtrl.js"></script>
+      <script src="js/controller/ReceiveAddressCtrl.js"></script>
+      <script src="js/controller/EditAddressCtrl.js"></script>
+     <script src="js/controller/AddAddressCtrl.js"></script>
+    <script src="js/controller/CompanyPhotoCtrl.js"></script>
+      <script src="js/controller/CashListCtrl.js"></script>
+      <script src="js/controller/StockListCtrl.js"></script>
+      <script src="js/controller/ReceiveListCtrl.js"></script>
+      <script src="js/controller/PayListCtrl.js"></script>
+      <script src="js/controller/AccountDetailListCtrl.js"></script>
+      <script src="js/controller/AccountDetailCtrl.js"></script>
+      <script src="js/controller/IPayCtrl.js"></script>
+      <script src="js/controller/OnLinePayCtrl.js"></script>
+      <script src="js/controller/OffLinePayCtrl.js"></script>
+      <script src="js/controller/ReceivableDetailCtrl.js"></script>
+      <script src="js/controller/SaleRecordCtrl.js"></script>
+    <script src="js/controller/OrderInfoCtrl.js"></script>
+    <script src="js/controller/OutputDetailCtrl.js"></script>
+    <script src="js/controller/LogisticsInfoCtrl.js"></script>
+    <script src="js/controller/StorageDetailCtrl.js"></script>
+    <script src="js/controller/AddStorageCtrl.js"></script>
+    <script src="js/controller/OutputRecordCtrl.js"></script>
+    <script src="js/controller/CheckStockCtrl.js"></script>
+    <script src="js/controller/OutputViewCtrl.js"></script>
+    <script src="js/controller/EditNameCtrl.js"></script>
+    <script src="js/controller/OutputContactsCtrl.js"></script>
+    <script src="js/controller/EditSexCtrl.js"></script>
+    <script src="js/controller/EditPasswordCtrl.js"></script>
+    <script src="js/controller/EditCompanyCtrl.js"></script>
+    <script src="js/controller/ContactsDetailCtrl.js"></script>
+    <script src="js/controller/EditCompanyShortNameCtrl.js"></script>
+    <script src="js/controller/EditCompanyTelCtrl.js"></script>
+    <script src="js/controller/EditCompanyTypeCtrl.js"></script>
+    <script src="js/controller/AddContactCtrl.js"></script>
+    <script src="js/controller/StorageImagesCtrl.js"></script>
+
+    <script src="js/controller/AddMaterialCtrl.js"></script>
+    <script src="js/controller/StyleRecordsCtrl.js"></script>
+    <script src="js/controller/MaterialPriceCtrl.js"></script>
+    <!--add by chen-->
+    <script src="js/controller/DesignCtrl.js"></script>
+    <script src="js/controller/DesignDetailCtrl.js"></script>
+    <script src="js/controller/AddDesignCtrl.js"></script>
+    <script src="js/controller/DesignMallCtrl.js"></script>
+    <script src="js/controller/StockEditCtrl.js"></script>
+    <!--end-->
+    <!--add by gy-->
+    <script src="js/controller/MaterialPriceCtrl.js"></script>
+    <script src="js/controller/MaterialTypeListCtrl.js"></script>
+    <script src="js/controller/MaterialDetailCtrl.js"></script>
+    <script src="js/controller/MaterialTypeTagCtrl.js"></script>
+    <script src="js/controller/QuoteCtrl.js"></script>
+    <script src="js/controller/QuoteDetailCtrl.js"></script>
+    <script src="js/controller/QuoteRecordCtrl.js"></script>
+    <script src="js/controller/AddQuoteCtrl.js"></script>
+    <script src="js/controller/OtherCostCtrl.js"></script>
+    <!--end-->
+    <!--add by hs-->
+    <script src="js/controller/GoodDetailCtrl.js"></script>
+    <script src="js/controller/StoreInfoCtrl.js"></script>
+    <script src="js/controller/StoreIndexCtrl.js"></script>
+    <script src="js/controller/InStorageCtrl.js"></script>
+    <script src="js/controller/OutStockDetailCtrl.js"></script>
+    <script src="js/controller/StorageRecordsCtrl.js"></script>
+    <!--end-->
+    <!--add by sq-->
+    <script src="js/controller/GoodInfoCtrl.js"></script>
+    <script src="js/CommService.js"></script>
+    <script src="js/controller/AccountDetailList2Ctrl.js"></script>
+    <script src="js/controller/AccountStockDetailCtrl.js"></script>
+    <!--end-->
+  </head>
+  <body ng-app="starter">
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+<!--    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>the nav bar that will be update as we navigate between views
+      </ion-nav-back-button>the nav that will be updated as we navigate between views
+    </ion-nav-bar>-->
+    <!--the views will be rednered in the XXXX directive below templates are in templates folder but you counld also have templates
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).have templates in line in this html file if you like have tamplates in line in this
+    -->
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

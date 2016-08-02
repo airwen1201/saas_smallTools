@@ -1,0 +1,123 @@
+<ion-view view-title="发布需求">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+       <!-- 照片上传-->
+        <div class="weui_cell">
+            <div class="weui_uploader">
+                <div class="weui_uploader_hd weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">照片能够让供应商尽快找到你</div>
+                    <div class="weui_cell_ft">5/20</div>
+                </div>
+                <div class="weui_uploader_bd">
+                    <ul class="weui_uploader_files">
+                    <!--    <li class="weui_uploader_file" style="background-image:url(/img/ben.png)">
+                        </li>-->
+                        <li class="weui_upiloader_file" style="float: left" ng-repeat="img in images_list" >
+                            <img ng-src="{{img}}" style="width: 80px;height: 80px;margin-bottom: 8px;margin-left: 8px">
+                        </li>
+                        <!--<li class="weui_upiloader_file" style="float: left"  >
+                            <img src="img/ben.png" style="width: 80px;height: 80px;margin-bottom: 8px;margin-left: 8px">
+                        </li>
+                        <li class="weui_upiloader_file" style="float: left" >
+                            <img src="img/ben.png" style="width: 80px;height: 80px;margin-bottom: 8px;margin-left: 8px">
+                        </li>
+                        <li class="weui_upiloader_file" style="float: left"  >
+                            <img src="img/ben.png" style="width: 80px;height: 80px;margin-bottom: 8px;margin-left: 8px">
+                        </li>
+                        <li class="weui_upiloader_file" style="float: left" >
+                            <img src="img/ben.png" style="width: 80px;height: 80px;margin-bottom: 8px;margin-left: 8px">
+                        </li>-->
+                    </ul>
+                    <!--<div class="weui_uploader_input_wrp" style="margin-bottom: 8px;margin-left: 8px">
+                        <input class="weui_uploader_input" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="">
+                    </div>-->
+                    <button ng-click="addAttachment()">拍照</button>
+                </div>
+            </div>
+        </div>
+
+        <!--表单-->
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">品名</span>
+                <input type="text" placeholder="如：牛仔布">
+            </label>
+            <!--<label class="item item-input">-->
+                <!--<span class="input-label">数量</span>-->
+                <!--<input type="text" placeholder="订单数量">-->
+                <!--<a class="button button-icon icon ion-plus-round" style="margin-right: 30px" href="#/tab/ReleaseCount"></a>-->
+            <!--</label>-->
+            <a class="item item-input item-icon-right" href="#/ReleaseCount">
+                <span class="input-label">数量</span>
+                <label>订单数量</label>
+                <i class="icon after ion-ios-arrow-right"></i>
+            </a>
+            <label class="item item-input">
+                <span class="input-label">单价</span>
+                <input type="text" placeholder="目标价格">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">验厂</span>
+                <input type="text" placeholder="验厂要求">
+            </label>
+            <!--<label class="item item-input">-->
+                <!--<span class="input-label">交期</span>-->
+                <!--<input type="text" placeholder="交货日期">-->
+                <!--<i class="icon after ion-ios-arrow-right"></i>-->
+            <!--</label>-->
+            <a class="item item-input item-icon-right">
+                <span class="input-label">交期</span>
+                <label>交货日期</label>
+                <i class="icon after ion-ios-arrow-right"></i>
+            </a>
+            <a class="item item-input item-icon-right">
+                <span class="input-label">地区</span>
+                <label>请选择供应商所在地</label>
+                <i class="icon after ion-ios-arrow-right"></i>
+            </a>
+            <!-- 特征内容-->
+            <label class="item item-input ">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <textarea class="weui_textarea" placeholder="请输入特征内容" rows="3"></textarea>
+                    <div class="weui_textarea_counter"><span>0</span>/200</div>
+                </div>
+            </label>
+            <!-- 要求内容-->
+            <label class="item item-input ">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <textarea class="weui_textarea" placeholder="请输入要求内容" rows="3"></textarea>
+                    <div class="weui_textarea_counter"><span>0</span>/200</div>
+                </div>
+            </label>
+
+            <label class="item item-input item-icon-right">
+                <span class="input-label">联系人</span>
+                <input type="text" placeholder="请输入联系人">
+
+                <label class="toggle toggle-balanced item-icon-right" style="margin-right: 30px">
+                    <input type="checkbox">
+                    <div class="track">
+                        <span class="" style="margin-left: 4px;line-height: 25px">男</span>
+                        <div class="handle"></div>
+                    </div>
+                </label>
+                <!--<i class="icon tpicon-display" style="margin-left: 10px"></i>-->
+            </label>
+
+            <label class="item item-input ">
+                <span class="input-label">联系电话</span>
+                <input type="number" placeholder="请输入联系电话">
+                <!--<i class="icon tpicon-display" style="margin-left: 10px"></i>-->
+            </label>
+        </div>
+
+        <div style="margin: 10px">
+            <button class="button button-block button-balanced "  type="submit">提交</button>
+        </div>
+
+    </ion-content>
+</ion-view>

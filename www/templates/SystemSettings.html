@@ -1,0 +1,46 @@
+<ion-view view-title="系统设置" >
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button style="border: 0;background-color: rgba(0,0,0,0);color: white;" ng-click="signOut()">退出</button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+    <ion-content overflow-scroll="true" style="overflow: auto">
+        <!--内容列表-->
+        <ion-list>
+            <ion-item class="item-icon-right" ng-click="">
+                <div>
+                    <h3 style="float: left;line-height: 22px;" >功能介绍</h3>
+                    <div class="" style="float: right;font-size: 14px;">支持在线订单交易</div>
+                </div>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" ng-click="" >
+                <div>
+                    <h3 style="float: left;line-height: 22px;" >版本更新</h3>
+                    <div class="" style="float: right;font-size: 14px;">新版本1.11</div>
+                </div>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" ng-click="" >
+                <div>
+                    <h3 style="float: left;line-height: 22px;" >关于我们</h3>
+                    <div class="" style="float: right;font-size: 14px;">裁缝铺网络科技有限公司</div>
+                </div>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+  <div class="bar bar-footer" style="padding: 0;height: 165px; background-image: url('');">
+    <div class="item-image" style="margin:auto;font-size: 12px;">
+      <img ng-src="img/person.png" style="width:100px;height:auto;" >
+      <p>裁缝铺网络科技 版权所有</p>
+      <p>Copyright @2015-2017 TailorPus All Rights Reserved</p>
+    </div>
+  </div>
+</ion-view>
+

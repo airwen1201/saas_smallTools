@@ -1,0 +1,76 @@
+<ion-view view-title="库存编辑" class="add-design stock-edit">
+  <div class="bar bar-header bar-stable item-icon-left bar-header-top">
+    <i class="icon ion-chevron-left header-left-row"  ng-click="toClose()"></i>
+    <div class="title">库存编辑</div>
+  </div>
+  <ion-content class="content has-header" overflow-scroll="scroll">
+    <div class="padding">款式图片<span style="float: right">0/20</span></div>
+    <div class="swiper-container" style="height: 90px; ">
+      <div class="swiper-wrapper" style="height: 90px; ">
+        <div class="swiper-slide swiper-small-pic" ng-repeat="item in images_list" ng-init="isHide=false"
+             ng-click="isHide= !isHide">
+
+          <div class="small-pic">
+            <img ng-src="{{item}}" class="img" style="width:90px;height: 90px;">
+            <a ng-click="deleteThis($index,'pic')"><i class="icon ion-close" ng-show="isHide"></i></a>
+          </div>
+
+        </div>
+      </div>
+      <!-- Add Arrows -->
+      <div class="swiper-button-next swiper-button-black" ng-show="showPicRow"></div>
+      <div class="swiper-button-prev swiper-button-black" ng-show="showPicRow"></div>
+    </div>
+    <button ng-click="addAttachment()" class="button button-full button-balanced"
+            style="min-height: 40px;padding:0; height: 40px;line-height: 40px;background-color: #04BE02">点击上传图片
+    </button>
+    <div class="list">
+      <label class="item item-input">
+        <div>
+          <span class="input-label">名称</span>
+          <span>D1165</span>
+        </div>
+
+      </label>
+      <label class="item item-input item-icon-right">
+        <div>
+          <span class="input-label">价格</span>
+          <span>含税价，￥90.00</span>
+        </div>
+
+        <i class="icon ion-ios-arrow-right"></i>
+      </label>
+      <label class="item item-input item-icon-right">
+       <div>
+         <span class="input-label">类型</span>
+         <span>面料</span>
+       </div>
+
+        <i class="icon ion-ios-arrow-right"></i>
+      </label>
+      <label class="item item-input" style="display: block">
+        <div>
+          <span class="input-label" >颜色</span>
+          <span>黑色</span>
+        </div>
+        <div >
+          <span class="input-label" >成分</span>
+          <span>65%棉 35%涤</span>
+        </div>
+
+        <!--<input type="text" placeholder="商品单价" ng-model="goodInfo.price">-->
+      </label>
+
+
+    </div>
+
+
+
+
+    <div>
+
+      <button class="button button-block button-positive tj-bar">提交</button>
+    </div>
+    <div style="height:20px;"></div>
+  </ion-content>
+</ion-view>

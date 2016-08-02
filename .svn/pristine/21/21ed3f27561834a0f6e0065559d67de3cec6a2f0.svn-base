@@ -1,0 +1,41 @@
+/**
+ * Created by GY on 2016/6/13.
+ */
+Tailorpus.controller('OtherCostCtrl', function($scope) {
+  var count=0;
+  $scope.inputList=[];
+  $scope.toaddcost=function () {
+    count++;
+    $scope.inputList.push(count);
+    $scope.totalList.push({
+      title:'',
+      worth:''
+    })
+  }
+  $scope.deleteStoEvent =function (index) {
+    $scope.inputList.splice(index,1);
+  }
+  $scope.totalList = [{
+    title:'样品',
+    worth:''
+  },{
+    title:'银行',
+    worth:''
+  },{
+    title:'测试',
+    worth:''
+  },{
+    title:'运货',
+    worth:''
+  },{
+    title:'QC',
+    worth:''
+  },{
+    title:'佣金',
+    worth:''
+  }]
+
+  $scope.doSubmit = function (){
+    console.log(angular.toJson($scope.totalList))
+  }
+});

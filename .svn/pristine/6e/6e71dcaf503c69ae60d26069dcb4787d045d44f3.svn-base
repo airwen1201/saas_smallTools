@@ -1,0 +1,39 @@
+<ion-view view-title="出库明细" class="outStockDetail">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content overflow-scroll="true" style="overflow:auto;">
+<div class="list">
+    <a class="item item-thumbnail-left">
+      <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      <img src="{{imgUrlProcess(detail.img[0],120,120,80)}}" ng-if="detail.img.length!=0">
+      <img src="img/ic_default.png" ng-if="detail.img.length==0">
+      <h2 style="font-size: 20px;height: 40px;line-height: 40px;float: left" ng-bind="detail.stockOutId"></h2>
+      <h2 style="color: red;font-size: 17px;height: 40px;line-height: 40px;float: right" ng-bind="displayName"></h2>
+      <p style="font-weight: bolder;float: left;height: 40px;line-height: 40px;clear: both" ng-bind="outStockTime"></p>
+      <p style="float: right;height: 40px;line-height: 40px;" ng-bind="number"></p>
+    </a>
+    <div style="height: 15px;background-color: #F9F9F9"></div>
+  <div><img style="width: 100%" src="{{StockOutsDetail.skuImg}}"></div>
+  <ion-list ng-if="customerId==1&&(status==2||status==1)">
+    <div class="row" style="text-align: center;background-color: #EDEDED" >
+      <div class="col" ng-repeat="item in StockOutsDetail.sku" ng-bind="item.color" ng-click="colorChange($index)" ng-class="{true:'active',false:'lostactive'}[selectColor[$index]]" ></div>
+    </div>
+    <div class="row" style="text-align: center">
+      <div class="col">尺码</div>
+      <div class="col">出库数量</div>
+      <div class="col">差额数量</div>
+      <div class="col">收货数量</div>
+    </div>
+    <div class="row" style="text-align: center" ng-repeat="item in sizelist">
+      <div class="col" ng-bind="item.size"></div>
+      <div class="col" ng-bind="item.num"></div>
+      <div class="col">0</div>
+      <div class="col"><input style="width: 100%" type="text" ng-disabled="true"ng-init="item.num"></div>
+    </div>
+  </ion-list>
+</div>
+    </ion-content>
+  </ion-view>

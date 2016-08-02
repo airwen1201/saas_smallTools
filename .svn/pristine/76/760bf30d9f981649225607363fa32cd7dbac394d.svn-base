@@ -1,0 +1,67 @@
+/**
+ * Created by GY on 2016/6/12.
+ */
+Tailorpus.controller('AddQuoteCtrl', function($scope,$state,$stateParams) {
+  //用户信息
+  var obj = JSON.parse(window.localStorage.getItem("tailorUser"));
+  $scope.choosecurrency=function (x) {
+    $scope.currencytype=x;
+  }
+
+  $scope.toOherCost=function(){
+    window.location.href="#/OtherCost"
+  }
+  $scope.rateList={
+    "5%($)":"$6.10",
+    "10%($)":"$6.40",
+    "15%($)":"$6.70",
+    "20%($)":"$7.00",
+    "25%($)":"$7.30"
+  };
+  function ratestyle(newValue, oldValue, scope) {
+    $scope.ratetype = (newValue == 15%($)) ? true:false;
+  }
+  $scope.$watch($scope.rate,ratestyle);
+
+  $scope.customText=''
+  $scope.quoteList = {}
+  $scope.quoteList.id = $stateParams.keyId
+  console.log($scope.quoteList.id)
+  $scope.doSubmit=function(){
+    var json = {
+      id            :$scope.quoteList.id,
+      materialPrice :$scope.quoteList.materialPrice,
+      hasTax        :$scope.customText=='false'?'N':'Y',
+      taxRate       :$scope.quoteList.taxRate,
+      taxPrice      :$scope.quoteList.materialPrice+$scope.quoteList.materialPrice/100*$scope.quoteList.taxRate,
+      workersPay    :$scope.quoteList.workersPay,
+      others        :$scope.quoteList.others,//?
+      othersDetail  :$scope.quoteList.othersDetail,//?
+      number        :$scope.quoteList.number,
+      currency      :$scope.currencytype==1?"CNY":"USD",
+      exchangeRate  :$scope.quoteList.exchangeRate,
+      price         :$scope.quoteList.price,
+      profitRate    :$scope.quoteList.profitRate,//-->
+      profitTotal   :$scope.quoteList.profitTotal,
+      vipId         :obj.vipId
+
+      //time:quoteList.time,
+      //designName:quoteList.designName,
+      //designImg:quoteList.designImg,
+      //designTotalPrice:quoteList.designTotalPrice,
+
+    }
+    console.log(angular.toJson(json));
+
+    var promise = DataService.addStocks(json);
+
+    promise.then(function (data) {
+      $cordovaToast.showLongBottom("订单提交成功！");
+      $ionicHistory.goBack();
+    }, function (data) {
+      $cordovaToast.showLongBottom(data.message)
+    });
+
+  }
+
+});

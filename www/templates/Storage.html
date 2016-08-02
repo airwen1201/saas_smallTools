@@ -1,0 +1,57 @@
+<ion-view view-title="库存">
+    <ion-nav-bar>
+      <ion-nav-buttons side="left">
+        <a class="button button-icon ion-ios-arrow-back" ng-click="goBack()"></a>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <a class="button button-icon ion-plus-round" ng-click="toAddStorage()"></a>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+  <div class="bar bar-subheader" style="border: 0;padding: 0">
+    <div style="height: 34px;background-color: #F9F9F9">
+      <div class="item item-input item-select" style="float: left;width: 34%;height: 36px">
+        <select ng-change="chooseCustomer(x)" ng-model="x" style="background-color: #F9F9F9;border: 0;">
+          <option value="" disabled selected>类型</option>
+          <option value="B" ng-selected="1">全部</option>
+          <option value="S">服装</option>
+        </select>
+      </div>
+      <div class="item item-input item-select" style="float: left;width: 33%;height: 36px;background-color: #F9F9F9;border: 0;">
+        <select style="background-color: #F9F9F9">
+          <option value="" disabled selected>状态</option>
+          <option value="">全部</option>
+          <option value="">今日入库</option>
+          <option value="">今日出库</option>
+        </select>
+      </div>
+      <div class="item item-input item-select" style="float: left;width: 34%;height: 36px;background-color: #F9F9F9;border: 0;">
+        <select style="background-color: #F9F9F9">
+          <option value="" disabled selected>排序</option>
+          <option value="email">入库时间</option>
+          <option value="twitter">出库时间</option>
+        </select>
+      </div>
+    </div>
+  </div>
+    <ion-content overflow-scroll="true" style="overflow:auto;margin-top: 35px">
+      <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+        <div class="content ionic-pseudo">
+          <ion-list class="list"  show-delete="false" can-swipe="true">
+            <div style="background-color: #9B9B9B" ng-repeat="item in storageList">
+              <ion-item class="item item-thumbnail-left" ng-click="toStorageDetail(item.stockId)">
+                <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+                <img src="{{imgUrlProcess(storageList[$index].img[0],120,120,80)}}" ng-if="storageList[$index].img.length!=0">
+                <img src="img/ic_default.png" ng-if="storageList[$index].img.length==0">
+                <h2 style="font-size: 16px;height: 40px;line-height: 40px;float: left">{{item.name}}</h2>
+                <h2 style="color: red;font-size: 17px;height: 40px;line-height: 40px;float: right">{{item.number}}件</h2>
+                <p style="width: 70%;float: left;height: 40px;line-height: 40px;clear: both" ng-bind="item.track[0].from+item.track[0].event"></p>
+                <p style="float: right;height: 40px;line-height: 40px;">{{stringToDate(item.createTime)| date:"MM/dd" }}</p>
+                <ion-option-button class="button-assertive icon ion-trash-a" ng-click="deleteStoEvent($index)"></ion-option-button>
+              </ion-item>
+              <div style="height: 15px;background-color: #F9F9F9"></div>
+            </div>
+          </ion-list>
+        </div>
+      <!--<ion-infinite-scroll on-infinite="loadMore()" distance="1%" ></ion-infinite-scroll>-->
+    </ion-content>
+</ion-view>

@@ -1,0 +1,76 @@
+<ion-view view-title="应收详情">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content overflow-scroll="false">
+        <div class="list">
+            <div class="item item-thumbnail-left">
+                <img ng-src="img/ben.png" style="margin-top: 6px">
+                <div class="row">
+                    <h2 style="margin-left: 4px">D1314</h2>
+                </div>
+                <div class="row">
+                    <div class="col">太阳服饰</div>
+                    <div class="col" style="color: #C13E3E;text-align: right">线下支付</div>
+                </div>
+                <div class="row">
+                    <div class="col">CK2311221</div>
+                    <div class="col" style="color: #C13E3E;text-align: right">￥500000</div>
+                </div>
+            </div>
+            <div class="item item-divider">
+               付款信息
+            </div>
+            <label class="item item-input">
+                <span class="input-label">交易流水号</span>
+                <label>00000000</label>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">汇款金额</span>
+                <label>￥23000</label>
+            </label>
+
+            <label class="item item-input">
+                <span class="input-label">付款人户名</span>
+                <label>南京太阳服饰</label>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">付款人账号</span>
+                <label>2300000000000000</label>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">付款人银行</span>
+                <label>中国银行</label>
+            </label>
+
+            <label class="item item-input">
+                <span class="input-label">收款人户名</span>
+                <label>南京泽冠</label>
+            </label>
+
+            <label class="item item-input">
+                <span class="input-label">收款人账号</span>
+                <label>3300000000000000</label>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">收款人银行</span>
+                <label>中国银行</label>
+            </label>
+        </div>
+
+        <!-- 照片-->
+        <div class="weui_uploader">
+            <div class="weui_uploader_bd">
+                <ul class="weui_uploader_files">
+                    <li class="weui_upiloader_file" style="float: left" >
+                        <img ng-src="img/ben.png" style="width: 80px;height: 80px;margin-bottom: 8px;margin-left: 8px">
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <button class="button button-block button-balanced" style="margin: 10px auto;width: 96%">确认收款</button>
+    </ion-content>
+</ion-view>

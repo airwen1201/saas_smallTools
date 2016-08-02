@@ -1,0 +1,42 @@
+<ion-view view-title="订单详情">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content overflow-scroll="true" style="overflow:auto;">
+    <div class="list">
+      <div class="item" style="padding: 10px 20px 10px 20px">
+        <div class="" style="border: 1px solid gray;overflow: hidden;padding: 5px">
+          <h2 style="float: left;font-weight: bold">{{orderDetail.logistics.name}}</h2>
+          <h2 style="padding-left: 10px;font-weight: bold">{{orderDetail.logistics.phone}}</h2>
+          <p>{{orderDetail.logistics.address}}</p>
+          <p style="float: left">{{orderDetail.logistics.logisticsName}}</p><p>{{orderDetail.logistics.logisticsNo}}</p>
+          <label for="editBtn" style="line-height: 45px;float: right" ng-show="customerId=='2'&&status==0">编辑</label>
+          <button class="button button-icon icon ion-compose" ng-show="customerId=='2'&&status==0" id="editBtn" style="float: right" ng-click="toEditReceive()"></button>
+
+        </div>
+      </div>
+      <div class="item" style="background-color: #ededed;padding: 5px 20px">
+        出库明细
+      </div>
+      <div class="" ng-repeat="item in orderDetail.detail">
+        <a class="item item-thumbnail-left" ng-click="openOutStockDetail($index,customerId)">
+          <img src="{{imgUrlProcess(item.img[0],80,80,80)}}" ng-if="item.img.length!=0">
+          <img src="img/ic_default.png" ng-if="item.img.length==0">
+          <h2 style="font-size: 20px;height: 40px;line-height: 40px;">{{item.stockOutId}}</h2>
+          <p style="float: left;height: 40px;line-height: 40px;clear: both;color: black;" ng-bind="getCreateTime(item.createTime)"></p>
+          <p style="color: red;font-size: 17px;height: 40px;line-height: 40px;float: right">{{item.number}}</p>
+        </a>
+        <div style="height: 15px;background-color: #F9F9F9;clear: both"></div>
+      </div>
+      <p style="float: right;margin: 5px 20px 0 0;width: 100%;text-align: right;">数量:   <span style="color: green;font-weight: bold;font-size: 20px">{{orderDetail.totalNum}}件</span></p>
+    </div>
+    <div style="margin: 10px" ng-show="customerId=='2'&&status=='0'">
+      <button class="button button-block button-balanced " style="top: 20px" ng-disabled="isSubmit=='1'" type="submit" ng-click="doSubmit()">发货</button>
+    </div>
+    <div style="margin: 10px" ng-show="customerId=='1'&&status=='1'">
+      <button class="button button-block button-balanced " style="top: 20px" ng-disabled="isSubmit=='1'" type="submit" ng-click="doSubmit()">收货</button>
+    </div>
+  </ion-content>
+</ion-view>

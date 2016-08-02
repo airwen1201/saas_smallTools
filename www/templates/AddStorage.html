@@ -1,0 +1,125 @@
+<ion-view view-title="新增库存" class="addstorage">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="goBack()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="content has-header ">
+    <!-- 商品图片-->
+    <div class="padding">商品图片<span style="float: right">{{images_list.length}}/20</span></div>
+    <!--<div class="weui_uploader_bd">-->
+    <!--<div class="padding-left padding-right padding-bottom clearfix">-->
+
+
+    <div class="swiper-container" style="height: 90px; ">
+      <div class="swiper-wrapper" style="height: 90px; ">
+        <div class="swiper-slide swiper-small-pic" ng-repeat="item in images_list" ng-init="isHide=false"
+             ng-click="isHide= !isHide">
+
+          <div class="small-pic">
+            <img ng-src="{{item}}" class="img" style="width:90px;height: 90px;">
+            <a ng-click="deleteThis($index,'pic')"><i class="icon ion-close" ng-show="isHide"></i></a>
+          </div>
+
+        </div>
+      </div>
+      <!-- Add Arrows -->
+      <div class="swiper-button-next swiper-button-black" ng-show="showPicRow"></div>
+      <div class="swiper-button-prev swiper-button-black" ng-show="showPicRow"></div>
+    </div>
+
+
+    <!--<div class="div-img" ng-repeat="item in images_list track by $index">
+      <img ng-src="{{item}}" class="img">
+    </div>-->
+
+    <button ng-click="addAttachment()" class="button button-full button-balanced"
+            style="min-height: 40px;padding:0; height: 40px;line-height: 40px;background-color: #04BE02">点击上传图片
+    </button>
+    <!-- <i class="icon ion-ios-plus-empty" style="font-size:64px;color: #bbbbbb;"></i>-->
+
+    <!--</div>-->
+
+    <!--  商品信息-->
+    <div class="list" style="margin-bottom: 3px;">
+      <label class="item item-input">
+        <span class="input-label">品名</span>
+        <input type="text" placeholder="如：牛仔布" ng-model="goodInfo.name">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">单价</span>
+        <input type="number" placeholder="商品单价" ng-keyup="goodInfo.price = reg(goodInfo.price);" ng-model="goodInfo.price">
+      </label>
+      <label class="item item-input ">
+        <div class="weui_cell_bd weui_cell_primary">
+          <textarea class="weui_textarea" maxlength="200" placeholder="请输商品说明" rows="3" ng-model="goodInfo.desc"></textarea>
+
+          <div class="padding-right weui_textarea_counter"><span ng-bind="goodInfo.desc.length" ng-if="goodInfo.desc.length>0"></span><span ng-if="!goodInfo.desc.length">0</span>/200</div>
+        </div>
+      </label>
+    </div>
+    <div class="row">
+      <div class="col-50 padding-left">
+        <input type="text" class="add-sto-input" placeholder="颜色" ng-model="goodInfo.color">
+        <a class="add-sto-a" ng-click="addColor()"><i class="icon ion-plus" style="color: #444444;font-size: 20px;line-height: 41px;" ></i></a>
+      </div>
+      <div class="col-50 padding-left">
+        <input type="text" class="add-sto-input" placeholder="尺码" ng-model="goodInfo.size">
+        <a class="add-sto-a" ng-click="addSize()"><i class="icon ion-plus" style="color: #444444;font-size: 20px;line-height: 41px;" ></i></a>
+      </div>
+    </div>
+    <div style="height: 32px;line-height: 32px;background-color: #EDEDED">
+
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide swiper-color" ng-repeat="color in myColors" ng-init="isHide=false"
+               ng-click="isHide= !isHide">
+
+            <div ng-class="{'selected-color':selectedVal==$index}" style="display: initial;"  ng-click="seclectColor($index)">{{color}}</div>
+            <a ng-click="delColor($index)"><i class="icon ion-close-circled" ng-show="true"></i></a>
+
+
+          </div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-black" style="background-size: 10px 30px;" ng-show="showColorRow"></div>
+        <div class="swiper-button-prev swiper-button-black" style="background-size: 10px 30px;" ng-show="showColorRow"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-33">尺码</div>
+      <div class="col-33">库存数量</div>
+      <div class="col-33"></div>
+    </div>
+    <div ng-repeat="item in myColors" ng-show="$index==selectIndex" ng-init="par_index=$index">
+      <div class="row" ng-repeat="obg in mySizes">
+        <div class="col-33" style="line-height: 36px;" ng-bind="obg"></div>
+        <!--<div class="col-33"><input type="number" min="0" class="num-put" ng-keyup="obg.num = reg(obg.num);" ng-model="obg.num"></div>-->
+        <div class="col-33"><input type="number" min="0" class="num-put" ng-model="myRealModel[getCountForModel(par_index)+$index].num"></div>
+        <div class="col-33"><a ng-click="deleteSize($index)"><i class="icon ion-trash-a trash-add-sto"></i></a></div>
+      </div>
+    </div>
+    <!--<table class="add-sto-table">
+      <thead>
+      <tr>
+        <td>尺码</td><td>库存数量</td><td></td>
+      </tr>
+      </thead>
+      <tbody>
+       <tr ng-repeat="size in colors[0].sizelist" ng-show="selectedVal==$index">
+         <td>{{size.size}}</td><td><input type="text" ng-model="colors[0].sizelist[$index].num"></td>
+         <td><a><i class="icon ion-trash-a"></i></a></td>
+       </tr>
+      </tbody>
+    </table>-->
+   <!-- <div style="margin: 10px">
+      <button class="button button-block button-balanced " type="submit" ng-click="doSubmit()">提交</button>
+    </div>-->
+    <div style="padding: 5px 15px;">
+      <button class="button button-block button-positive" ng-disabled="isSubmit=='1'" style="margin-top: 0;margin-bottom: 0;font-size: 16px;background-color: #04BE02" type="submit" ng-click="doSubmit()">提交</button>
+    </div>
+  </ion-content>
+<!--  <div class="bar bar-footer" style="padding-bottom: 0;background-image:url('')" >
+
+  </div>-->
+</ion-view>

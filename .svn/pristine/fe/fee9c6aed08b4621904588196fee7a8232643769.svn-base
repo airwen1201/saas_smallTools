@@ -1,0 +1,14 @@
+/**
+ * Created by GY on 2016/6/13.
+ */
+Tailorpus.controller('OtherCostCtrl', function($scope) {
+  var count=0;
+  $scope.inputList=[];
+  $scope.toaddcost=function () {
+    count++;
+    $scope.inputList.push(count);
+  }
+  $scope.deleteStoEvent =function (index) {
+    $scope.inputList.splice(index,1);
+  }
+});

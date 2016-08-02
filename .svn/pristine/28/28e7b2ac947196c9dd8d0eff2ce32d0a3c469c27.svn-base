@@ -1,0 +1,70 @@
+<ion-view view-title="店铺主页" class="StoreIndex" >
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <a class="button button-icon ion-ios-telephone" ng-click="onDial()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content overflow-scroll="true" style="overflow:auto;">
+    <div class="StoreIndex-Thumbnail">
+      <a class="item item-thumbnail-left" href="#">
+        <img src="http://www.runoob.com/try/demo_source/spengler.jpg">
+        <h2>仙来子の母婴小美屋</h2>
+        <p>江苏省 南京市</p>
+        <button class="Store-Add-Favorite">+收藏</button>
+    </a>
+    </div>
+    <ul class=" list">
+      <li class="list-item">
+        <p>店主服务</p>
+        <div class="StoreServiceItem"><i class="ion icon ion-android-car"></i> 全国包邮</div>
+        <div class="StoreServiceItem"><i class="ion icon ion-card"></i> 退货补运费</div>
+        <div class="StoreServiceItem"><i class="ion icon ion-chatbubble-working"></i> 72小时发货</div>
+        <div class="clearfix"></div>
+        <h6>若卖家未履行上述承诺，裁缝铺将使用保证金先行赔付</h6>
+      </li>
+    </ul>
+    <ul class=" list">
+      <li class="list-item">
+        <p>动态评分</p>
+        <div class="Rank-Line"><span class="Dynamic-Rank">发货</span><span class="detail">4.71 高于同类型3.52%</span></div>
+        <div class="Rank-Line"><span class="Dynamic-Rank">付款</span><span class="detail">4.69 高于同类型3.08%</span></div>
+        <div class="Rank-Line"><span class="Dynamic-Rank">配合</span><span class="detail">4.55 高于同类型2.73%</span></div>
+        <div class="clearfix"></div>
+      </li>
+    </ul>
+    <ul class=" list">
+      <li class="list-item">
+        <p>店铺标签</p>
+        <div class="Label-Container">
+          <img class="Label" src="https://modao.cc/uploads/images/3541262/raw_1464315729.png" >
+          <div class="Label-Text">服装</div>
+        </div>
+        <div class="Label-Container">
+          <img class="Label" src="https://modao.cc/uploads/images/3541262/raw_1464315729.png" >
+          <div class="Label-Text">销售</div>
+        </div>
+        <div class="Label-Container">
+          <img class="Label" src="https://modao.cc/uploads/images/3541262/raw_1464315729.png" >
+          <div class="Label-Text">面料</div>
+        </div>
+        <div class="Label-Container">
+          <img class="Label" src="https://modao.cc/uploads/images/3541262/raw_1464315729.png" >
+          <div class="Label-Text">定制</div>
+        </div>
+        <div class="Label-Container">
+          <img class="Label" src="https://modao.cc/uploads/images/3541262/raw_1464315729.png" >
+          <div class="Label-Text">批发</div>
+        </div>
+        <div class="Label-Container">
+          <img class="Label" src="https://modao.cc/uploads/images/3541262/raw_1464315729.png" >
+          <div class="Label-Text">零售</div>
+        </div>
+        <div class="clearfix"></div>
+      </li>
+    </ul>
+    </div>
+  </ion-content>
+</ion-view>

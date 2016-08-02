@@ -1,0 +1,42 @@
+<!--create by chen edit by Shiqi on May 17-->
+<ion-view view-title="基本信息" ng-click="doSubmit()">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="goBack()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content overflow-scroll="true" style="overflow:auto;">
+        <div class="list">
+            <div class="item item-input item-avatar-right" ng-click="editAvatar()">
+                <!--<i class="icon after ion-ios-arrow-right"></i>-->
+                <img class="" ng-src="{{headImg}}" src="img/me_gray.png">
+                <span class="input-label">头像</span>
+            </div>
+            <div class="item item-input item-icon-right" ng-click="toEditName()">
+                <span class="input-label">姓名</span>
+                <p ng-bind="userCalled"></p>
+                <i class="icon after ion-ios-arrow-right"></i>
+            </div>
+            <div class="item item-input item-icon-right" ng-click="toEditSex()">
+                <span class="input-label">性别</span>
+                <p ng-bind="sex"></p>
+                <i class="icon after ion-ios-arrow-right"></i>
+            </div>
+            <div class="item item-input item-icon-right">
+                <span class="input-label">手机号</span>
+                <p ng-bind="userPhone"></p>
+                <!--<i class="icon after ion-ios-arrow-right"></i>-->
+            </div>
+            <div class="item item-input item-icon-right" ng-click="toEditPassword()">
+                <span class="input-label">密码</span>
+                <p>********</p>
+                <i class="icon after ion-ios-arrow-right"></i>
+            </div>
+            <div class="item item-input item-icon-right" ng-click="receivePlace()">
+                <span class="input-label">收货地址</span>
+                <p ng-bind="address"></p>
+                <i class="icon after ion-ios-arrow-right"></i>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

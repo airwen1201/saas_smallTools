@@ -1,0 +1,31 @@
+<ion-view view-title="材料价格" class="material-price">
+  <div class="bar bar-header bar-stable item-icon-left item-icon-right bar-header-top">
+    <i class="icon ion-chevron-left header-left-row"  ng-click="toClose()"></i>
+    <div class="title">材料价格</div>
+  </div>
+  <ion-content class="content has-header" overflow-scroll="false">
+    <div class="item" style="padding: 20px;background-color: #ffffff">单耗<p class="mpdata">1米</p></div>
+    <div class="item" style="padding: 20px;background-color: #ffffff">耗损<p class="mpdata">1.05</p></div>
+    <!--<ion-toggle ion-toggle-text ng-model="simple" toggle-class="toggle-my-theme" ng-disabled="true">-->
+      <!--Disabled Example: <b>{{ simple || false }}</b>-->
+    <!--</ion-toggle>-->
+    <ion-toggle ion-toggle-text="除税价;含税价"  ng-model="customText" toggle-class="toggle-my-theme">税费
+    </ion-toggle>
+    <!--<div class="item item-toggle toggle-large ng-empty ng-valid">-->
+        <!--<span class="toggle-span">税费</span>-->
+      <!--<label class="toggle disable-user-behavior">-->
+        <!--<input type="checkbox" ng-model="pushNotification" ng-change="pushNotificationChange()"-->
+               <!--class="ng-pristine ng-untouched ng-valid ng-empty" ng-true-value="'含税价'"-->
+               <!--ng-false-value="'除税价'" >-->
+      <!--<div class="track track-toggle">-->
+        <!--<pre ng-bind="pushNotification"></pre>-->
+        <!--<div class="handle handle-toggle">-->
+      <!--</div>-->
+      <!--</div>-->
+    <!--</label>-->
+    <!--</div>-->
+    <div class="item" style="padding: 20px;background-color: #ffffff">价格<p class="mpdata">￥16.50</p>
+    </div>
+    <button class="button button-submit button-balanced"  ng-click="tosubmit()">提交</button>
+  </ion-content>
+</ion-view>

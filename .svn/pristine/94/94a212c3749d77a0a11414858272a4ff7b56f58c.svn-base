@@ -1,0 +1,51 @@
+<ion-view view-title="款式记录">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="list">
+      <div class="StyleRecord-timeLine-Arrow-Containner">
+        <img class="StyleRecord-timeLine-Arrow" src="img/timeLineArrow.png">
+      </div>
+      <!--以下内容暂时填充，实现业务逻辑时改为<ng-repeat>标签-->
+      <div class="StyleRecord-Info-Containner">
+        <img class="StyleRecord-timeLine" src="img/timeLine.png">
+        <span>我</span><span class="StyleRecord-Detail"> 编辑材料 针织混纺面料 ￥16.50</span>
+        <p class="StyleRecord-EditTime"><span>04/25 11:08</span></p>
+      </div>
+      <div class="StyleRecord-Info-Containner">
+        <img class="StyleRecord-timeLine" src="img/timeLine.png">
+        <span>我</span><span class="StyleRecord-Detail"> 编辑材料 金属四合扣 ￥2.00</span>
+        <p class="StyleRecord-EditTime"><span>04/25 11:06</span></p>
+      </div>
+      <div class="StyleRecord-Info-Containner">
+        <img class="StyleRecord-timeLine" src="img/timeLine.png">
+        <span>我</span><span class="StyleRecord-Detail"> 编辑材料 金属四合扣 ￥2.50</span>
+        <p class="StyleRecord-EditTime"><span>04/24 12:47</span></p>
+      </div>
+      <div class="StyleRecord-Info-Containner">
+        <img class="StyleRecord-timeLine" src="img/timeLine.png">
+        <span>我</span><span class="StyleRecord-Detail"> 添加材料 金属四合扣 ￥2.00</span>
+        <p class="StyleRecord-EditTime"><span>04/23 12:03</span></p>
+      </div>
+      <div class="StyleRecord-Info-Containner">
+        <img class="StyleRecord-timeLine" src="img/timeLine.png">
+        <span>我</span><span class="StyleRecord-Detail"> 编辑材料 针织混纺面料 ￥16.80</span>
+        <p class="StyleRecord-EditTime"><span>04/23 07:55</span></p>
+      </div>
+      <div class="StyleRecord-Info-Containner">
+        <img class="StyleRecord-timeLine" src="img/timeLine.png">
+        <span>我</span><span class="StyleRecord-Detail"> 添加材料 针织混纺面料 ￥16.50</span>
+        <p class="StyleRecord-EditTime"><span>04/21 12:06</span></p>
+      </div>
+      <div class="StyleRecord-Info-Containner">
+        <img class="StyleRecord-timeLine" src="img/timeLine.png">
+        <span>我</span><span class="StyleRecord-Detail"> 新增款式 D1165 </span>
+        <p class="StyleRecord-EditTime"><span>04/21 11:27</span></p>
+      </div>
+      <!--以上内容暂时填充，实现业务逻辑时改为<ng-repeat>标签-->
+      </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,87 @@
+<ion-view view-title="裁缝铺" class="list-index">
+  <div class="bar bar-header bar-stable item-icon-right bar-header-top">
+
+    <div class="title">裁缝铺</div>
+    <i class="icon"  ng-click="toMall()">
+      <img src="img/mall_white.png" style="width: 30px;height: auto;">
+    </i>
+  </div>
+  <ion-content class="content has-header" overflow-scroll="true" style="overflow:auto;">
+   <!-- 顶部菜单栏 -->
+    <div class="bar bar-header item-input-inset" style="background: white !important;">
+      <label class="item-input-wrapper" style="margin-top: 0 !important;">
+        <div class="icon ion-search"></div>
+        <input  type="text" style="height: 36px" placeholder="输入您要搜索的内容">
+      </label>
+     <!-- <div class="button icon ion-home" ng-click="toMall()"></div>-->
+    </div>
+    <!--内容列表-->
+      <ion-list >
+          <ion-item class="item-avatar" ng-click="">
+              <img ng-src="img/xunjia.png">
+              <!--<span class="rj-sm-red-icon" ng-if=""><p>2</p></span>-->
+              <h2 >询价</h2>
+              <!--<p class="rj-list-p" >已抢单</p>-->
+              <!--<span class="rj-push-right">2015</span>-->
+          </ion-item>
+          <ion-item class="item-avatar" ng-click="">
+              <img ng-src="img/huojia.png">
+              <!--<span class="rj-sm-red-icon"  ng-if=""><p>2</p></span>-->
+              <h2 >货架</h2>
+              <p class="rj-list-p" ></p>
+              <span class="rj-push-right"></span>
+          </ion-item>
+          <ion-item class="item-avatar" ng-click="toOrder()" >
+              <img ng-src="img/dingdan.png">
+              <!--<span class="rj-sm-red-icon" ><p>2</p></span>-->
+              <h2 >订单</h2>
+              <!--<p class="rj-list-p" >已发货</p>-->
+              <!--<span class="rj-push-right">2015</span>-->
+          </ion-item>
+          <ion-item class="item-avatar" ng-click="toStorage()" >
+              <img ng-src="img/kucun.png">
+              <!--<span class="rj-sm-red-icon" ><p>2</p></span>-->
+              <h2 >库存</h2>
+              <p class="rj-list-p" ></p>
+              <span class="rj-push-right"></span>
+          </ion-item>
+          <ion-item class="item-avatar" ng-click="toAccount()" >
+              <img ng-src="img/zhanghu.png">
+              <!--<span class="rj-sm-red-icon" ><p>2</p></span>-->
+              <h2 >账户</h2>
+              <!--<p class="rj-list-p" >付款￥10000</p>-->
+              <!--<span class="rj-push-right">2015</span>-->
+          </ion-item>
+      </ion-list>
+
+  </ion-content>
+   <!-- 底部菜单栏-->
+    <ion-footer-bar>
+        <div class="tabs tabs-icon-top top-tabs">
+          <a class="tab-item">
+            <div><img src="img/pantong.png" class="foot-img"></div>
+             潘通
+          </a>
+          <a class="tab-item " >
+            <div><img src="img/calendar.png" class="foot-img"></div>
+            日历
+          </a>
+          <a class="tab-item" ng-click="toQuote()">
+            <div><img src="img/baojia.png" class="foot-img"></div>
+
+            报价
+          </a>
+          <a class="tab-item" ng-click="toDesign()">
+            <div><img src="img/design.png" class="foot-img"></div>
+
+            款式
+          </a>
+
+        </div>
+       <!-- <div class="bar bar-footer bar-balanced">
+            <a style="width: 100%;text-align: center" href="#/ReleaseSelect">
+                <img src="img/ic_add.png" style="text-align: center;width: 40px;height: 40px">
+            </a>
+        </div>-->
+    </ion-footer-bar>
+</ion-view>

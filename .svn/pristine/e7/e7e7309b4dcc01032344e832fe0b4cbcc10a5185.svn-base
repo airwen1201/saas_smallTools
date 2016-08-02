@@ -1,0 +1,31 @@
+<ion-view view-title="登录" class="login">
+    <ion-content overflow-scroll="false">
+        <form  novalidate>
+            <div class="login-container" ng-style="getHeight">
+              <div class="login-content">
+                <div class="logo"><img src="img/person.png"></div>
+                <div class="fill">
+                    <div class="check form-group"><!--^1[3|4|5|7|8][0-9]\d{8}$-->
+                        <label class="item item-input">
+                            <input type="text" class="form-control " placeholder="请输入您的手机号码" ng-model="loginInfo.phone"  ng-required="true" ng-required-err-type="phoneReq">
+                        </label>
+                    </div>
+
+                    <div class="check form-group">
+                        <label class="form-group item item-input">
+                            <input type="text" ng-model="loginInfo.verifyCode" placeholder="请输入密码或短信验证码"/>
+                            <!--<input type="text" ng-model="loginInfo.verifyCode" placeholder="请输入验证码" ng-required="true"/>-->
+                        </label>
+                        <button class="button button-small"  ng-click="getVerifyCode()" ng-disabled="showTime">发送验证码<i ng-if="showTime">{{time}}</i></button>
+                    </div>
+                    <label class="">
+                        <button class="button button-block button-light" ng-click="doLogin()">登录</button>
+                    </label>
+                </div>
+              </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
+
+

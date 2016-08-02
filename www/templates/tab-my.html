@@ -1,0 +1,46 @@
+<ion-view view-title="设置" cache-view="false">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content overflow-scroll="true" style="overflow:auto;">
+    <!--内容列表-->
+    <ion-list>
+      <div class="tableView_space"></div>
+      <ion-item class="item-thumbnail-left item-icon-right" ng-click="toBasicInfo()">
+        <img class="my_basicInfo_item" ng-src="{{headImg}}" src="img/me_gray.png">
+        <div class="basicInfo_cell1">
+        <h2 ng-bind="nickName"></h2>
+        <p>手机号:<span ng-bind="phone"></span></p>
+        </div>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <div class="tableView_space"></div>
+      <ion-item class="item-avatar item-icon-right" ng-click="toCompanyInfo()" >
+        <img ng-src="img/ic_default.png">
+        <h2 style="margin-top: 10px" >企业信息</h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item-avatar item-icon-right" ng-click="toContacts()" >
+        <img ng-src="img/ic_default.png">
+        <h2 style="margin-top: 10px">通讯录</h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <div class="tableView_space"></div>
+      <ion-item class="item-avatar item-icon-right" ng-click="toFeedBack()">
+        <img ng-src="img/ic_default.png">
+        <h2 style="margin-top: 10px">意见反馈</h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <div class="tableView_space"></div>
+      <ion-item class="item-avatar item-icon-right" ng-click="toSystemSettings()" >
+        <img ng-src="img/ic_default.png">
+        <h2 style="margin-top: 10px">系统设置</h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,51 @@
+<ion-view view-title="现金">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+  <div class="bar bar-subheader" style="border: 0;padding: 0">
+    <div style="height: 34px">
+      <div class="item item-input item-select" style="float: left;width: 34%;height: 36px;background-color: #F9F9F9">
+        <select style="background-color: #F9F9F9;">
+          <option value="" ng-selected="1">全部</option>
+            <option value="">服装</option>
+        </select>
+      </div>
+      <div class="item item-input item-select" style="float: left;width: 33%;height: 36px;background-color: #F9F9F9">
+        <select style="background-color: #F9F9F9">
+          <option value="" selected>全部</option>
+            <option value="">已付款</option>
+            <option value="">已收款</option>
+        </select>
+      </div>
+      <div class="item item-input item-select" style="float: left;width: 34%;height: 36px;background-color: #F9F9F9">
+        <select style="background-color: #F9F9F9">
+          <option value="" disabled selected>交易金额</option>
+          <option value="email">付款时间</option>
+          <option value="twitter">收款时间</option>
+        </select>
+      </div>
+    </div>
+  </div>
+    <ion-content overflow-scroll="false" style="margin-top: 35px">
+        <!--商品列表-->
+        <div class="list">
+
+            <!--<div>-->
+                <!--<div class="item item-thumbnail-left">-->
+                    <!--<img ng-src="img/ben.png">-->
+                    <!--<div class="row">-->
+                        <!--<div class="col"> <h2 style="margin-left: 4px">久得美</h2></div>-->
+                        <!--<div class="col" style="color: #C13E3E;text-align: right">已付款</div>-->
+                    <!--</div>-->
+                    <!--<div class="row">-->
+                        <!--<div class="col">D1111(600件)</div>-->
+                        <!--<div class="col" style="color: #C13E3E;text-align: right">-￥56800</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div style="height: 10px;background-color: #f5f5f5"></div>-->
+            <!--</div>-->
+        </div>
+    </ion-content>
+</ion-view>

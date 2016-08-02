@@ -1,0 +1,334 @@
+ /**
+ * Created by GY on 2016/6/12.
+ */
+Tailorpus.controller('AddQuoteCtrl', function($scope,$state,$stateParams,$rootScope,DataService,$cordovaToast,$ionicHistory) {
+  //用户信息
+  $scope.currencytype=2;
+  var obj = JSON.parse(window.localStorage.getItem("tailorUser"));
+
+
+  $scope.choosecurrency=function (x) {
+    $scope.currencytype=x;
+  }
+  $scope.toOherCost=function(){
+    // window.location.href="#/OtherCost"
+    $state.go('OtherCost',{'otherdetail':$scope.quoteList.othersDetail})
+  }
+  $scope.rateList={
+    "5%($)":"0",
+    "10%($)":"0",
+    "15%($)":"0",
+    "20%($)":"0",
+    "25%($)":"0",
+    "30%($)":"0"
+  };
+  function ratestyle(newValue, oldValue, scope) {
+    $scope.ratetype = newValue == ('15%') ? true:false;
+  }
+  $scope.$watch($scope.rate,ratestyle);
+
+  $scope.customText={}
+  // $scope.quoteList.hasTax = false
+  $scope.quoteList = {}
+  // $scope.quoteList.workerpayTax = false
+  $scope.isoffered = $stateParams.isoffered;
+  $scope.quoteList.materialPrice =parseFloat($stateParams.materialPrice);
+  $scope.quoteList.taxPrice = $stateParams.taxPrice;
+  $scope.itemtaxPrice=$stateParams.taxPrice;
+  $scope.quoteList.designName = $stateParams.designName;
+  $scope.quoteList.designImg = $stateParams.designImg;
+  $scope.quoteList.time=$stateParams.time;
+  $scope.quoteList.hasTax=$stateParams.hasTax;
+  $scope.itemhasTax=$stateParams.hasTax;
+
+  $scope.quoteList.workerpayTaxRate
+  // $scope.materiralPrimeCost
+  $scope.quoteList.id = $stateParams.keyId
+  $scope.timeslicer = function(){
+    if(!$scope.quoteList.time) {
+      return '--/--'
+    }
+    else {
+      var array = $scope.quoteList.time.split(" ")
+      var arr1 = array[0].split("-")
+      return arr1[1] + "/" + arr1[2];
+    }
+  }
+  //获取报价详情
+  var getOfferDetail = function(id) {
+ param={
+   id :id
+ }
+    var promise = DataService.getOfferDetail(angular.toJson(param));
+    promise.then(function (data) {
+      //具体操作
+      console.log(angular.toJson(data));
+      $scope.offerDetail = data;
+      if($scope.offerDetail){
+        $scope.quoteList.currencytype = $scope.offerDetail.currency;
+        if($scope.quoteList.currencytype=="USD"){
+          $scope.currencytype=1
+        }else {
+          $scope.currencytype=2
+        }
+        $scope.quoteList.exchangeRate = parseFloat($scope.offerDetail.exchangeRate);
+        $scope.quoteList.hasTax = $scope.isoffered=='N'?true:($scope.offerDetail.hasTax=='N'? true:false);
+        $scope.quoteList.materialPrice =  $scope.isoffered=='Y'?parseFloat($scope.offerDetail.materialPrice):parseFloat($stateParams.materialPrice);
+        $scope.quoteList.number = $scope.offerDetail.number;
+        if(!$scope.offerDetail.others){
+          $scope.quoteList.others=0
+          $scope.quoteList.othersDetail = [{
+            title: '样品',
+            worth: ''
+          }, {
+            title: '银行',
+            worth: ''
+          }, {
+            title: '测试',
+            worth: ''
+          }, {
+            title: '运货',
+            worth: ''
+          }, {
+            title: 'QC',
+            worth: ''
+          }, {
+            title: '佣金',
+            worth: ''
+          }];
+          $rootScope.othercost = $scope.quoteList.othersDetail
+        }else {
+          $scope.quoteList.others = parseFloat($scope.offerDetail.others);
+          $scope.quoteList.othersDetail = JSON.parse($scope.offerDetail.othersDetail);
+          $rootScope.othercost = $scope.quoteList.othersDetail
+        }
+        $scope.quoteList.price = parseFloat($scope.offerDetail.price);
+        $scope.quoteList.profitRate = $scope.offerDetail.profitRate;
+        $scope.quoteList.profitTotal = $scope.offerDetail.profitTotal
+        $scope.quoteList.taxPrice = parseFloat($scope.offerDetail.taxPrice);
+        $scope.quoteList.taxRate = parseFloat($scope.offerDetail.taxRate);
+        $scope.itemtaxRate=$scope.offerDetail.taxRate;
+        $scope.actualworkersPay = parseFloat($scope.offerDetail.workersPay)
+        $scope.quoteList.workersPay = parseFloat($scope.offerDetail.workersPayTaxPrice);
+        $scope.quoteList.workerpayTax =$scope.isoffered=='N'?true: ($scope.offerDetail.workersPayHasTax=='N'?true:false);
+        $scope.quoteList.workerpayTaxRate= parseFloat($scope.offerDetail.workersPayTaxRate)
+      }
+      //$scope.newImageAdd = angular.fromJson($scope.offerList.designImg)
+      //$ionicHistory.goBack();
+    }, function (data) {
+      $cordovaToast.showLongBottom(data.message);
+    });
+  }
+  getOfferDetail($scope.quoteList.id)
+  //当计算参数改变时，重新计算最终利润
+  $scope.onValueChange = function () {
+    //为false时是含税价
+    if($scope.quoteList.hasTax==false){
+      $scope.quoteList.taxPrice = $scope.quoteList.materialPrice * (1 + $scope.quoteList.taxRate / 100)
+    }
+    //为true时是除税价
+    else{
+      $scope.quoteList.taxPrice =  $scope.quoteList.materialPrice
+    }
+    console.log($scope.quoteList.taxPrice)
+    if($scope.quoteList.workerpayTax==false){
+      $scope.actualworkersPay =$scope.quoteList.workersPay *(1 + $scope.quoteList.workerpayTaxRate / 100)
+    }else {
+      $scope.actualworkersPay = $scope.quoteList.workersPay
+    }
+    getProfit();
+  }
+  //获取利润方法
+  $scope.hasCalculated = false;
+  var getProfit = function () {
+    $scope.quoteList.profitRate = ''
+      $scope.quoteList.profitTotal=''
+    if ($scope.quoteList.taxPrice === '' || $scope.actualworkersPay === '' || ($scope.quoteList.workerpayTax == false && $scope.quoteList.workerpayTaxRate === '') || (!$scope.quoteList.others) || $scope.quoteList.number == null) {
+      return;
+    } else {
+      //6.30晚，思考内容：进入其他页面要把所有数据带过去，提交返回再带回来....路由变化的同时要对数据做更新处理
+      //如果为美元
+      if ($scope.currencytype == 1) {
+        if (!$scope.quoteList.exchangeRate||$scope.quoteList.exchangeRate==0) {
+          $scope.rateList={
+            "5%($)":"0",
+            "10%($)":"0",
+            "15%($)":"0",
+            "20%($)":"0",
+            "25%($)":"0",
+            "30%($)":"0"
+          };
+          $scope.quoteList.price=''
+          return
+        } else {
+          //总报价（每一个报价*数量）-总成本（每一件材
+          var totalcost = $scope.actualworkersPay + $scope.quoteList.others + $scope.quoteList.taxPrice * $scope.quoteList.number
+          //单件成本料成本（除税价）*数量+工缴（除税价）+其他费用）=总利润
+          //总成本
+
+          var totalcost = parseFloat($scope.actualworkersPay) + parseFloat($scope.quoteList.others) + parseFloat($scope.quoteList.taxPrice) * parseFloat($scope.quoteList.number)
+          // console.log('actualworkerspay ' + $scope.actualworkersPay + ' others ' + $scope.quoteList.others + ' materiralPrimeCost ' + $scope.quoteList.taxPrice + ' number ' + $scope.quoteList.number + ' totalcost ' + totalcost)
+          //单件成本
+          var eachcost = totalcost / $scope.quoteList.number
+          // console.log(eachcost);
+          //总利润人民币
+          var totalprofit = ($scope.quoteList.price * $scope.quoteList.exchangeRate * $scope.quoteList.number - totalcost);
+          //单件利润人民币
+          var eachprofit = totalprofit / $scope.quoteList.number;
+          // console.log(eachprofit);
+          //计算对应利率所对应的报价
+            $scope.rateList = {
+            "5%($)": "$" + (($scope.quoteList.exchangeRate==0)?0.00:((eachcost * 1.05)/$scope.quoteList.exchangeRate).toFixed(2)),
+            "10%($)": "$" + (($scope.quoteList.exchangeRate==0)?0.00:((eachcost * 1.1)/$scope.quoteList.exchangeRate).toFixed(2)),
+            "15%($)": "$" + (($scope.quoteList.exchangeRate==0)?0.00:((eachcost * 1.15)/$scope.quoteList.exchangeRate).toFixed(2)),
+            "20%($)": "$" + (($scope.quoteList.exchangeRate==0)?0.00:((eachcost * 1.2)/$scope.quoteList.exchangeRate).toFixed(2)),
+            "25%($)": "$" + (($scope.quoteList.exchangeRate==0)?0.00:((eachcost * 1.25)/$scope.quoteList.exchangeRate).toFixed(2)),
+              "30%($)": "$" + (($scope.quoteList.exchangeRate==0)?0.00:((eachcost * 1.3)/$scope.quoteList.exchangeRate).toFixed(2))
+          };
+
+          //利润率
+          console.log(eachprofit+''+eachcost)
+          if(!$scope.quoteList.price){
+            return
+          }else{
+            $scope.quoteList.profitRate = ((eachprofit / eachcost) * 100).toFixed(2) + "%"
+            $scope.quoteList.profitTotal = "$" + (totalprofit / $scope.quoteList.exchangeRate).toFixed(2);
+          }
+
+
+          console.log(typeof((eachcost * 1.05)/$scope.quoteList.exchangeRate))
+          $scope.hasCalculated =true;
+        }
+        console.log($scope.quoteList.profitRate + ' ' + $scope.quoteList.profitTotal)
+      } else if ($scope.currencytype == 2) {
+        //人民币计算方法
+        //总报价（每一个报价*数量）-总成本（每一件材料成本（除税价）*数量+工缴（除税价）+其他费用）=总利润
+        //总成本
+        var totalcost = parseFloat($scope.actualworkersPay) + parseFloat($scope.quoteList.others) + parseFloat($scope.quoteList.taxPrice) * parseFloat($scope.quoteList.number)
+        console.log('actualworkerspay ' + $scope.actualworkersPay + ' others ' + $scope.quoteList.others + ' materiralPrimeCost ' + $scope.quoteList.taxPrice + ' number ' + $scope.quoteList.number + ' totalcost ' + totalcost)
+        //单件成本
+        var eachcost = totalcost / $scope.quoteList.number;
+        console.log(eachcost)
+        //总利润
+        var totalprofit = ($scope.quoteList.price * $scope.quoteList.number - totalcost);
+        console.log($scope.quoteList.price * $scope.quoteList.number)
+        console.log(totalprofit)
+        //单件利润
+        var eachprofit = totalprofit / $scope.quoteList.number;
+        console.log(eachprofit)
+        //计算对应利率所对应的报价
+        $scope.rateList = {
+          "5%": "¥" + (eachcost * 1.05).toFixed(2),
+          "10%": "¥" + (eachcost * 1.1).toFixed(2),
+          "15%": "¥" + (eachcost * 1.15).toFixed(2),
+          "20%": "¥" + (eachcost * 1.2).toFixed(2),
+          "25%": "¥" + (eachcost * 1.25).toFixed(2),
+          "30%": "¥" + (eachcost * 1.3).toFixed(2)
+        };
+        if(!$scope.quoteList.price){
+          return
+        }else {
+          //利润率
+          $scope.quoteList.profitRate = ((eachprofit / eachcost) * 100).toFixed(2) + "%"
+          $scope.quoteList.profitTotal = "¥" + totalprofit.toFixed(2);
+        }
+
+        console.log($scope.quoteList.profitRate + ' ' + $scope.quoteList.profitTotal)
+      }
+    }
+    $scope.hasCalculated =true
+  }
+    $scope.doSubmit = function () {
+      if(!$scope.quoteList.profitRate||!$scope.quoteList.profitTotal)
+      {
+        $cordovaToast.showLongBottom('请输入完整信息后提交报价！');
+        return;
+      }
+      var json = {
+        id: $scope.quoteList.id,
+        materialPrice: $scope.quoteList.materialPrice+"",
+        hasTax: ($scope.quoteList.hasTax == false) ? 'Y' : 'N',
+        taxRate: $scope.quoteList.taxRate+"",
+        taxPrice: $scope.quoteList.taxPrice+"",//?
+        workersPay:$scope.actualworkersPay,
+        workersPayHasTax: $scope.quoteList.workerpayTax == false ? 'Y' : 'N',
+        workersPayTaxRate: $scope.quoteList.workerpayTaxRate+"",
+        workersPayTaxPrice: $scope.quoteList.workersPay+"",
+        others: $scope.quoteList.others+"",//?
+        othersDetail:JSON.stringify($scope.quoteList.othersDetail),//?
+        number: $scope.quoteList.number,
+        currency: $scope.currencytype == 2 ? "CNY" : "USD",
+        exchangeRate: $scope.quoteList.exchangeRate+"",
+        price: $scope.quoteList.price+"",
+        profitRate: $scope.quoteList.profitRate+"",//-->
+        profitTotal: $scope.quoteList.profitTotal,
+/*        vipId: obj.vipId*/
+
+        //time:quoteList.time,
+        //designName:quoteList.designName,
+        //designImg:quoteList.designImg,
+        //designTotalPrice:quoteList.designTotalPrice,
+
+      }
+      console.log(angular.toJson(json));
+
+      var promise = DataService.modifyOffer(json);
+
+      promise.then(function (data) {
+        $cordovaToast.showLongBottom("订单提交成功！");
+        //rootscope重新初始化
+        $rootScope.othercost = [{
+          title: '样品',
+          worth: ''
+        }, {
+          title: '银行',
+          worth: ''
+        }, {
+          title: '测试',
+          worth: ''
+        }, {
+          title: '运货',
+          worth: ''
+        }, {
+          title: 'QC',
+          worth: ''
+        }, {
+          title: '佣金',
+          worth: ''
+        }];
+        $ionicHistory.goBack();
+      }, function (data) {
+        $cordovaToast.showLongBottom(data.message)
+      });
+
+    }
+//实现页面跳转回来刷新
+    $scope.updateData = function () {
+      $scope.quoteList.othersDetail = $rootScope.othercost;
+      if (!$rootScope.othercost) {
+        return;
+      } else {
+        $scope.quoteList.others = 0
+        for (var i = 0; i < $scope.quoteList.othersDetail.length; i++) {
+          if (!$scope.quoteList.othersDetail[i].worth){
+            continue;
+          }else {
+            $scope.quoteList.others += parseFloat($scope.quoteList.othersDetail[i].worth)
+          }
+        }
+      }
+      $scope.onValueChange();
+      getProfit();
+    };
+    $scope.updateData();         //函数调用
+    $scope.$on('$stateChangeSuccess', $scope.updateData); //实现了刷新
+
+
+  //获取图片地址
+  $scope.getTitleImage = function (arr){
+    var images = angular.fromJson(arr)
+    //images = angular.fromJson(images)
+    //console.log(angular.toJson(images))
+    return images
+  }
+});

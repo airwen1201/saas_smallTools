@@ -1,0 +1,8 @@
+/**
+ * Created by GY on 2016/6/12.
+ */
+Tailorpus.controller('QuoteDetailCtrl', function($scope) {
+  $scope.toquoterecord=function(){
+    window.location.href="#/QuoteRecord"
+  };
+});

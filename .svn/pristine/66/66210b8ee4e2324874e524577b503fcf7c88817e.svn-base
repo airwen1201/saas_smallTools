@@ -1,0 +1,125 @@
+<ion-view view-title="账户">
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <a class="button button-icon ion-ios-arrow-back" ng-click="goBack()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content overflow-scroll="false">
+
+        <div class="list">
+
+            <ion-item class="item-avatar item item-icon-left item-icon-right" ng-click="toCash()" >
+                <img ng-src="img/cash.png" style="">
+                <!--<span class="rj-sm-red-icon" ng-if="true" ><p>2</p></span>-->
+                <label style="margin-left: 10px">现金</label>
+                <span class="item-note" ng-bind="'￥'+accountInfo.account" style="margin-top: 8px">
+
+                </span>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+            <ion-item class="item-avatar item item-icon-left item-icon-right" ng-click="toStock()" >
+                <img ng-src="img/stock.png" style="">
+                <span class="rj-sm-red-icon" ng-if="" ><p>2</p></span>
+                <label style="margin-left: 10px">库存</label>
+                <span class="item-note" ng-bind="'￥'+accountInfo.stock" style="margin-top: 8px">
+
+                </span>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+            <ion-item class="item-avatar item item-icon-left item-icon-right" ng-click="toReceivable()" >
+                <img ng-src="img/receivable.png" style="">
+                <span class="rj-sm-red-icon" ng-if=""><p>2</p></span>
+                <label style="margin-left: 10px">应收</label>
+                <span class="item-note" ng-bind="'￥'+accountInfo.receiveable" style="margin-top: 8px">
+
+                </span>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+            <ion-item class="item-avatar item item-icon-left item-icon-right" ng-click="toPayable()" >
+                <img ng-src="img/payable.png" style="">
+                <span class="rj-sm-red-icon" ng-if="" ><p>2</p></span>
+                <label style="margin-left: 10px">应付</label>
+                <span class="item-note" ng-bind="'￥'+accountInfo.payable" style="margin-top: 8px">
+
+                </span>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+           <!--&lt;!&ndash; 现金&ndash;&gt;-->
+            <!--<a class="item item-icon-left item-icon-right item-avatar" style="" href="#/CashList">-->
+                <!--&lt;!&ndash;<i class="icon ion-ios-list"></i>&ndash;&gt;-->
+                <!--&lt;!&ndash;width:100%;height : 100%;max-width: 34px;max-height: 34px&ndash;&gt;-->
+                <!--<img ng-src="img/cash.png">-->
+                <!--<span class="rj-sm-red-icon" ng-if="true"><p>2</p></span>-->
+                <!--<label style="margin-left: 10px">现金</label>-->
+                <!--<span class="item-note" ng-bind="'￥'+accountInfo.account">-->
+
+                <!--</span>-->
+                <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+            <!--</a>-->
+            <!--&lt;!&ndash; 库存&ndash;&gt;-->
+            <!--<a class="item item-icon-left item-icon-right"  href="#/StockList">-->
+                <!--<i class="icon ion-ios-list"></i>-->
+                <!--<span class="rj-sm-red-icon" ng-if="" ><p>2</p></span>-->
+                <!--<label style="margin-left: 10px">库存</label>-->
+                <!--<span class="item-note" ng-bind="'￥'+accountInfo.stock">-->
+
+                <!--</span>-->
+                <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+            <!--</a>-->
+            <!--&lt;!&ndash; 应收&ndash;&gt;-->
+            <!--<a class="item item-icon-left item-icon-right"  href="#/ReceiveList">-->
+                <!--<i class="icon ion-ios-list"></i>-->
+                <!--<span class="rj-sm-red-icon" ng-if=""><p>2</p></span>-->
+                <!--<label style="margin-left: 10px">应收</label>-->
+                <!--<span class="item-note" ng-bind="'￥'+accountInfo.receiveable">-->
+
+                <!--</span>-->
+                <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+            <!--</a>-->
+            <!--&lt;!&ndash; 应付&ndash;&gt;-->
+            <!--<a class="item item-icon-left item-icon-right" href="#/PayList">-->
+                <!--<i class="icon ion-ios-list"></i>-->
+                <!--<span class="rj-sm-red-icon" ng-if="" ><p>2</p></span>-->
+                <!--<label style="margin-left: 10px">应付</label>-->
+                <!--<span class="item-note" ng-bind="'￥'+accountInfo.payable">-->
+
+                <!--</span>-->
+                <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+            <!--</a>-->
+
+            <!--<div style="margin:10px auto;background-color: #f5f5f5;width: 90%">-->
+                <!--<div class="row" >-->
+                    <!--<div class="col col-25"></div>-->
+                    <!--<div class="col col-25">销售</div>-->
+                    <!--<div class="col col-25">成本</div>-->
+                    <!--<div class="col col-25">利润</div>-->
+                <!--</div>-->
+                <!--<div class="row" >-->
+                    <!--<div class="col col-25">今日</div>-->
+                    <!--<div class="col col-25" style="color: red" ng-click="test()">1111</div>-->
+                    <!--<div class="col col-25">1111</div>-->
+                    <!--<div class="col col-25" style="color: green">1111</div>-->
+                <!--</div>-->
+                <!--<div class="row" >-->
+                    <!--<div class="col col-25">昨日</div>-->
+                    <!--<div class="col col-25" style="color: red">1111</div>-->
+                    <!--<div class="col col-25">1111</div>-->
+                    <!--<div class="col col-25" style="color: green">1111</div>-->
+                <!--</div>-->
+                <!--<div class="row" >-->
+                    <!--<div class="col col-25">本周</div>-->
+                    <!--<div class="col col-25" style="color: red">1111</div>-->
+                    <!--<div class="col col-25">1111</div>-->
+                    <!--<div class="col col-25" style="color: green">1111</div>-->
+                <!--</div>-->
+                <!--<div class="row" >-->
+                    <!--<div class="col col-25">本月</div>-->
+                    <!--<div class="col col-25" style="color: red">1111</div>-->
+                    <!--<div class="col col-25">1111</div>-->
+                    <!--<div class="col col-25" style="color: green">1111</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </ion-content>
+</ion-view>

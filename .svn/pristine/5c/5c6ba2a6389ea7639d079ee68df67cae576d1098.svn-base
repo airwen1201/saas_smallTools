@@ -1,0 +1,33 @@
+/**
+* Created by hs on 2016/6/3.
+*/
+Tailorpus.controller('GoodDetailCtrl', function($scope,$state,$ionicScrollDelegate) {
+
+  $scope.phoneNum = "17768118730";
+  $scope.onSuccess = function () {
+    alert('success')
+    console.log("拨打成功")
+  }
+  $scope.onError = function () {
+    alert('failed')
+    console.log("拨打失败")
+  }
+  $scope.onDial = function(){
+    window.location.href ='tel:17768118730'
+  }
+ $scope.openGoodInfo = function () {
+   $state.go('GoodInfo');
+ }
+  $scope.openStoreInfo = function () {
+    $state.go('StoreInfo');
+  }
+  $scope.SlideUp = function () {
+    $scope.SlideUpShow = true;
+  }
+  $scope.SlideDown = function () {
+    $scope.SlideUpShow = false;
+  }
+  $scope.scrollTop = function() {
+    $ionicScrollDelegate.scrollTop();
+  };
+});

@@ -1,0 +1,63 @@
+<ion-view view-title="其他费用" class="OtherCost">
+  <div class="bar bar-header bar-stable item-icon-left bar-header-top">
+
+    <i class="icon ion-chevron-left header-left-row" ng-click="toClose()"></i>
+
+    <div class="title">其他费用</div>
+  </div>
+  <ion-content class="content has-header" overflow-scroll="true" style="overflow:auto;">
+    <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">样品</span>
+        <span class="cell-info">￥1000.00</span>
+      </div>
+    </div>
+    <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">银行</span>
+        <span class="cell-info">￥1000.00</span>
+      </div>
+    </div>
+    <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">测试</span>
+        <span class="cell-info">￥1000.00</span>
+      </div>
+    </div>
+    <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">货运</span>
+        <span class="cell-info">￥1000.00</span>
+      </div>
+    </div>
+    <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">QC</span>
+        <span class="cell-info">￥1000.00</span>
+      </div>
+    </div>
+    <div class="item line-cells">
+      <div class="one-cell">
+        <span class="cell">佣金</span>
+        <span class="cell-info">￥1000.00</span>
+      </div>
+    </div>
+    <ion-list class="list"  show-delete="false" can-swipe="true">
+     <ion-item class="item item-thumbnail-left line-cells" ng-repeat="tag in inputList">
+       <div class="one-cell">
+         <input type="text" class="addcell" placeholder="自定义" style="color: #444;">
+         <span class="label-input">￥</span>
+         <input type="text" class="adddcell-info" placeholder="00.00" style="color: #8c8c8c;font-family: '微软雅黑';">
+         <ion-option-button class="button-assertive icon ion-trash-a" ng-click="deleteStoEvent($index)"></ion-option-button>
+       </div>
+     </ion-item>
+    </ion-list>
+    <div class="icondiv" ng-click="toaddcost()">
+      <i class="icon ion-plus iconplus"></i>
+      <div class="icontxt" >添加自定义</div>
+    </div>
+    <div class="padding submit-btn">
+      <a class="button button-balanced button-block">提交</a>
+    </div>
+   </ion-content>
+  </ion-view>

@@ -1,0 +1,97 @@
+<ion-view view-title="报价详情" class="AddQuote">
+  <div class="bar bar-header bar-stable item-icon-left bar-header-top">
+    <i class="icon ion-chevron-left header-left-row" ng-click="toClose()"></i>
+
+    <div class="title">报价详情</div>
+  </div>
+  <ion-content class="content has-header ">
+    <div class="list">
+      <div class="item item-thumbnail-left" ng-click="toquoterecord()">
+        <img src="quoteList.designImg ">
+
+        <div class="list-mess">
+          <div class="list-txt">
+            <b ng-bind="quoteList.designName"></b>
+            <p style="font-family: 微软雅黑">{{quoteList.hasTax!='N' ? '含税':'除税'}}￥<b ng-bind="quoteList.taxPrice.toFixed(2)"></b><span ng-bind="timeslicer($index)"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item item-input line-cells">
+      <div class="one-cell">
+        <span class="cell">材料</span>
+        <input type="number" placeholder="请输入材料" style="display: inline;width: 100px;margin-left: 30px" ng-model="quoteList.materialPrice" />
+      </div>
+      <div class="one-cell" style="width:55%">
+        <ion-toggle class="cell toggle-addQuote" ion-toggle-text="除税价;含税价"  ng-model="quoteList.hasTax" toggle-class="toggle-my-theme" ng-change="onValueChange()">
+        </ion-toggle>
+        <input type="number" placeholder="税率" style="width: 30px;margin-right: 0px;padding-right: 0px;float: right;margin-right: 34px;" ng-model="quoteList.taxRate" ng-show="true" ng-keyup="onValueChange()"/>
+        <span class="toggle-addQuote-span" ng-show="true">%</span>
+      </div>
+    </div>
+    <div class="item line-cells item-input">
+      <div class="one-cell" style="width:55%">
+        <span class="cell">工缴</span>
+        <span class="cell" style="padding-left: 30px;font-family: 微软雅黑;">￥</span>
+        <input type="number" placeholder="请输入工缴" ng-model="quoteList.workersPay" style="display: inline;width: 150px;padding-bottom: 5px;" ng-change="onValueChange()"/>
+      </div>
+      <div class="one-cell">
+        <ion-toggle class="cell toggle-addwp" ion-toggle-text="除税价;含税价"  ng-model="quoteList.workerpayTax" toggle-class="toggle-my-theme" ng-change="onValueChange()">
+        </ion-toggle>
+        <input type="number" placeholder="税率" style="width: 30px;margin-right: 0px;padding-right: 0px;float: right;margin-right: 34px;" ng-model="quoteList.workerpayTaxRate" ng-change="onValueChange()" />
+        <span class="toggle-addwp-span">%</span>
+      </div>
+    </div>
+    <div class="item line-cells" ng-click="toOherCost()">
+      <div class="one-cell" >
+        <span class="cell">其他</span>
+        <span class="cell-info" style="padding-left: 30px;" ng-bind="quoteList.others"></span>
+      </div>
+      <i class="icon ion-chevron-right cell-right-row"></i>
+    </div>
+    <div class="item line-cells item-input">
+      <div class="one-cell">
+        <span class="cell">数量</span>
+        <input type="number" placeholder="请输入数量" ng-model="quoteList.number" style="display: inline;width: 100px;margin-left: 30px;padding-bottom: 5px;" ng-change="onValueChange(quoteList.number)"/>
+
+        <span class="cell">件</span>
+      </div>
+    </div>
+    <div class="item line-cells">
+      <div class="one-cell" style="width: 60%">
+        <span class="cell">币种</span>
+        <i class="icon ion-checkmark-circled checkmark-dollar" ng-click="choosecurrency(1);onValueChange()" ng-class="{'addcolor':currencytype==1}"></i><span class="txtspan">美元</span>
+      </div>
+      <div class="one-cell-left">
+        <i class="icon ion-checkmark-circled checkmark-rmb" ng-click="choosecurrency(2);onValueChange()" ng-class="{'addcolor':currencytype==2}"></i><span class="txtspan">人民币</span>
+      </div>
+    </div>
+    <div class="item line-cells item-input" ng-show="currencytype==1">
+      <div class="one-cell">
+        <span class="cell">汇率</span>
+        <input type="number" placeholder="请输入汇率" ng-model="quoteList.exchangeRate" style="display: inline;width: 100px;margin-left: 30px"ng-change="onValueChange()"/>
+      </div>
+    </div>
+    <div class="item line-cells item-input">
+      <div class="one-cell">
+        <span class="cell">报价</span>
+        <span class="cell" style="padding-left: 30px;font-family: 微软雅黑;" ng-show="currencytype==2">￥</span>
+        <span class="cell" style="padding-left: 30px;font-family: 微软雅黑;" ng-show="currencytype==1">$</span>
+        <input type="number" placeholder="请输入报价" ng-model="quoteList.price" ng-change="onValueChange()" style="display: inline;width: 100px;padding-bottom: 5px;"/>
+      </div>
+      <div class="one-cell-left">
+        <span class="cell" style="color: #3CC51F" ng-bind="quoteList.profitRate"></span>
+        <span class="cell-info" style="color: #3CC51F;padding-left: 20px" ng-bind="quoteList.profitTotal"></span>
+      </div>
+    </div>
+    <ul>
+      <li ng-repeat="(x,y) in rateList">
+        <div class="addquote-rate" ng-model="rate" ng-class="{'addStyle':ratetype}"><span ng-bind="x"></span></div>
+        <div class="addquote-quote" ng-class="{'addStyle':ratetype}"><span ng-bind="y"></span></div>
+      </li>
+    </ul>
+    <div class="padding submit-btn">
+      <a class="button button-balanced button-block" ng-click="doSubmit()">提交</a>
+    </div>
+  </ion-content>
+</ion-view>

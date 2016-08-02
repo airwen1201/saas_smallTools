@@ -1,0 +1,124 @@
+<ion-view view-title="盘点" >
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <a class="button button-icon ion-ios-arrow-back" ng-click="toClose()"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="list">
+      <a class="item item-thumbnail-left" ng-click="">
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+        <img src="http://www.runoob.com/try/demo_source/blue-album.jpg">
+        <h2 style="font-size: 17px;height: 40px;line-height: 40px;float: left">{{stockIn.stockInId}}</h2>
+        <h2 style="font-size: 14px;height: 40px;line-height: 40px;float: right">{{stockIn.from.name}}</h2>
+        <p style="float: left;height: 40px;line-height: 40px;clear: both">{{stringToDate(stockIn.createTime)| date:"MM/dd" }}入库</p>
+        <p style="float: right;height: 40px;line-height: 40px;">剩余数量 <span style="color: #3CC51F">{{stockIn.leftNumber}}</span>/{{stockIn.number}}</p>
+        <!--<h2 style="font-size: 17px;height: 40px;line-height: 40px;float: left">RK100001</h2>-->
+        <!--<h2 style="font-size: 14px;height: 40px;line-height: 40px;float: right">久得美</h2>-->
+        <!--<p style="float: left;height: 40px;line-height: 40px;clear: both">04／09入库</p>-->
+        <!--<p style="float: right;height: 40px;line-height: 40px;">剩余数量 <span style="color: #3CC51F">600</span>/600</p>-->
+      </a>
+      <img src="http://www.runoob.com/try/demo_source/blue-album.jpg" style="width: 100%;height: 100px;display: block">
+
+      <div class="" style="height: 15px;margin-top: 10px;background-color: #ededed">
+
+      </div>
+      <div class="item">
+
+        <div style="height: 34px;margin: 0 auto;width: 90%">
+          <div class="item item-input item-select" style="float: left;width: 30%;height: 36px;background-color: #F9F9F9;margin-right: 10px">
+            <select ng-change="changeColor(x)" ng-model="x" style="background-color: #F9F9F9;">
+              <option selected>全色</option>
+              <option ng-repeat="color in stockIn.sku">{{color.color}}</option>
+              <!--<option value="">白色</option>-->
+            </select>
+          </div>
+
+          <div class="item item-input item-select" style="float: left;width: 30%;height: 36px;background-color: #F9F9F9">
+            <select ng-model="y" ng-change="changeSize(y)" style="background-color: #F9F9F9;">
+              <option selected>全码</option>
+              <option ng-repeat="size in stockIn.sku[colorChange].sizelist">{{size.size}}</option>
+              <!--<option value="">4</option>-->
+              <!--<option value="">6</option>-->
+              <!--<option value="">8</option>-->
+              <!--<option value="">10</option>-->
+            </select>
+          </div>
+
+          <span style="float: left;line-height: 30px;margin: 0 5px 0 5px">单价:{{price}}</span>
+          <!--<input type="number" style="width: 18%;border: 1px solid #ededed;" placeholder="">-->
+        </div>
+      </div>
+
+      <div style="width: 100%" ng-show="showMoreValue">
+        <div class="">
+          <div class="directory" style="background-color: #ededed">
+            <div ng-repeat="item in stockIn.sku">
+              <a ng-class="{'pt-active':picShowValue == $index + 1 || !($index + 1)}" ng-click="picShow($index + 1)">{{item.color}}</a>
+              <!--<a ng-class="{'pt-active':picShowValue==2}" ng-click="picShow(2)">蓝色</a>-->
+              <!--<a ng-class="{'pt-active':picShowValue==3}" ng-click="picShow(3)">白色</a>-->
+            </div>
+          </div>
+        </div>
+        <div style="width: 100%">
+
+          <div class="row">
+            <div class="col" style="width: 100%;text-align: center">尺码</div>
+            <div class="col" style="width: 100%;text-align: center">库存数量</div>
+            <div class="col" style="width: 100%;text-align: center">剩余数量</div>
+            <div class="col" style="width: 100%;text-align: center">出库数量</div>
+          </div>
+
+          <div ng-if="sizeChange!=-1">
+            <div class="row">
+              <div class="col" style="width: 100%;text-align: center">
+                <!--<input type="number" style="width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="1">-->
+                <p>{{stockIn.sku[skuIndex].sizelist[sizeChange].size}}</p>
+              </div>
+              <div class="col" style="width: 100%;text-align: center">
+                <p>{{stockIn.sku[skuIndex].sizelist[sizeChange].num}}</p>
+                <!--<input type="text" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="#149白色">-->
+              </div>
+              <div class="col" style="width: 100%;text-align: center">
+                <p>{{stockIn.sku[skuIndex].sizelist[sizeChange].num-outputCount.num}}</p>
+                <!--<input type="text" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="#149白色">-->
+              </div>
+              <div class="col" style="width: 100%;text-align: center">
+                <input type="number" ng-change="numChange()" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" value="0" ng-model="outputCount.num">
+              </div>
+            </div>
+          </div>
+
+          <div ng-if="sizeChange==-1" ng-repeat="item in stockIn.sku[skuIndex].sizelist">
+            <div class="row">
+              <div class="col" style="width: 100%;text-align: center">
+                <!--<input type="number" style="width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="1">-->
+                <p>{{item.size}}</p>
+              </div>
+              <div class="col" style="width: 100%;text-align: center">
+                <p>{{item.num}}</p>
+                <!--<input type="text" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="#149白色">-->
+              </div>
+              <div class="col" style="width: 100%;text-align: center">
+                <p>{{item.num-outputCount[getListNum(skuIndex)+$index].num}}</p>
+                <!--<input type="text" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" disabled="ture" value="#149白色">-->
+              </div>
+              <div class="col" style="width: 100%;text-align: center">
+                <input type="number" ng-change="numChange()" style="border: 1px solid gray;width: 80%;margin-left: 10%;text-align: center" value="0" ng-model="outputCount[getListNum(skuIndex)+$index].num">
+              </div>
+            </div>
+          </div>
+          <div>
+            <p style="float: right;margin: 5px 20px 0 0;font-size: 14px">收货数量:<span style="font-size: 18px;color: green;font-weight: bold">{{orderCount}}件</span></p>
+          </div>
+          <div class="content padding has-header">
+            <button class="button button-block button-balanced">提交</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
+
