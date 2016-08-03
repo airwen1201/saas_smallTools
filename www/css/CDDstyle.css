@@ -1,0 +1,20 @@
+
+/*未点击状态 */
+.link-color {
+    color:#000000;
+}
+
+/*点击后状态 */
+.visited-color {
+    color:#cd5c5c;
+}
+
+/*图片轮播小圆点样式 */
+.ion-record{
+    color:#ffa500;
+    height: 25px;
+    width: 25px;
+    font-size: 24px;
+    padding-left: 0px;
+    vertical-align: top;
+}
