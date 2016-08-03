@@ -60,7 +60,7 @@ Tailorpus.controller('LoginCtrl', ['$scope', '$rootScope','$state','$interval','
 
       console.log(JSON.stringify(data));
 
-      $cordovaToast.showLongBottom("登录成功！")
+      //$cordovaToast.showLongBottom("登录成功！")
       //登录后跳转到dash页面
       $state.go("tab.dash");
 

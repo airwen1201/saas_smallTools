@@ -18,6 +18,10 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$rootScope','$cordovaToast
       $state.go('ModifyDesign',{'designId':$scope.designList[i].id})
     }
 
+    //$scope.getIndex=function(){
+    //  window.location.href="#/Index.html"
+    //};
+
     $scope.searchitem='';
     $scope.toclear = function () {
       $scope.searchitem='';
@@ -106,6 +110,51 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$rootScope','$cordovaToast
     };
     $scope.updateData();         //函数调用
     $scope.$on('$stateChangeSuccess', $scope.updateData); //实现了刷新
+
+
+    $scope.onClick1 =  false ;
+    $scope.onClick2 =  true ;
+    $scope.show1 =  true ;
+    $scope.shown1 = function() {
+      $scope.show1 =  true ;
+      $scope.show2 =  false ;
+      $scope.onClick1 =  false ;
+      $scope.onClick2 =  true ;
+      //document.getElementById("color1").style.color="indianred";
+      //document.getElementById("color2").style.color="black";
+      //$scope.show1 = !$scope.show1;
+    }
+    $scope.shown2 = function() {
+      $scope.show1 =  false ;
+      $scope.show2 =  true ;
+      $scope.onClick1 =  true ;
+      $scope.onClick2 =  false ;
+      //document.getElementById("color1").style.color="black";
+      //document.getElementById("color2").style.color="indianred";
+    }
+
+   /* $scope.clickChangeColor = function() {
+      $scope.onClick =  true ;
+    }*/
+    $scope.myActiveSlide = 1;
+    $scope.myActiveSlide2 = 1;
+    $scope.b = [['img/design.png','img/stock.png','img/cfp_gray.png','img/calculator.png'],
+      ['img/cash.png','img/concern_gray.png','img/concern_red.png','img/contact_default.png'],
+      ['img/ic_add.png','img/ic_default.png','img/ionic.png','img/logo.png']];
+    $scope.photos = ['img/design.png','img/stock.png','img/cfp_gray.png','img/calculator.png',
+      'img/cash.png','img/concern_gary.png','img/concern_red.png','img/home_logo.png',
+      'img/ionic.png','img/ic_default.png','img/calendar.png','img/baojia.png']
+    $scope.photos2 = ['img/cfp_gray.png','img/cfp_gray.png','img/cfp_gray.png','img/home_logo.png',
+        'img/home_logo.png','img/home_logo.png','img/cfp_red.png','img/cfp_red.png',
+        'img/cfp_red.png','img/baojia.png','img/baojia.png','img/baojia.png']
+
+    $scope.rows = [];
+    var setRows = function(){
+      for(var i = 0;i<$scope.photos.length/3;i++){
+        $scope.rows.push(i);
+      }
+    }
+    setRows();
 
   }]);
 

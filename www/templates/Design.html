@@ -54,6 +54,129 @@
 
     <!--</ion-tabs>-->
 
+
+        <!--<div class="title">-->
+          <!--<a href="#index.html" ><span style=" font-size: 16px;color: indianred" >进入商城</span></a>-->
+        <!--</div>-->
+
+        <div class="row">
+
+          <div class="col ">
+            <div ng-click="shown1()" style="text-align:center;font-size: 18px" ng-class="{true: 'link-color', false: 'visited-color'}[onClick1]">为你推荐</div>
+          </div>
+
+          <div class="col " style="border-left: 1px solid black">
+            <div ng-click="shown2()" style="text-align:center;font-size: 18px" ng-class="{true: 'link-color', false: 'visited-color'}[onClick2]">排行榜</div>
+          </div>
+
+        </div>
+
+      <div ng-show="show1">
+          <ion-slide-box active-slide="myActiveSlide" does-continue="true" auto-play="true" slide-interval="1000" show-pager="true" paper-color="red !important;">
+            <ion-slide ng-repeat="item in rows">
+              <!--<ion-slide ng-repeat="photo in photos">-->
+              <div class="row" style="height: 200px">
+                <div class="col-33">
+                  <div><img ng-src="{{photos[0+item*3]}}" ></div>
+                  <div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>
+                  <div><span ng-bind="'￥'+'18.8'"></span></div>
+                </div>
+                <div class="col-33">
+                  <div><img ng-src="{{photos[1+item*3]}}" ></div>
+                  <div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>
+                  <div><span ng-bind="'￥'+'12.2'"></span></div>
+                </div>
+                <div class="col-33">
+                  <div><img ng-src="{{photos[2+item*3]}}" ></div>
+                  <div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>
+                  <div><span ng-bind="'￥'+'16.6'"></span></div>
+                </div>
+                <!--<div class="col-33"><img ng-src="{{photos[0+item*3]}}" ></div>-->
+                <!--<div class="col-33"><img ng-src="{{photos[1+item*3]}}" ></div>-->
+                <!--<div class="col-33"><img ng-src="{{photos[2+item*3]}}" ></div>-->
+                <!--<div><img ng-src="{{item}}" ng-repeat="item in photo track by $index" class="col-33"></div>-->
+                  <!--<div class="col-33"><img src="img/design.png" ></div>-->
+                  <!--<div class="col-33"><img src="img/stock.png" ></div>-->
+                  <!--<div class="col-33"><img src="img/cfp_gray.png" ></div>-->
+              </div>
+            </ion-slide>
+
+            <!--<ion-slide>-->
+              <!--<div class="row">-->
+                  <!--<div class="col-33"><img src="img/calculator.png" ></div>-->
+                  <!--<div class="col-33"><img src="img/calculator.png" ></div>-->
+                  <!--<div class="col-33"><img src="img/calculator.png" ></div>-->
+              <!--</div>-->
+            <!--</ion-slide>-->
+
+            <!--<ion-slide>-->
+              <!--<div class="row">-->
+                  <!--<div class="col-33"><img src="img/cash.png" ></div>-->
+                  <!--<div class="col-33"><img src="img/cash.png" ></div>-->
+                  <!--<div class="col-33"><img src="img/cash.png" ></div>-->
+              <!--</div>-->
+            <!--</ion-slide>-->
+
+          </ion-slide-box>
+      </div>
+
+        <div>
+          <!--<ion-slide-box active-slide="myActiveSlide" does-continue="true" auto-play="true" slide-interval="1000" show-pager="true" >-->
+          <ion-slide-box active-slide="myActiveSlide2" does-continue="true" auto-play="true" slide-interval="1000" show-pager="true">
+
+            <ion-slide ng-show="show2" ng-repeat="item in rows">
+
+              <!--<div class="row" style="height: 200px">-->
+                <!--<div class="col-33"><img ng-src="{{photos2[0+item*3]}}" ></div>-->
+                <!--<div class="col-33"><img ng-src="{{photos2[1+item*3]}}" ></div>-->
+                <!--<div class="col-33"><img ng-src="{{photos2[2+item*3]}}" ></div>-->
+              <!--</div>-->
+
+              <div class="row" style="height: 200px">
+                <div class="col-33">
+                  <div><img ng-src="{{photos2[0+item*3]}}" ></div>
+                  <div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>
+                  <div><span ng-bind="'￥'+'11.1'"></span></div>
+                </div>
+                <div class="col-33">
+                  <div><img ng-src="{{photos2[1+item*3]}}" ></div>
+                  <div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>
+                  <div><span ng-bind="'￥'+'33.3'"></span></div>
+                </div>
+                <div class="col-33">
+                  <div><img ng-src="{{photos2[2+item*3]}}" ></div>
+                  <div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>
+                  <div><span ng-bind="'￥'+'22.2'"></span></div>
+                </div>
+              </div>
+              <!--<div class="row" >-->
+                <!--<div class="col-33"><img src="img/stock.png" ></div>-->
+                <!--<div class="col-33"><img src="img/stock.png" ></div>-->
+                <!--<div class="col-33"><img src="img/stock.png" ></div>-->
+              <!--</div>-->
+            </ion-slide>
+
+            <!--<ion-slide ng-show="show2">-->
+              <!--<div class="row">-->
+                <!--<div class="col-33"><img src="img/cfp_gray.png" ></div>-->
+                <!--<div class="col-33"><img src="img/cfp_gray.png" ></div>-->
+                <!--<div class="col-33"><img src="img/cfp_gray.png" ></div>-->
+              <!--</div>-->
+            <!--</ion-slide>-->
+
+            <!--<ion-slide ng-show="show2">-->
+              <!--<div class="row">-->
+                <!--<div class="col-33"><img src="img/cfp_red.png" ></div>-->
+                <!--<div class="col-33"><img src="img/cfp_red.png" ></div>-->
+                <!--<div class="col-33"><img src="img/cfp_red.png" ></div>-->
+              <!--</div>-->
+            <!--</ion-slide>-->
+
+          </ion-slide-box>
+        </div>
+
+
     </ion-list>
+
   </ion-content>
 </ion-view>
