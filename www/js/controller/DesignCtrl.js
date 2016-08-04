@@ -111,7 +111,7 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$rootScope','$cordovaToast
     $scope.updateData();         //函数调用
     $scope.$on('$stateChangeSuccess', $scope.updateData); //实现了刷新
 
-
+    //点击改变字体颜色；显示/隐藏商品的信息；
     $scope.onClick1 =  false ;
     $scope.onClick2 =  true ;
     $scope.show1 =  true ;
@@ -141,12 +141,96 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$rootScope','$cordovaToast
     $scope.b = [['img/design.png','img/stock.png','img/cfp_gray.png','img/calculator.png'],
       ['img/cash.png','img/concern_gray.png','img/concern_red.png','img/contact_default.png'],
       ['img/ic_add.png','img/ic_default.png','img/ionic.png','img/logo.png']];
-    $scope.photos = ['img/design.png','img/stock.png','img/cfp_gray.png','img/calculator.png',
-      'img/cash.png','img/concern_gary.png','img/concern_red.png','img/home_logo.png',
-      'img/ionic.png','img/ic_default.png','img/calendar.png','img/baojia.png']
-    $scope.photos2 = ['img/cfp_gray.png','img/cfp_gray.png','img/cfp_gray.png','img/home_logo.png',
-        'img/home_logo.png','img/home_logo.png','img/cfp_red.png','img/cfp_red.png',
-        'img/cfp_red.png','img/baojia.png','img/baojia.png','img/baojia.png']
+
+    //$scope.photos = ['img/design.png','img/stock.png','img/cfp_gray.png','img/calculator.png',
+    //  'img/cash.png','img/concern_gary.png','img/concern_red.png','img/home_logo.png',
+    //  'img/ionic.png','img/ic_default.png','img/calendar.png','img/baojia.png']
+    //
+    //$scope.photos2 = ['img/cfp_gray.png','img/cfp_gray.png','img/cfp_gray.png','img/home_logo.png',
+    //    'img/home_logo.png','img/home_logo.png','img/cfp_red.png','img/cfp_red.png',
+    //    'img/cfp_red.png','img/baojia.png','img/baojia.png','img/baojia.png']
+
+    //var json = {
+    //  img:"img/design.png",
+    //  font:"混纺织面料",
+    //  price:"18.8",
+    //  url:"www.baidu.com"
+    //}
+
+    $scope.photos =[
+      {
+        img:"img/cash.png",
+        font:"混纺织面料1",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/stock.png",
+        font:"混纺织面料2",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/cfp_gray.png",
+        font:"混纺织面料3",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/calculator.png",
+        font:"混纺织面料4",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/cash.png",
+        font:"混纺织面料5",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/concern_gary.png",
+        font:"混纺织面料6",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/concern_red.png",
+        font:"混纺织面料7",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/cfp_red.png",
+        font:"混纺织面料8",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/ionic.png",
+        font:"混纺织面料9",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/ic_default.png",
+        font:"混纺织面料10",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/calendar.png",
+        font:"混纺织面料11",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/baojia.png",
+        font:"混纺织面料12",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      }
+    ]
 
     $scope.rows = [];
     var setRows = function(){
@@ -156,5 +240,79 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$rootScope','$cordovaToast
     }
     setRows();
 
+    $scope.photos2 =[
+      {
+        img:"img/cfp_gray.png",
+        font:"混纺织面料1",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/cfp_gray.png",
+        font:"混纺织面料2",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/cfp_gray.png",
+        font:"混纺织面料3",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/home_logo.png",
+        font:"混纺织面料4",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/home_logo.png",
+        font:"混纺织面料5",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/home_logo.png",
+        font:"混纺织面料6",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/cfp_red.png",
+        font:"混纺织面料7",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/cfp_red.png",
+        font:"混纺织面料8",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/cfp_red.png",
+        font:"混纺织面料9",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/baojia.png",
+        font:"混纺织面料10",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/baojia.png",
+        font:"混纺织面料11",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      },
+      {
+        img:"img/baojia.png",
+        font:"混纺织面料12",
+        price:"18.8",
+        url:"http://www.baidu.com"
+      }
+    ]
   }]);
 

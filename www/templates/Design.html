@@ -76,20 +76,29 @@
             <ion-slide ng-repeat="item in rows">
               <!--<ion-slide ng-repeat="photo in photos">-->
               <div class="row" style="height: 200px">
-                <div class="col-33">
-                  <div><img ng-src="{{photos[0+item*3]}}" ></div>
-                  <div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>
-                  <div><span ng-bind="'￥'+'18.8'"></span></div>
+                <div class="col-33" >
+                  <a href="{{photos[0+item*3].url}}">
+                  <div><img ng-src="{{photos[0+item*3].img}}" class="photo-size"></div>
+                  <div><span ng-bind="photos[0+item*3].font"></span></div>
+                  <div><b><span ng-bind="'￥'+photos[0+item*3].price"></span></b></div>
+                  </a>
                 </div>
                 <div class="col-33">
-                  <div><img ng-src="{{photos[1+item*3]}}" ></div>
-                  <div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>
-                  <div><span ng-bind="'￥'+'12.2'"></span></div>
+                  <a href="{{photos[1+item*3].url}}">
+                  <div><img ng-src="{{photos[1+item*3].img}}" class="photo-size"></div>
+                  <div><span ng-bind="photos[1+item*3].font"></span></div>
+                  <div><b><span ng-bind="'￥'+photos[1+item*3].price"></span></b></div>
+                  </a>
                 </div>
                 <div class="col-33">
-                  <div><img ng-src="{{photos[2+item*3]}}" ></div>
-                  <div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>
-                  <div><span ng-bind="'￥'+'16.6'"></span></div>
+                  <a href="{{photos[2+item*3].url}}">
+                  <div><img ng-src="{{photos[2+item*3].img}}" class="photo-size"></div>
+                  <div><span ng-bind="photos[2+item*3].font"></span></div>
+                  <div><b><span ng-bind="'￥'+photos[2+item*3].price"></span></b></div>
+                  </a>
+                  <!--<div><img ng-src="{{photos[2+item*3]}}" class="photo-size"></div>-->
+                  <!--<div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>-->
+                  <!--<div><span ng-bind="'￥'+'16.6'"></span></div>-->
                 </div>
                 <!--<div class="col-33"><img ng-src="{{photos[0+item*3]}}" ></div>-->
                 <!--<div class="col-33"><img ng-src="{{photos[1+item*3]}}" ></div>-->
@@ -131,22 +140,45 @@
                 <!--<div class="col-33"><img ng-src="{{photos2[1+item*3]}}" ></div>-->
                 <!--<div class="col-33"><img ng-src="{{photos2[2+item*3]}}" ></div>-->
               <!--</div>-->
-
+              <!--<span class="badge badge-assertive">0</span>-->
               <div class="row" style="height: 200px">
+
                 <div class="col-33">
-                  <div><img ng-src="{{photos2[0+item*3]}}" ></div>
-                  <div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>
-                  <div><span ng-bind="'￥'+'11.1'"></span></div>
+                  <a href="{{photos2[0+item*3].url}}">
+                  <div class="position-relative">
+                    <img ng-src="{{photos2[0+item*3].img}}" class="photo-size">
+                    <div class="badge badge-assertive position-num">{{1+item*3}}</div>
+                  </div>
+
+                  <div><span ng-bind="photos2[0+item*3].font"></span></div>
+                  <div><b><span ng-bind="'￥'+photos2[0+item*3].price"></span></b></div>
+                  </a>
                 </div>
+
                 <div class="col-33">
-                  <div><img ng-src="{{photos2[1+item*3]}}" ></div>
-                  <div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>
-                  <div><span ng-bind="'￥'+'33.3'"></span></div>
+                  <a href="{{photos2[1+item*3].url}}">
+                  <div class="position-relative">
+                    <img ng-src="{{photos2[1+item*3].img}}" class="photo-size">
+                    <div class="badge badge-assertive position-num">{{2+item*3}}</div>
+                  </div>
+
+                  <div><span ng-bind="photos2[1+item*3].font"></span></div>
+                  <div><b><span ng-bind="'￥'+photos2[1+item*3].price"></span></b></div>
+                  </a>
                 </div>
+
                 <div class="col-33">
-                  <div><img ng-src="{{photos2[2+item*3]}}" ></div>
-                  <div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>
-                  <div><span ng-bind="'￥'+'22.2'"></span></div>
+                  <a href="{{photos2[2+item*3].url}}">
+                  <div class="position-relative">
+                    <img ng-src="{{photos2[2+item*3].img}}" class="photo-size">
+                    <div class="badge badge-assertive position-num">{{3+item*3}}</div>
+                  </div>
+
+                  <div><span ng-bind="photos2[2+item*3].font"></span></div>
+                  <div><b><span ng-bind="'￥'+photos2[2+item*3].price"></span></b></div>
+                  </a>
+                  <!--<div><span ng-bind="'混纺针织面料D1256 平台自营'"></span></div>-->
+                  <!--<div><span ng-bind="'￥'+'22.2'"></span></div>-->
                 </div>
               </div>
               <!--<div class="row" >-->

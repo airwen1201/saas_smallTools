@@ -17,5 +17,30 @@
     font-size: 24px;
     padding-left: 0px;
     vertical-align: top;
-    
+}
+
+/*统一图片大小*/
+.photo-size{
+    height: 90px;
+    width: 90px;
+}
+
+/*相对位置*/
+.position-relative{
+    position:relative;
+}
+
+/*排行榜文字位置*/
+.position-num{
+    position:absolute;
+    z-index:0;
+    right:10px;
+    top:0px
+}
+
+/*超链接文字样式*/
+a:-webkit-any-link {
+    color: black;
+    text-decoration: none;
+    cursor: auto;
 }
