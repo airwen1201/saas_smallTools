@@ -66,6 +66,7 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$rootScope','$cordovaToast
       promise.then(function (data) {
         //具体操作
         console.log(angular.toJson(data));
+
         $scope.designList = data.list
         //window.localStorage.setItem("tailorUser",JSON.stringify(obj));
         //$scope.isSubmit = '0'
@@ -111,6 +112,7 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$rootScope','$cordovaToast
     $scope.updateData();         //函数调用
     $scope.$on('$stateChangeSuccess', $scope.updateData); //实现了刷新
 
+    //图片轮播start
     //点击改变字体颜色；显示/隐藏商品的信息；
     $scope.onClick1 =  false ;
     $scope.onClick2 =  true ;
@@ -314,5 +316,6 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$rootScope','$cordovaToast
         url:"http://www.baidu.com"
       }
     ]
+       //图片轮播end
   }]);
 
