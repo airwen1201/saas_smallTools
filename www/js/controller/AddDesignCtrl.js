@@ -1,4 +1,4 @@
-Tailorpus.controller('AddDesignCtrl', function($scope,$rootScope,$state,$cordovaImagePicker,$ionicActionSheet,$cordovaCamera,$ionicPlatform,$cordovaFileTransfer,$ionicLoading,$cordovaToast,$ionicHistory,$ionicPopup,DataService) {
+Tailorpus.controller('AddDesignCtrl', function($scope,$rootScope,$state,$cordovaImagePicker,$ionicActionSheet,$cordovaCamera,$ionicPlatform,$cordovaFileTransfer,$ionicLoading,$cordovaToast,$ionicHistory,$ionicPopup,DataService,$ionicSlideBoxDelegate) {
   $scope.addPrice=function(i){
     $state.go('MaterialPrice',{'numIndex':i,'state':1})
     //window.location.href="#/MaterialPrice"
@@ -202,6 +202,7 @@ Tailorpus.controller('AddDesignCtrl', function($scope,$rootScope,$state,$cordova
       promise.then(function (data) {
         //具体操作
         console.log(angular.toJson(data));
+        $rootScope.designMaterials = data.list
         //window.localStorage.setItem("tailorUser",JSON.stringify(obj));
         $scope.isSubmit = '0'
         $ionicHistory.goBack();
@@ -234,163 +235,50 @@ Tailorpus.controller('AddDesignCtrl', function($scope,$rootScope,$state,$cordova
   $scope.myActiveSlide = 1;
   $scope.myActiveSlide2 = 1;
 
-  $scope.photos =[
-    {
-      img:"img/cash.png",
-      font:"混纺织面料1",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/stock.png",
-      font:"混纺织面料2",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/cfp_gray.png",
-      font:"混纺织面料3",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/calculator.png",
-      font:"混纺织面料4",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/cash.png",
-      font:"混纺织面料5",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/concern_gary.png",
-      font:"混纺织面料6",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/concern_red.png",
-      font:"混纺织面料7",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/cfp_red.png",
-      font:"混纺织面料8",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/ionic.png",
-      font:"混纺织面料9",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/ic_default.png",
-      font:"混纺织面料10",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/calendar.png",
-      font:"混纺织面料11",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/baojia.png",
-      font:"混纺织面料12",
-      price:"18.8",
-      url:"http://www.baidu.com"
+  //加载数据商城排行榜
+  $scope.MallList = []
+  var getMallList = function (){
+    var json = {
+      //vipId:obj.vipId
+      keyword:'面料'
+
     }
-  ]
+    console.log(angular.toJson(json));
+    var promise = DataService.getMallList(angular.toJson(json));
+    promise.then(function (data) {
+      //具体操作
+      console.log('++++++++++++++++++'+data);
+      $scope.MallList = data.list
+      $ionicSlideBoxDelegate.update();
+      $ionicSlideBoxDelegate.$getByHandle().loop(true);
+      //$ionicSlideBoxDelegate.$getByHandle().next();
+      //console.log(angular.toJson(data));
+      //console.log(angular.toJson(data.list));
+      console.log(angular.toJson($scope.MallList));
+      console.log($scope.MallList.length)
+
+      setRows();
+
+    }, function (data) {
+      //alert(JSON.stringify(data));
+      //$scope.isSubmit = '0'
+      console.log(data.message);
+      $cordovaToast.showLongBottom(data.message)
+    });
+  }
+  getMallList()
 
   $scope.rows = [];
   var setRows = function(){
-    for(var i = 0;i<$scope.photos.length/3;i++){
+    for(var i = 0;i<$scope.MallList.length/3;i++){
       $scope.rows.push(i);
     }
   }
-  setRows();
 
-  $scope.photos2 =[
-    {
-      img:"img/cfp_gray.png",
-      font:"混纺织面料1",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/cfp_gray.png",
-      font:"混纺织面料2",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/cfp_gray.png",
-      font:"混纺织面料3",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/home_logo.png",
-      font:"混纺织面料4",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/home_logo.png",
-      font:"混纺织面料5",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/home_logo.png",
-      font:"混纺织面料6",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/cfp_red.png",
-      font:"混纺织面料7",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/cfp_red.png",
-      font:"混纺织面料8",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/cfp_red.png",
-      font:"混纺织面料9",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/baojia.png",
-      font:"混纺织面料10",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/baojia.png",
-      font:"混纺织面料11",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    },
-    {
-      img:"img/baojia.png",
-      font:"混纺织面料12",
-      price:"18.8",
-      url:"http://www.baidu.com"
-    }
-  ]
+
+
+
+
   //图片轮播end
 
 });

@@ -136,7 +136,7 @@ var Tailorpus = angular.module('starter', ['ionic', 'starter.controllers', 'star
       //$httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
 
       //设置鉴权
-      $httpProvider.defaults.headers.common['authorization'] = 'Y2ZwMTIz';
+      //$httpProvider.defaults.headers.common['authorization'] = 'Y2ZwMTIz';
 
 
 

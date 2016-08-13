@@ -66,7 +66,7 @@ var domain1 = 'http://192.168.0.12:10021/saas/';
 //var domain1 = 'http://192.168.0.157:8080/';
 //var domain1 = 'http://localhost:8080/';
 //var domain = 'http://localhost:4567/v1.0/';
-
+var dmomain2 = 'http://192.168.0.14:8080/';
 
 function DataService ($q, $resource,$http) {
 
@@ -134,6 +134,8 @@ function DataService ($q, $resource,$http) {
     modifyDesignMaterial:modifyDesignMaterial,
     //修改款式
     modifyDesign:modifyDesign,
+    //获取商城排行榜列表
+    getMallList:getMallList,
 
     //获取报价列表
     getOfferList : getOfferList
@@ -521,6 +523,28 @@ function DataService ($q, $resource,$http) {
     return deferred.promise;
   }
 
+  //获取商城排行榜列表
+  function getMallList(json) {
+
+    var deferred = $q.defer();
+    //var url = domain1 + "design/search_api.htm.do";http://192.168.0.12:10021/saas/'
+    //var url = "http://192.168.0.217:8080/search_api.htm";
+    //var url = "http://192.168.0.14:8080/search_api.htm";
+    var url = dmomain2 + "search_api.htm";
+    //http://192.168.0.217:8080/search_api.htm
+    console.log(json)
+    $resource(url).save(
+      json,
+      function (data) {
+        //console.log("((((((((((" + angular.toJson(data))
+        deferred.resolve(data);
+        //console.log("**********" + angular.toJson(data))
+      }, function (data) {
+        deferred.reject(data);
+      });
+    return deferred.promise;
+  }
+
   //新增款式 design/addDesign.do
   function addDesign(json) {
     var deferred = $q.defer();
@@ -564,6 +588,7 @@ function DataService ($q, $resource,$http) {
         json,
         function (data) {
           deferred.resolve(data);
+          console.log('++++++++++++++++++'+angular.toJson(data))
         }, function (data) {
           deferred.reject(data);
         });

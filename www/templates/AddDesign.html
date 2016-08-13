@@ -1,3 +1,5 @@
+<!--made by cookie-->
+
 <ion-view view-title="新增款式" class="addstorage design-detail add-design">
   <div class="bar bar-header bar-stable item-icon-left item-icon-right bar-header-top">
       <i class="icon ion-chevron-left header-left-row"  ng-click="toClose()"></i>
@@ -55,6 +57,7 @@
 
 
     <!--图片轮播start-->
+    <div ng-if="designMaterials.length!=0">
     <div class="row">
 
       <div class="col ">
@@ -68,36 +71,41 @@
     </div>
 
     <div ng-show="show1">
+
       <ion-slide-box active-slide="myActiveSlide" does-continue="true" auto-play="true" slide-interval="1000" show-pager="true" paper-color="red !important;">
         <ion-slide ng-repeat="item in rows">
-          <!--<ion-slide ng-repeat="photo in photos">-->
-          <div class="row" style="height: 200px">
-            <div class="col-33" >
-              <a href="{{photos[0+item*3].url}}">
-                <div><img ng-src="{{photos[0+item*3].img}}" class="photo-size"></div>
-                <div><span ng-bind="photos[0+item*3].font"></span></div>
-                <div><b><span ng-bind="'￥'+photos[0+item*3].price"></span></b></div>
+
+          <div class="row" style="height: 230px">
+            <div class="col-33" ng-if="(0+item*3)<MallList.length">
+              <a href="{{'http://192.168.0.14:8080/'+MallList[0+item*3].vo_id+'.htm'}}">
+                <div>
+                  <img ng-src="{{'http://192.168.0.14:8080/'+MallList[0+item*3].vo_main_photo_url}}" class="photo-size">
+                </div>
+                <div><span ng-bind="MallList[0+item*3].vo_title"></span></div>
+                <div><b><span ng-bind="'￥'+MallList[0+item*3].vo_store_price"></span></b></div>
               </a>
             </div>
-
-            <div class="col-33">
-              <a href="{{photos[1+item*3].url}}">
-                <div><img ng-src="{{photos[1+item*3].img}}" class="photo-size"></div>
-                <div><span ng-bind="photos[1+item*3].font"></span></div>
-                <div><b><span ng-bind="'￥'+photos[1+item*3].price"></span></b></div>
+            <div class="col-33" ng-if="(1+item*3)<MallList.length">
+              <a href="{{'http://192.168.0.14:8080/'+MallList[1+item*3].vo_id+'.htm'}}">
+                <div>
+                  <img ng-src="{{'http://192.168.0.14:8080/'+MallList[1+item*3].vo_main_photo_url}}" class="photo-size">
+                </div>
+                <div><span ng-bind="MallList[1+item*3].vo_title"></span></div>
+                <div><b><span ng-bind="'￥'+MallList[1+item*3].vo_store_price"></span></b></div>
               </a>
             </div>
-
-            <div class="col-33">
-              <a href="{{photos[2+item*3].url}}">
-                <div><img ng-src="{{photos[2+item*3].img}}" class="photo-size"></div>
-                <div><span ng-bind="photos[2+item*3].font"></span></div>
-                <div><b><span ng-bind="'￥'+photos[2+item*3].price"></span></b></div>
+            <div class="col-33" ng-if="(2+item*3)<MallList.length">
+              <a href="{{'http://192.168.0.14:8080/'+MallList[2+item*3].vo_id+'.htm'}}">
+                <div>
+                  <img ng-src="{{'http://192.168.0.14:8080/'+MallList[2+item*3].vo_main_photo_url}}" class="photo-size">
+                </div>
+                <div><span ng-bind="MallList[2+item*3].vo_title"></span></div>
+                <div><b><span ng-bind="'￥'+MallList[2+item*3].vo_store_price"></span></b></div>
               </a>
             </div>
-
           </div>
         </ion-slide>
+
       </ion-slide-box>
     </div>
 
@@ -106,47 +114,51 @@
 
         <ion-slide ng-show="show2" ng-repeat="item in rows">
 
-          <div class="row" style="height: 200px">
+          <div class="row" style="height: 230px">
 
-            <div class="col-33">
-              <a href="{{photos2[0+item*3].url}}">
+            <div class="col-33" ng-if="(0+item*3)<MallList.length">
+
+              <a href="{{'http://192.168.0.14:8080/'+MallList[0+item*3].vo_id+'.htm'}}">
                 <div class="position-relative">
-                  <img ng-src="{{photos2[0+item*3].img}}" class="photo-size">
+                  <img ng-src="{{'http://192.168.0.14:8080/'+MallList[0+item*3].vo_main_photo_url}}" class="photo-size">
                   <div class="badge badge-assertive position-num">{{1+item*3}}</div>
                 </div>
 
-                <div><span ng-bind="photos2[0+item*3].font"></span></div>
-                <div><b><span ng-bind="'￥'+photos2[0+item*3].price"></span></b></div>
+                <div><span ng-bind="MallList[0+item*3].vo_title"></span></div>
+                <div><b><span ng-bind="'￥'+MallList[0+item*3].vo_store_price"></span></b></div>
               </a>
             </div>
 
-            <div class="col-33">
-              <a href="{{photos2[1+item*3].url}}">
+            <div class="col-33" ng-if="(1+item*3)<MallList.length">
+
+              <a href="{{'http://192.168.0.14:8080/'+MallList[1+item*3].vo_id+'.htm'}}">
                 <div class="position-relative">
-                  <img ng-src="{{photos2[1+item*3].img}}" class="photo-size">
+                  <img ng-src="{{'http://192.168.0.14:8080/'+MallList[1+item*3].vo_main_photo_url}}" class="photo-size">
                   <div class="badge badge-assertive position-num">{{2+item*3}}</div>
                 </div>
 
-                <div><span ng-bind="photos2[1+item*3].font"></span></div>
-                <div><b><span ng-bind="'￥'+photos2[1+item*3].price"></span></b></div>
+                <div><span ng-bind="MallList[1+item*3].vo_title"></span></div>
+                <div><b><span ng-bind="'￥'+MallList[1+item*3].vo_store_price"></span></b></div>
               </a>
             </div>
 
-            <div class="col-33">
-              <a href="{{photos2[2+item*3].url}}">
+            <div class="col-33" ng-if="(2+item*3)<MallList.length">
+
+              <a href="{{'http://192.168.0.14:8080/'+MallList[2+item*3].vo_id+'.htm'}}">
                 <div class="position-relative">
-                  <img ng-src="{{photos2[2+item*3].img}}" class="photo-size">
+                  <img ng-src="{{'http://192.168.0.14:8080/'+MallList[2+item*3].vo_main_photo_url}}" class="photo-size">
                   <div class="badge badge-assertive position-num">{{3+item*3}}</div>
                 </div>
 
-                <div><span ng-bind="photos2[2+item*3].font"></span></div>
-                <div><b><span ng-bind="'￥'+photos2[2+item*3].price"></span></b></div>
+                <div><span ng-bind="MallList[2+item*3].vo_title"></span></div>
+                <div><b><span ng-bind="'￥'+MallList[2+item*3].vo_store_price"></span></b></div>
               </a>
             </div>
           </div>
-
         </ion-slide>
+
       </ion-slide-box>
+    </div>
     </div>
     <!--图片轮播end-->
 

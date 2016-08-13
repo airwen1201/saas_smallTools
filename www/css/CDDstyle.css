@@ -1,3 +1,6 @@
+/*
+made by cookie
+*/
 
 /*未点击状态 */
 .link-color {
@@ -34,7 +37,7 @@
 .position-num{
     position:absolute;
     z-index:0;
-    right:10px;
+    right:0px;
     top:0px
 }
 
