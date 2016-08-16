@@ -174,6 +174,7 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$rootScope','$cordovaToast
         console.log($scope.MallList.length)
 
         setRows();
+
         //$scope.rows = [];
         ////$scope.lines = $scope.MallList.length%3===0?$scope.MallList.length/3:(parseInt($scope.MallList.length/3)+1)
         ////console.log($scope.lines)
@@ -200,7 +201,9 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$rootScope','$cordovaToast
       }
     }
 
-    $scope.demomain = 'http://192.168.0.14:8080/';
+    //$scope.demomainurl = 'http://192.168.0.14:8080/';
+    $scope.demomainurl = 'http://www.cfpu.com/goods_';
+    $scope.demomainimg = 'http://www.cfpu.com/';
 
     //var json = {
     //  img:"img/design.png",

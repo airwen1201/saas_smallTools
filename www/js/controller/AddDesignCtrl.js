@@ -275,9 +275,8 @@ Tailorpus.controller('AddDesignCtrl', function($scope,$rootScope,$state,$cordova
     }
   }
 
-
-
-
+  $scope.demomainurl = 'http://www.cfpu.com/goods_';
+  $scope.demomainimg = 'http://www.cfpu.com/';
 
   //图片轮播end
 

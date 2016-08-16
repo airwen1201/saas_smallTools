@@ -115,6 +115,10 @@ Tailorpus.controller('DesignDetailCtrl',['$scope','$state','$stateParams','$root
         $scope.rows.push(i);
       }
     }
+
+    $scope.demomainurl = 'http://www.cfpu.com/goods_';
+    $scope.demomainimg = 'http://www.cfpu.com/';
+
       //图片轮播end
 
 }]);

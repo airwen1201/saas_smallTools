@@ -66,7 +66,9 @@ var domain1 = 'http://192.168.0.12:10021/saas/';
 //var domain1 = 'http://192.168.0.157:8080/';
 //var domain1 = 'http://localhost:8080/';
 //var domain = 'http://localhost:4567/v1.0/';
-var dmomain2 = 'http://192.168.0.14:8080/';
+//var dmomain2 = 'http://192.168.0.14:8080/';
+var dmomain2 = 'http://www.cfpu.com/'
+  //http://www.cfpu.com/wap/index.htm
 
 function DataService ($q, $resource,$http) {
 
