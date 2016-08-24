@@ -43,7 +43,6 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
     $scope.showAddPhoto = true;
     //存储图片地址
     $scope.images_list = [];
-    //$scope.images_list = ["img/photo.png"];
     //存储图片名字
     var imgNames = [];
     //用户信息
@@ -82,7 +81,6 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
                     default:
                         break;
                 }
-                ($scope.images_list.length*90+($scope.images_list.length-1)*5-$scope.swiper[0].width>0)? $scope.showPicRow=true:$scope.showPicRow=false;
                 return true;
             }
         });
@@ -109,31 +107,10 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
     };
 
     //相册选择照片
-    //var pickImage = function () {
-    //
-    //    var options = {
-    //        maximumImagesCount: 20 - $scope.images_list.length,
-    //        width: 480,
-    //        height: 800,
-    //        quality: 80
-    //    };
-    //
-    //    $cordovaImagePicker.getPictures(options)
-    //        .then(function (results) {
-    //            for (var i = 0; i < results.length; i++) {
-    //                // console.log('Image URI: ' + results[i]);
-    //                //$scope.images_list.push(results[i]);
-    //                uploadPhoto(results[i]);
-    //            }
-    //        }, function (error) {
-    //            // error getting photos
-    //        });
-    //};
-
     var pickImage = function () {
 
         var options = {
-            maximumImagesCount: 1,
+            maximumImagesCount: 20 - $scope.images_list.length,
             width: 480,
             height: 800,
             quality: 80
@@ -141,12 +118,16 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
 
         $cordovaImagePicker.getPictures(options)
             .then(function (results) {
-                $scope.images_list.push(results[0]);
-                uploadPhoto(results[0]);
+                for (var i = 0; i < results.length; i++) {
+                    // console.log('Image URI: ' + results[i]);
+                    //$scope.images_list.push(results[i]);
+                    uploadPhoto(results[i]);
+                }
             }, function (error) {
                 // error getting photos
             });
     };
+
     //上传图片
     //设置鉴权
     var options = {
@@ -171,8 +152,6 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
                     // alert("SUCCESS: " + JSON.stringify(result.response));
                     //存储图片名字
                     $scope.images_list.push(JSON.parse(result.response).message);
-                    //imgNames.push(JSON.parse(result.response).message);
-
                     $rootScope.hideMsg();
                     $cordovaToast.showLongBottom("图片上传成功！");
                 }, function (err) {
@@ -213,7 +192,6 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
                 vipId: obj.vipId,
                 name: $scope.design.name,
                 img: angular.toJson($scope.images_list),
-                //img:imgNames,
                 //designMaterials:$rootScope.designMaterials
                 designMaterials: angular.toJson($rootScope.designMaterials)
             }
@@ -267,7 +245,7 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
     //}
 
     var getMallList = function (json,index) {
-        console.log(angular.toJson($rootScope.addSearch[0].type))
+        console.log(angular.toJson($rootScope.addSearch))
         console.log(angular.toJson($rootScope.addSearch.length))
         $scope.MallArr = []
         //var json = {
@@ -354,9 +332,9 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
     //$scope.MallList = []
     $scope.updateData = function () {
         console.log(222222222222)
-        $scope.MallList = []
-        var exec = function () {
 
+        var exec = function () {
+            $scope.MallList = []
             var json = {
                 keyword: $rootScope.addSearch[0].name
             }
