@@ -50,13 +50,13 @@
       </div>
 
       <div ng-show="show1">
-
-        <ion-slide-box active-slide="myActiveSlide" does-continue="true" auto-play="true" slide-interval="2000" show-pager="true" paper-color="red !important;">
-          <ion-slide ng-repeat="item in rows">
+        <!--active-slide="myActiveSlide"-->
+        <ion-slide-box does-continue="true" auto-play="true" slide-interval="2000" show-pager="true" paper-color="red !important;">
+          <ion-slide ng-repeat="item in rows" ng-if="(0+item*3)<18">
 
             <div class="row" style="height: 250px">
               <div class="col-33" ng-if="(0+item*3)<MallList.length">
-                <a href="{{demomainurl+MallList[0+item*3].vo_id+'.htm'}}">
+                <a href="{{demomainurl+MallList[0+item*3].vo_id}}">
                   <div>
                     <img ng-src="{{demomainimg+MallList[0+item*3].vo_main_photo_url}}" class="photo-size">
                   </div>
@@ -65,7 +65,7 @@
                 </a>
               </div>
               <div class="col-33" ng-if="(1+item*3)<MallList.length">
-                <a href="{{demomainurl+MallList[1+item*3].vo_id+'.htm'}}">
+                <a href="{{demomainurl+MallList[1+item*3].vo_id}}">
                   <div>
                     <img ng-src="{{demomainimg+MallList[1+item*3].vo_main_photo_url}}" class="photo-size">
                   </div>
@@ -74,7 +74,7 @@
                 </a>
               </div>
               <div class="col-33" ng-if="(2+item*3)<MallList.length">
-                <a href="{{demomainurl+MallList[2+item*3].vo_id+'.htm'}}">
+                <a href="{{demomainurl+MallList[2+item*3].vo_id}}">
                   <div>
                     <img ng-src="{{demomainimg+MallList[2+item*3].vo_main_photo_url}}" class="photo-size">
                   </div>
@@ -89,15 +89,15 @@
       </div>
 
       <div>
-        <ion-slide-box active-slide="myActiveSlide2" does-continue="true" auto-play="true" slide-interval="2000" show-pager="true">
+        <ion-slide-box does-continue="true" auto-play="true" slide-interval="2000" show-pager="true">
 
-          <ion-slide ng-show="show2" ng-repeat="item in rows">
+          <ion-slide ng-show="show2" ng-repeat="item in rows" ng-if="(0+item*3)<18">
 
             <div class="row" style="height: 250px">
 
               <div class="col-33" ng-if="(0+item*3)<MallList.length">
 
-                <a href="{{demomainurl+MallList[0+item*3].vo_id+'.htm'}}">
+                <a href="{{demomainurl+MallList[0+item*3].vo_id}}">
                   <div class="position-relative">
                     <img ng-src="{{demomainimg+MallList[0+item*3].vo_main_photo_url}}" class="photo-size">
                     <div class="badge badge-assertive position-num">{{1+item*3}}</div>
@@ -110,7 +110,7 @@
 
               <div class="col-33" ng-if="(1+item*3)<MallList.length">
 
-                <a href="{{demomainurl+MallList[1+item*3].vo_id+'.htm'}}">
+                <a href="{{demomainurl+MallList[1+item*3].vo_id}}">
                   <div class="position-relative">
                     <img ng-src="{{demomainimg+MallList[1+item*3].vo_main_photo_url}}" class="photo-size">
                     <div class="badge badge-assertive position-num">{{2+item*3}}</div>
@@ -123,7 +123,7 @@
 
               <div class="col-33" ng-if="(2+item*3)<MallList.length">
 
-                <a href="{{demomainurl+MallList[2+item*3].vo_id+'.htm'}}">
+                <a href="{{demomainurl+MallList[2+item*3].vo_id}}">
                   <div class="position-relative">
                     <img ng-src="{{demomainimg+MallList[2+item*3].vo_main_photo_url}}" class="photo-size">
                     <div class="badge badge-assertive position-num">{{3+item*3}}</div>

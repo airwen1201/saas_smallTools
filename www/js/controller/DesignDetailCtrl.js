@@ -28,9 +28,43 @@ Tailorpus.controller('DesignDetailCtrl',['$scope','$state','$stateParams','$root
               $scope.designDetailData.designMaterials = angular.fromJson($scope.designDetailData.designMaterials)
             //var dd = angular.fromJson(data.designMaterials)
              console.log(angular.toJson($scope.designDetailData));
+              console.log(angular.toJson($scope.designDetailData.designMaterials));
+              console.log($scope.designDetailData.designMaterials.length);
+
+              console.log(angular.toJson($scope.designDetailData.designMaterials[0].name));
+              console.log(angular.toJson($scope.designDetailData.designMaterials[1].name));
+              console.log(angular.toJson($scope.designDetailData.designMaterials[2].name));
+              console.log($scope.designDetailData.designMaterials[0].name);
               //window.localStorage.setItem("tailorUser",JSON.stringify(obj));
               //$scope.isSubmit = '0'
               //$ionicHistory.goBack();
+              $scope.designDetailName=[
+                  $scope.designDetailData.designMaterials[0].name,
+                  $scope.designDetailData.designMaterials[1].name,
+                  $scope.designDetailData.designMaterials[2].name
+              ]
+              //$scope.jsonList = [];
+              //var index = 1;
+              //index<$scope.designDetailName.length;
+
+              var exec = function () {
+                  var json = {
+                      keyword: $scope.designDetailName[0]
+                  }
+                  console.log(json)
+                  getMallList(json,0)
+              };
+              exec();
+
+              //getMallList({
+              //    keyword: $scope.designDetailName[index]
+              //},index)
+
+
+              //$scope.MallList.forEach(function (item) {
+              //    $scope.jsonList.push(item);
+              //});
+              //console.log($scope.jsonList)
           }, function (data) {
               //alert(JSON.stringify(data));
               //$scope.isSubmit = '0'
@@ -74,32 +108,58 @@ Tailorpus.controller('DesignDetailCtrl',['$scope','$state','$stateParams','$root
           $scope.onClick2 =  false ;
       }
 
-      $scope.myActiveSlide = 1;
-      $scope.myActiveSlide2 = 1;
+      //$scope.myActiveSlide = 0;
+      //$scope.myActiveSlide2 = 0;
 
+      //getMallList({
+      //    keyword: $scope.designDetailName[index]
+      //},++index)
 //加载数据商城排行榜
-    $scope.MallList = []
-    var getMallList = function (){
-      var json = {
-        //vipId:obj.vipId
-        keyword:'面料'
 
-      }
-      console.log(angular.toJson(json));
+      $scope.MallArr = []
+      $scope.MallList = []
+    var getMallList = function (json,index){
+      //var json = {
+      //  //vipId:obj.vipId
+      //  keyword:$scope.designDetailName[index]
+      //
+      //}
+      //console.log(angular.toJson(json));
       var promise = DataService.getMallList(angular.toJson(json));
       promise.then(function (data) {
         //具体操作
         console.log('++++++++++++++++++'+data);
-        $scope.MallList = data.list
+          $scope.MallArr = data.list
+          //console.log(angular.toJson($scope.MallArr));
+          //console.log($scope.MallArr.length)
+
+          if (index<$scope.designDetailName.length){
+
+              $scope.MallArr.forEach(function (item) {
+                  $scope.MallList.push(item);
+              });
+
+              getMallList({
+                  keyword: $scope.designDetailName[index]
+              },++index)
+
+          }
+
         $ionicSlideBoxDelegate.$getByHandle().update();
         $ionicSlideBoxDelegate.$getByHandle().loop(true);
         //console.log(angular.toJson(data));
         //console.log(angular.toJson(data.list));
         console.log(angular.toJson($scope.MallList));
+          //console.log(angular.toJson($scope.MallList[0]));
+          //console.log(angular.toJson($scope.MallList[1]));
         console.log($scope.MallList.length)
 
         setRows();
-
+          console.log($scope.rows.length);
+          //$scope.MallList.forEach(function (item) {
+          //    $scope.jsonList.push(item);
+          //});
+          //console.log($scope.jsonList)
       }, function (data) {
         //alert(JSON.stringify(data));
         //$scope.isSubmit = '0'
@@ -107,18 +167,25 @@ Tailorpus.controller('DesignDetailCtrl',['$scope','$state','$stateParams','$root
         $cordovaToast.showLongBottom(data.message)
       });
     }
-    getMallList()
+    //getMallList()
 
-    $scope.rows = [];
+
     var setRows = function(){
+        $scope.rows = [];
       for(var i = 0;i<$scope.MallList.length/3;i++){
         $scope.rows.push(i);
       }
     }
 
-    $scope.demomainurl = 'http://www.cfpu.com/goods_';
+    //$scope.demomainurl = 'http://www.cfpu.com/goods_';
+      //移动端
+     $scope.demomainurl = 'http://www.cfpu.com/wap/goods.htm?id='
     $scope.demomainimg = 'http://www.cfpu.com/';
 
       //图片轮播end
-
+      //$scope.updateData = function () {
+      //    getDesignDetail();
+      //};
+      ////$scope.updateData();         //函数调用
+      //$scope.$on('$stateChangeSuccess', $scope.updateData); //实现了刷新
 }]);

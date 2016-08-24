@@ -346,10 +346,23 @@ Tailorpus.controller('AddDesignStateCtrl', function($scope,$state,$stateParams,$
             property[key2]=$scope.inputListExtra[j].value
         }
         console.log($scope.inputList.length+' '+ angular.toJson(property))
+
+        //全局变量materialName
+        //$rootScope.materialName=$scope.inputList[0].value;
+        //$rootScope.materialColor=$scope.inputList[1].value;
+        //设置一个优先级的数组
+        $rootScope.materialSearch=[
+            $scope.inputList[0].value,
+            $rootScope.materialType,
+            $scope.inputList[1].value
+        ]
+        $rootScope.addSearch=$rootScope.designMaterials;
+
         if (state==1){
             $rootScope.designMaterials.push({
                 type:$rootScope.materialType,
                 name:$scope.inputList[0].value,
+                //name:$rootScope.materialName,
                 color:$scope.inputList[1].value,
                 img:angular.toJson($scope.images_list),
 

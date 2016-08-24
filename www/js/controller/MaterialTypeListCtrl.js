@@ -36,8 +36,12 @@ Tailorpus.controller('MaterialTypeListCtrl', function($scope,$rootScope,$ionicHi
 
     $scope.chooseType = function(i){
         $rootScope.materialType = $scope.materialList[$scope.isChooseLest].contact[i]
+        //window.localStorage.setItem("getKey",JSON.stringify(data));
+        //console.log($rootScope.materialType)
         $ionicHistory.goBack();
     }
+
+
 
     $scope.searchitem='';
     $scope.dosearch = function(){

@@ -163,6 +163,8 @@ function DataService ($q, $resource,$http) {
 
     var url = domain+"vip?phone="+phone+"&verifyCode="+verifyCode;
 
+    console.log(url);
+
     $resource(url).get(
         function (data) {
           deferred.resolve(data);
@@ -555,6 +557,8 @@ function DataService ($q, $resource,$http) {
     $resource(url).save(
         json,
         function (data) {
+          console.log(data)
+          console.log(angular.toJson(data));
           deferred.resolve(data);
         }, function (data) {
           deferred.reject(data);

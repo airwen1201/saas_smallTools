@@ -285,6 +285,12 @@ var Tailorpus = angular.module('starter', ['ionic', 'starter.controllers', 'star
           controller: "MallCtrl"
       })
 
+      ////商城跳转
+      //.state("toDesignDetail", {
+      //    url: "/toDesignDetail",
+      //    templateUrl: 'http://www.baidu.com/',
+      //    controller: "DesignCtrl"
+      //})
 
       //订单详情
       .state("OrderDetail", {

@@ -60,6 +60,8 @@ Tailorpus.controller('LoginCtrl', ['$scope', '$rootScope','$state','$interval','
 
       console.log(JSON.stringify(data));
 
+        //alert(JSON.stringify(data));
+
       //$cordovaToast.showLongBottom("登录成功！")
       //登录后跳转到dash页面
       $state.go("tab.dash");
@@ -67,7 +69,8 @@ Tailorpus.controller('LoginCtrl', ['$scope', '$rootScope','$state','$interval','
     }, function (data) {
       //  $cordovaToast.showLongBottom(data.message);
       // alert(data);
-      $cordovaToast.showLongBottom(data.data.message);
+      //    alert(JSON.stringify(data));
+     // $cordovaToast.showLongBottom(data.data.message);
       // console.log(data.data.message);
       console.log(JSON.stringify(data));
     });
