@@ -540,7 +540,7 @@ function DataService ($q, $resource,$http) {
     $resource(url).save(
       json,
       function (data) {
-        //console.log("((((((((((" + angular.toJson(data))
+        console.log("((((((((((" + angular.toJson(data))
         deferred.resolve(data);
         //console.log("**********" + angular.toJson(data))
       }, function (data) {

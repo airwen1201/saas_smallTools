@@ -24,8 +24,7 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
     $scope.toMallChoice=function(Did){
       $scope.MallList = []
       console.log(Did)
-      var a = 1111111;
-      console.log(a);
+
 
       //var execb = function (Did) {
       //  getDesignList(Did);
@@ -37,8 +36,17 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
       //  getDesignDetail(json,Did)
       //};
       //execb();
-      getDesignList(Did)
+
+      console.log($scope.designList[Did].id);
+      // getDesignList(Did)
       //$scope.updateData(Did);
+      var json = {
+        id:$scope.designList[Did].id
+        //id:$scope.designList[$scope.designList.length-1].id
+        //id:Did
+      }
+      console.log(angular.toJson(json));
+      getDesignDetail(json,Did)
     }
 
     $scope.searchitem='';
@@ -93,13 +101,13 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
         //var execc = function (Did) {
           //getDesignList(Did);
 
-          var json = {
-            id:$scope.designList[Did].id
-            //id:$scope.designList[$scope.designList.length-1].id
-            //id:Did
-          }
-          console.log(angular.toJson(json));
-          getDesignDetail(json,Did)
+          // var json = {
+          //   id:$scope.designList[Did].id
+          //   //id:$scope.designList[$scope.designList.length-1].id
+          //   //id:Did
+          // }
+          // console.log(angular.toJson(json));
+          // getDesignDetail(json,Did)
 
         //};
         //execc(Did);
@@ -309,20 +317,26 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
         $scope.designDetailData = data
         $scope.designDetailData.designMaterials = angular.fromJson($scope.designDetailData.designMaterials)
         //var dd = angular.fromJson(data.designMaterials)
-        //console.log(angular.toJson($scope.designDetailData));
+        console.log(angular.toJson($scope.designDetailData.designMaterials.length));
+        console.log(angular.toJson($scope.designDetailData.designMaterials[0]));
 
         console.log(angular.toJson($scope.designDetailData.designMaterials[0].name));
-        console.log(angular.toJson($scope.designDetailData.designMaterials[1].name));
-        console.log(angular.toJson($scope.designDetailData.designMaterials[2].name));
+        // console.log(angular.toJson($scope.designDetailData.designMaterials[1].name));
+        // console.log(angular.toJson($scope.designDetailData.designMaterials[2].name));
         console.log($scope.designDetailData.designMaterials[0].name);
         //window.localStorage.setItem("tailorUser",JSON.stringify(obj));
         //$scope.isSubmit = '0'
         //$ionicHistory.goBack();
-        $scope.designDetailName=[
-          $scope.designDetailData.designMaterials[0].name,
-          $scope.designDetailData.designMaterials[1].name,
-          $scope.designDetailData.designMaterials[2].name
-        ]
+        $scope.designDetailName=[]
+          // $scope.designDetailData.designMaterials[0].name,
+          // $scope.designDetailData.designMaterials[1].name,
+          // $scope.designDetailData.designMaterials[2].name
+        // if (index<$scope.designDetailData.designMaterials.length) {
+
+          $scope.designDetailData.designMaterials.forEach(function (item) {
+            $scope.designDetailName.push(item.name);
+          });
+        console.log($scope.designDetailName+' '+$scope.designDetailName.length)
         //$scope.jsonList = [];
         //var index = 1;
         //index<$scope.designDetailName.length;
@@ -334,9 +348,9 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
             keyword: $scope.designDetailName[0]
           }
           console.log(json)
-          getMallList(json,1)
+          getMallList(json,0)
         };
-        exec();
+         exec();
 
         //getMallList({
         //    keyword: $scope.designDetailName[index]
@@ -396,10 +410,12 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
       promise.then(function (data) {
         //具体操作
         console.log('++++++++++++++++++'+data);
+
         $scope.MallArr = data.list
         //console.log(angular.toJson($scope.MallArr));
         //console.log($scope.MallArr.length)
-
+        console.log(angular.toJson($scope.MallArr));
+        console.log($scope.designDetailName+' '+$scope.designDetailName.length)
         if (index<$scope.designDetailName.length){
 
           $scope.MallArr.forEach(function (item) {
@@ -407,7 +423,7 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
           });
 
           getMallList({
-            keyword: $scope.designDetailName[index]
+            keyword: $scope.designDetailName[index+1]
           },++index)
 
         }

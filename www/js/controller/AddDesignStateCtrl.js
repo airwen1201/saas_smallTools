@@ -63,7 +63,7 @@ Tailorpus.controller('AddDesignStateCtrl', function($scope,$state,$stateParams,$
         console.log(angular.toJson($scope.inputListExtra))
     }
 
-
+    console.log(angular.toJson($rootScope.designMaterials[$scope.numIndex]))
     console.log(angular.toJson($rootScope.designMaterials))
     //用$rootScope.designMaterials来初始化typelist
 
@@ -107,6 +107,7 @@ Tailorpus.controller('AddDesignStateCtrl', function($scope,$state,$stateParams,$
         //    property:property
         //})
     }
+
     $scope.addType=function(index,x){
         if (index==0||index==1)
             return
@@ -382,6 +383,100 @@ Tailorpus.controller('AddDesignStateCtrl', function($scope,$state,$stateParams,$
 
     }
 
+    /////////////////////////////////////////////////////////////////////////
+// //用户信息
+//   var obj = JSON.parse(window.localStorage.getItem("tailorUser"));
+//   $scope.designList = []
+//   var getDesignList = function (){
+//     // console.log(Did)
+//     var json = {
+//       vipId:obj.vipId
+//     }
+//     console.log(angular.toJson(json));
+//     var promise = DataService.getDesignList(angular.toJson(json));
+//     promise.then(function (data) {
+//       //具体操作
+//       console.log(angular.toJson(data));
+//
+//       $scope.designList = data.list
+//       // var json = {
+//       //   id:$scope.designList[0].id
+//       // }
+//       // console.log(angular.toJson(json));
+//       getDesignDetail()
+//     }, function (data) {
+//       console.log(data.message);
+//       $cordovaToast.showLongBottom(data.message)
+//     });
+//   }
+//   //getDesignList()
+//   $scope.designDetailData = {}
+//
+//   var getDesignDetail = function (){
+//     //$scope.designDetailData = {}
+//     var json = {
+//      id:$scope.designList[0].id
+//      //id:Did
+//     }
+//     console.log(angular.toJson(json));
+//     var promise = DataService.getDesignDetail(angular.toJson(json));
+//     promise.then(function (data) {
+//       //具体操作
+//       console.log(angular.toJson(data));
+//       $scope.designDetailData = data
+//       $scope.designDetailData.designMaterials = angular.fromJson($scope.designDetailData.designMaterials)
+//       //var dd = angular.fromJson(data.designMaterials)
+//       //console.log(angular.toJson($scope.designDetailData));
+//
+//       // console.log(angular.toJson($scope.designDetailData.designMaterials[0].name));
+//       // console.log(angular.toJson($scope.designDetailData.designMaterials[1].name));
+//       // console.log(angular.toJson($scope.designDetailData.designMaterials[2].name));
+//       // console.log($scope.designDetailData.designMaterials[0].name);
+//       //window.localStorage.setItem("tailorUser",JSON.stringify(obj));
+//       //$scope.isSubmit = '0'
+//       //$ionicHistory.goBack();
+//       console.log(angular.toJson($scope.designDetailData.designMaterials[0].id));
+//       // var exec = function () {
+//       //   $scope.MallList = []
+//       //   var json = {
+//       //     keyword: $scope.designDetailName[0]
+//       //   }
+//       //   console.log(json)
+//       //   getMallList(json,1)
+//       // };
+//       // exec();
+//
+//     }, function (data) {
+//       $cordovaToast.showLongBottom(data.message)
+//     });
+//   }
+//   //getDesignDetail()
+
+  //删除款式材料
+  // angular.toJson($rootScope.designMaterials[$scope.numIndex])
+  $scope.delSubmit = function (){
+    $rootScope.designMaterials.splice($scope.numIndex,1);
+    window.location.href="#/AddDesign";
+  }
+
+
+  // $scope.delSubmit = function (){
+  //   // getDesignList()
+  //   var json = {
+  //     id:$scope.designDetailData.designMaterials[0].id
+  //   }
+  //   console.log(angular.toJson(json))
+  //   var promise = DataService.deleteDesignMaterial(angular.toJson(json));
+  //   promise.then(function (data) {
+  //     //具体操作
+  //     console.log(angular.toJson(data));
+  //     //$scope.isSubmit = '0'
+  //     $ionicHistory.goBack();
+  //   }, function (data) {
+  //     //$scope.isSubmit = '0'
+  //     $cordovaToast.showLongBottom(data.message)
+  //   });
+  // }
 });
 
 

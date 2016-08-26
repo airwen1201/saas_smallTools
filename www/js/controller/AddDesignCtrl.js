@@ -1,4 +1,5 @@
 Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cordovaImagePicker, $ionicActionSheet, $cordovaCamera, $ionicPlatform, $cordovaFileTransfer, $ionicLoading, $cordovaToast, $ionicHistory, $ionicPopup, DataService, $ionicSlideBoxDelegate) {
+  // var designId = $stateParams.designId
     $scope.addPrice = function (i) {
         $state.go('MaterialPrice', {'numIndex': i, 'state': 1})
         //window.location.href="#/MaterialPrice"
@@ -180,6 +181,32 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
     $scope.design = {
         name: ''
     }
+//////////////////////////////////////////////////////////////////////////
+
+  // $scope.designDetailData = {}
+  //
+  // var getDesignDetail = function (){
+  //   var json = {
+  //     id:designId
+  //   }
+  //   console.log(angular.toJson(json));
+  //   var promise = DataService.getDesignDetail(angular.toJson(json));
+  //   promise.then(function (data) {
+  //     //具体操作
+  //     console.log(angular.toJson(data));
+  //     $scope.designDetailData = data
+  //     $rootScope.designMaterials = angular.fromJson($scope.designDetailData.designMaterials)
+  //     $scope.images_list = angular.fromJson($scope.designDetailData.img)
+  //     $scope.design.name = $scope.designDetailData.name
+  //
+  //     console.log(angular.toJson(angular.fromJson(data)));
+  //     //window.localStorage.setItem("tailorUser",JSON.stringify(obj));
+  //   }, function (data) {
+  //     $cordovaToast.showLongBottom(data.message)
+  //   });
+  // }
+  // getDesignDetail()
+
     $scope.doSubmit = function () {
         if ($scope.design.name == '') {
             $cordovaToast.showLongBottom('请完善款式信息！')
@@ -215,6 +242,8 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
                 $cordovaToast.showLongBottom(data.message)
             });
         }
+      $scope.updateData();
+      window.location.href ="#/Design";
     }
 
     //图片轮播start
@@ -309,7 +338,7 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
 
         }, function (data) {
             //alert(JSON.stringify(data));
-            //$scope.isSubmit = '0'
+            // $scope.isSubmit = '0'
             console.log(data);
             $cordovaToast.showLongBottom(data.message)
         });
@@ -332,7 +361,7 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
     //$scope.MallList = []
     $scope.updateData = function () {
         console.log(222222222222)
-
+            // getDesignDetail()
         var exec = function () {
             $scope.MallList = []
             var json = {
@@ -347,4 +376,5 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
     };
     //$scope.updateData();         //函数调用
     $scope.$on('$stateChangeSuccess', $scope.updateData); //实现了刷新
+
 });

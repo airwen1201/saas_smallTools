@@ -625,6 +625,7 @@ var Tailorpus = angular.module('starter', ['ionic', 'starter.controllers', 'star
     })
     .state('AddDesign', {
       url: '/AddDesign',
+      // params:{'designId':null},
       templateUrl:'templates/AddDesign.html',
       controller:'AddDesignCtrl'
     })
@@ -760,6 +761,7 @@ var Tailorpus = angular.module('starter', ['ionic', 'starter.controllers', 'star
       .state('AddDesignState',{
           url:'/AddDesignState',
           params:{'state':null,'num':null},
+        // params:{'state':null,'num':null,'designId':null,id:null},
           templateUrl:'templates/AddDesignState.html',
           controller:'AddDesignStateCtrl'
       })
