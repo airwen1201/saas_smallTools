@@ -32,17 +32,19 @@ Tailorpus.controller('DesignDetailCtrl',['$scope','$state','$stateParams','$root
               console.log($scope.designDetailData.designMaterials.length);
 
               console.log(angular.toJson($scope.designDetailData.designMaterials[0].name));
-              console.log(angular.toJson($scope.designDetailData.designMaterials[1].name));
-              console.log(angular.toJson($scope.designDetailData.designMaterials[2].name));
               console.log($scope.designDetailData.designMaterials[0].name);
               //window.localStorage.setItem("tailorUser",JSON.stringify(obj));
               //$scope.isSubmit = '0'
               //$ionicHistory.goBack();
-              $scope.designDetailName=[
-                  $scope.designDetailData.designMaterials[0].name,
-                  $scope.designDetailData.designMaterials[1].name,
-                  $scope.designDetailData.designMaterials[2].name
-              ]
+              $scope.designDetailName=[]
+                  // $scope.designDetailData.designMaterials[0].name,
+                  // $scope.designDetailData.designMaterials[1].name,
+                  // $scope.designDetailData.designMaterials[2].name
+              // ]
+            $scope.designDetailData.designMaterials.forEach(function (item) {
+              $scope.designDetailName.push(item.name);
+            });
+            console.log($scope.designDetailName+' '+$scope.designDetailName.length)
               //$scope.jsonList = [];
               //var index = 1;
               //index<$scope.designDetailName.length;
@@ -140,7 +142,7 @@ Tailorpus.controller('DesignDetailCtrl',['$scope','$state','$stateParams','$root
               });
 
               getMallList({
-                  keyword: $scope.designDetailName[index]
+                  keyword: $scope.designDetailName[index+1]
               },++index)
 
           }
