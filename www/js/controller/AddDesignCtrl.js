@@ -360,8 +360,12 @@ Tailorpus.controller('AddDesignCtrl', function ($scope, $rootScope, $state, $cor
 
     //$scope.MallList = []
     $scope.updateData = function () {
-        console.log(222222222222)
+        //console.log(222222222222)
             // getDesignDetail()
+        if ($rootScope.addSearch == undefined)
+        {
+            return
+        }
         var exec = function () {
             $scope.MallList = []
             var json = {
