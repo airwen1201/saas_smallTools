@@ -14,7 +14,7 @@
         <div class="list-mess">
           <div class="list-txt">
             <p><b ng-bind="designDetailData.name"></b><b class="red" ng-bind="'￥'+lastPrice"></b></p>
-            <p><b ng-bind="designDetailData.designMaterials[designDetailData.designMaterials.length-1].name+'￥'+designDetailData.designMaterials[designDetailData.designMaterials.length-1].cost"></b><span ng-bind="timeSlicer()"></span></p>
+            <p><b ng-bind="designDetailData.designMaterials[designDetailData.designMaterials.length-1].name+'￥'+designDetailData.designMaterials[designDetailData.designMaterials.length-1].cost" ng-if="designDetailData.designMaterials!=''"></b><span ng-bind="timeSlicer()"></span></p>
           </div>
         </div>
       </div>

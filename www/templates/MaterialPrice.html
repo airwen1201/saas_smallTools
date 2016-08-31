@@ -6,10 +6,12 @@
   <ion-content class="content has-header" overflow-scroll="false">
     <div class="item item-input">
       <span class="input-label">单耗</span>
-      <input type="text" placeholder="请输入单耗" ng-model="materialPrice.unitConsumption">
+      <!--<span ng-bind="'￥'"></span>-->
+      <input type="text" placeholder="请输入单耗" ng-model="materialPrice.unitConsumption" style="display: block;float: left">
     </div>
     <div class="item item-input">
       <span class="input-label">单价</span>
+      <span ng-bind="'￥'"></span>
       <input type="text" placeholder="请输入单价" ng-model="materialPrice.price">
     </div>
     <!--<ion-toggle ion-toggle-text ng-model="simple" toggle-class="toggle-my-theme" ng-disabled="true">-->
@@ -17,7 +19,7 @@
     <!--</ion-toggle>-->
     <div class="item item-input">
       <span style="padding-right:10px">税费</span>
-    <ion-toggle ion-toggle-text="含税价;除税价"  ng-model="materialPrice.customText" toggle-class="toggle-my-theme" style="border: 0;margin-left: 40px;">
+    <ion-toggle ion-toggle-text="含税价;除税价"  ng-model="materialPrices.customText" toggle-class="toggle-my-theme" style="border: 0;margin-left: 40px;">
 
     </ion-toggle>
       <input type="number" placeholder="税率" ng-if="materialPrice.customText==true" style="width:62px;padding:0 0 0 10px;" ng-model="materialPrice.taxRate" ng-change="" />
@@ -43,6 +45,7 @@
     <!--</label>-->
     <div class="item ">
       <span class="input-label" style="float: left;padding: 0px 10px 0px 0px;">成本</span>
+      <span ng-bind="'￥'"></span>
       <!--<span ng-bind="(materialPrice.taxRate==null||materialPrice.taxRate==''||materialPrice.taxRate==undefined)?-->
       <!--0:(materialPrice.price*(1+materialPrice.taxRate/100))" ng-if="materialPrice.customText==true"></span>-->
        <span ng-bind="taxMaterialPrice($index)" ng-if="materialPrice.customText==true"></span>
