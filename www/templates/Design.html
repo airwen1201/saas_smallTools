@@ -32,7 +32,7 @@
         <div class="list-mess">
           <div class="list-txt">
             <p><span ng-bind="item.name"></span><b class="red" ng-bind="'￥'+item.totalPrice" ng-if="item.isReasonable=='Y'"></b></p>
-            <p><b ng-bind="item.lastName+'￥'+item.lastPrice" ng-if="designDetailData.designMaterials!=''"></b><span ng-bind="timeSlicer($index)"></span></p>
+            <p><b ng-bind="item.lastName" ng-if="designDetailData.designMaterials!=''"></b><b ng-bind="'￥'+item.lastPrice" ng-if="item.totalPrice!='0.0'"></b><span ng-bind="timeSlicer($index)"></span></p>
           </div>
         </div>
         <div class="padding" style="text-align: right;border-top: 1px solid #ddd;padding-bottom: 0px">
