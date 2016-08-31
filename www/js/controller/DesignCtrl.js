@@ -108,11 +108,18 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
           // }
           // console.log(angular.toJson(json));
           // getDesignDetail(json,Did)
-
+        //获取数据
+        var json = {
+          id:$scope.designList[Did].id
+          //id:$scope.designList[$scope.designList.length-1].id
+          //id:Did
+        }
+        console.log(angular.toJson(json));
+        getDesignDetail(json,Did)
         //};
         //execc(Did);
-        //getDesignDetail(Did)
-        //getMallList()
+        // getDesignDetail(Did)
+        // getMallList(Did)
         //window.localStorage.setItem("designName",JSON.stringify(data));
         //var arr = [];
         //$rootScope.arrList = arr;
