@@ -29,7 +29,28 @@ Tailorpus.controller('LoginCtrl', ['$scope', '$rootScope','$state','$interval','
     }
 
 
-    //获取验证码
+    ////获取验证码
+    //$scope.time = 60;
+    //$scope.getVerifyCode = function() {
+    //    setTimeout(function () {
+    //            if($rootScope.loginInfo.phone){
+    //                $scope.showTime = true;
+    //                $interval(function() {
+    //                    1 == $scope.time ? $scope.showTime = false : $scope.time--
+    //                },1000);
+    //                var promise = DataService.getVerifyCode($rootScope.loginInfo.phone);
+    //                promise.then(function (data) {
+    //                    console.log(angular.toJson(data))
+    //                    $cordovaToast.showLongBottom("验证码获取成功！")
+    //                }, function (data) {
+    //                    //console.log(JSON.stringify(data))
+    //                    $cordovaToast.showLongBottom(data.data.message)
+    //                });
+    //            }
+    //        },
+    //        100);
+    //};
+    //获取验证码2
     $scope.time = 60;
     $scope.getVerifyCode = function() {
         setTimeout(function () {
@@ -38,11 +59,18 @@ Tailorpus.controller('LoginCtrl', ['$scope', '$rootScope','$state','$interval','
                     $interval(function() {
                         1 == $scope.time ? $scope.showTime = false : $scope.time--
                     },1000);
-                    var promise = DataService.getVerifyCode($rootScope.loginInfo.phone);
+                    var json = {
+                        mobile:$rootScope.loginInfo.phone,
+                        type:'register',
+
+                    }
+                    console.log(angular.toJson(json))
+                    var promise = DataService.getVerifyCode2(json);
                     promise.then(function (data) {
+                        console.log(angular.toJson(data))
                         $cordovaToast.showLongBottom("验证码获取成功！")
                     }, function (data) {
-                      //console.log(JSON.stringify(data))
+                        //console.log(JSON.stringify(data))
                         $cordovaToast.showLongBottom(data.data.message)
                     });
                 }

@@ -108,7 +108,13 @@ Tailorpus.controller('AddQuoteCtrl', function($scope,$state,$stateParams,$rootSc
         $scope.quoteList.taxPrice = parseFloat($scope.offerDetail.taxPrice);
         $scope.quoteList.taxRate = parseFloat($scope.offerDetail.taxRate);
         $scope.itemtaxRate=$scope.offerDetail.taxRate;
-        $scope.actualworkersPay = parseFloat($scope.offerDetail.workersPay)
+        if ($scope.offerDetail.workersPay){
+          $scope.actualworkersPay = parseFloat($scope.offerDetail.workersPay)
+        }
+        else {
+          $scope.actualworkersPay = 0
+        }
+        console.log($scope.actualworkersPay+' '+$scope.offerDetail.workersPay)
         $scope.quoteList.workersPay = parseFloat($scope.offerDetail.workersPayTaxPrice);
         $scope.quoteList.workerpayTax =$scope.isoffered=='N'?true: ($scope.offerDetail.workersPayHasTax=='N'?true:false);
         $scope.quoteList.workerpayTaxRate= parseFloat($scope.offerDetail.workersPayTaxRate)
@@ -134,8 +140,10 @@ Tailorpus.controller('AddQuoteCtrl', function($scope,$state,$stateParams,$rootSc
   //在输入工缴税率时对工缴值进行动态计算并绑定
   $scope.onWorkerTaxChange = function () {
     if($scope.quoteList.workerpayTax==false){
+      //console.log($scope.quoteList.workerpayTaxRate)
     $scope.actualworkersPay = $scope.quoteList.workersPay = parseFloat(($scope.quoteList.workersPay * (1 + $scope.quoteList.workerpayTaxRate / 100)).toFixed(2))
   }else {
+      //console.log($scope.quoteList.workersPay)
     $scope.actualworkersPay = $scope.quoteList.workersPay
     }
     getProfit();
@@ -168,6 +176,10 @@ Tailorpus.controller('AddQuoteCtrl', function($scope,$state,$stateParams,$rootSc
     if ($scope.quoteList.taxPrice === '' || $scope.actualworkersPay === '' || ($scope.quoteList.workerpayTax == false && $scope.quoteList.workerpayTaxRate === '') || (!$scope.quoteList.others) || $scope.quoteList.number == null) {
       return;
     } else {
+      if (isNaN($scope.quoteList.taxPrice)==true||isNaN($scope.actualworkersPay)==true||isNaN($scope.quoteList.others)==true||isNaN($scope.quoteList.number)==true){
+        console.log($scope.quoteList.taxPrice+' '+$scope.actualworkersPay+' '+$scope.quoteList.number)
+        return
+      }
       //6.30晚，思考内容：进入其他页面要把所有数据带过去，提交返回再带回来....路由变化的同时要对数据做更新处理
       //如果为美元
       if ($scope.currencytype == 1) {
@@ -230,7 +242,7 @@ Tailorpus.controller('AddQuoteCtrl', function($scope,$state,$stateParams,$rootSc
         console.log('actualworkerspay ' + $scope.actualworkersPay + ' others ' + $scope.quoteList.others + ' materiralPrimeCost ' + $scope.quoteList.taxPrice + ' number ' + $scope.quoteList.number + ' totalcost ' + totalcost)
         //单件成本
         var eachcost = totalcost / $scope.quoteList.number;
-        console.log(eachcost)
+        console.log(totalcost+'  '+$scope.quoteList.number)
         //总利润
         var totalprofit = ($scope.quoteList.price * $scope.quoteList.number - totalcost);
         console.log($scope.quoteList.price * $scope.quoteList.number)

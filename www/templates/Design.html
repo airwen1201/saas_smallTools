@@ -22,7 +22,7 @@
     <div class="icon ion-close-circled close-search-icon" ng-click="toclear()"
          ng-show="(searchitem=='')?false:true"></div>
   </div>
-  <ion-content class="content has-header design-content" style="top:112px !important;">
+  <ion-content class="content has-header design-content" overflow-scroll="false" style="top:112px !important;">
     <ion-list show-delete="false" can-swipe="true">
       <div class="list" ng-repeat="item in designList" ng-click="toMallChoice($index)">
         <!--{{designList[$index].id+' +++ '+$index}}-->
@@ -90,6 +90,7 @@
         <!--</ion-slide-box>-->
 
         <!--{{MallList.length}}-->
+
           <ion-slide-box does-continue="true" auto-play="true" slide-interval="2000" show-pager="true" paper-color="red !important;">
             <ion-slide ng-repeat="item in rows" ng-if="(0+item*3)<18">
               <!--<ion-slide ng-repeat="photo in photos">-->

@@ -19,7 +19,7 @@
     <!--</ion-toggle>-->
     <div class="item item-input">
       <span style="padding-right:10px">税费</span>
-    <ion-toggle ion-toggle-text="含税价;除税价"  ng-model="materialPrices.customText" toggle-class="toggle-my-theme" style="border: 0;margin-left: 40px;">
+    <ion-toggle ion-toggle-text="含税价;除税价"  ng-model="materialPrice.customText" toggle-class="toggle-my-theme" style="border: 0;margin-left: 40px;">
 
     </ion-toggle>
       <input type="number" placeholder="税率" ng-if="materialPrice.customText==true" style="width:62px;padding:0 0 0 10px;" ng-model="materialPrice.taxRate" ng-change="" />

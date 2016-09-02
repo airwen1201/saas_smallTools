@@ -66,7 +66,7 @@ var domain1 = 'http://192.168.0.12:10021/saas/';
 //var domain1 = 'http://192.168.0.157:8080/';
 //var domain1 = 'http://localhost:8080/';
 //var domain = 'http://localhost:4567/v1.0/';
-//var dmomain2 = 'http://192.168.0.14:8080/';
+var dmomain3 = 'http://192.168.0.217:8081/';
 var dmomain2 = 'http://www.cfpu.com/'
   //http://www.cfpu.com/wap/index.htm
 
@@ -140,7 +140,8 @@ function DataService ($q, $resource,$http) {
     getMallList:getMallList,
 
     //获取报价列表
-    getOfferList : getOfferList
+    getOfferList : getOfferList,
+    getVerifyCode2:getVerifyCode2
   };
 
   //test
@@ -199,6 +200,22 @@ function DataService ($q, $resource,$http) {
     var url = domain+"verifyCode?phone="+phone;
     //alert(url);
     $resource(url).get(
+        function (data) {
+          deferred.resolve(data);
+        }, function (data) {
+          deferred.reject(data);
+        });
+    return deferred.promise;
+  }
+
+  //获取验证码2
+  function getVerifyCode2(json){
+    var deferred = $q.defer();
+
+    var url = dmomain3+"design/send_mcode.htm";
+    //alert(url);
+    $resource(url).save(
+        json,
         function (data) {
           deferred.resolve(data);
         }, function (data) {

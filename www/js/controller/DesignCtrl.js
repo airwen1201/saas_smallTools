@@ -1,6 +1,7 @@
 Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope','$cordovaToast','$ionicHistory','$ionicPopup','DataService','$http','$ionicSlideBoxDelegate',
   function($scope,$state,$stateParams,$rootScope,$cordovaToast,$ionicHistory,$ionicPopup,DataService,$http,$ionicSlideBoxDelegate) {
 
+    $rootScope.tempRes = {}
     //用户信息
     var obj = JSON.parse(window.localStorage.getItem("tailorUser"));
     var o = 1;
@@ -23,6 +24,7 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
     //};
     $scope.toMallChoice=function(Did){
       $scope.MallList = []
+      $scope.rows = []
       console.log(Did)
 
 
@@ -176,11 +178,28 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
       return  arr1[1]+"/"+arr1[2];
     }
 
+    var getDesignList2 = function (){
+      var json = {
+        vipId:obj.vipId
+      }
+      //console.log(angular.toJson(json));
+      var promise = DataService.getDesignList(angular.toJson(json));
+      promise.then(function (data) {
+        //具体操作
+        console.log(angular.toJson(data));
+
+        $scope.designList = data.list
+
+      }, function (data) {
+        console.log(data.message);
+        $cordovaToast.showLongBottom(data.message)
+      });
+    }
+
     //实现页面跳转回来刷新
     var Did = 0;
     $scope.updateData = function () {
-      var b = 222222;
-      console.log(b);
+
       //var Did = 0;
       //var execc = function (Did) {
       //  getDesignList(Did);
@@ -193,11 +212,13 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
       //};
       //execc();
       //$scope.toMallChoice(Did);
-      getDesignList(Did)
+      getDesignList2()
       console.log(Did);
     };
+
     //$scope.updateData();         //函数调用
     $scope.$on('$stateChangeSuccess', $scope.updateData); //实现了刷新
+
 
     ////图片轮播start
     ////点击改变字体颜色；显示/隐藏商品的信息；
@@ -324,13 +345,11 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
         $scope.designDetailData = data
         $scope.designDetailData.designMaterials = angular.fromJson($scope.designDetailData.designMaterials)
         //var dd = angular.fromJson(data.designMaterials)
-        console.log(angular.toJson($scope.designDetailData.designMaterials.length));
-        console.log(angular.toJson($scope.designDetailData.designMaterials[0]));
-
-        console.log(angular.toJson($scope.designDetailData.designMaterials[0].name));
-        // console.log(angular.toJson($scope.designDetailData.designMaterials[1].name));
-        // console.log(angular.toJson($scope.designDetailData.designMaterials[2].name));
-        console.log($scope.designDetailData.designMaterials[0].name);
+        //console.log(angular.toJson($scope.designDetailData.designMaterials.length));
+        //console.log(angular.toJson($scope.designDetailData.designMaterials[0]));
+        //
+        //console.log(angular.toJson($scope.designDetailData.designMaterials[0].name));
+        //console.log($scope.designDetailData.designMaterials[0].name);
         //window.localStorage.setItem("tailorUser",JSON.stringify(obj));
         //$scope.isSubmit = '0'
         //$ionicHistory.goBack();
@@ -351,6 +370,7 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
         var exec = function () {
           //$scope.MallArr = []
           $scope.MallList = []
+          $scope.rows = [];
           var json = {
             keyword: $scope.designDetailName[0]
           }
@@ -436,7 +456,8 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
         }
 
         $ionicSlideBoxDelegate.$getByHandle().update();
-        $ionicSlideBoxDelegate.$getByHandle().loop(true);
+        //$ionicSlideBoxDelegate.loop(true);
+        //$ionicSlideBoxDelegate.$getByHandle().loop(true);
         //console.log(angular.toJson(data));
         //console.log(angular.toJson(data.list));
         console.log(angular.toJson($scope.MallList));
@@ -464,6 +485,7 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
       for(var i = 0;i<$scope.MallList.length/3;i++){
         $scope.rows.push(i);
       }
+      console.log($scope.MallList.length+' '+$scope.rows.length)
     }
     //$scope.demomainurl = 'http://www.cfpu.com/goods_';
     $scope.demomainurl = 'http://www.cfpu.com/wap/goods.htm?id='
@@ -474,7 +496,7 @@ Tailorpus.controller('DesignCtrl',['$scope','$state','$stateParams','$rootScope'
 
     //跳转页面
     $scope.toDesignDetail = function(id){
-      alert("1111")
+      //alert("1111")
       window.location.href =$scope.demomainurl+id+".htm";
     }
     //$scope.toDesignDetail = function ($scope,$state) {

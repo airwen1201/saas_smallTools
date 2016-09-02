@@ -9,23 +9,37 @@ Tailorpus.controller('MaterialPriceCtrl', function($scope,$rootScope,$stateParam
 
   $scope.numIndex = $stateParams.numIndex
   $scope.state = $stateParams.state
-  $scope.materialPrice = {
-    unitConsumption:$rootScope.designMaterials[$scope.numIndex].unitConsumption,
-    taxRate:$rootScope.designMaterials[$scope.numIndex].taxRate==''?0:parseInt($rootScope.designMaterials[$scope.numIndex].taxRate),
+  if (!$rootScope.designMaterials[$scope.numIndex].unitConsumption&&($rootScope.tempRes[$rootScope.designMaterials[$scope.numIndex].id])){
 
-    price:$rootScope.designMaterials[$scope.numIndex].price,
-    customText:($rootScope.designMaterials[$scope.numIndex].hasTax=='Y')?true:false
+    $scope.materialPrice = {
+      unitConsumption:$rootScope.tempRes[$rootScope.designMaterials[$scope.numIndex].id].unitConsumption,
+      taxRate:$rootScope.tempRes[$rootScope.designMaterials[$scope.numIndex].id].taxRate==''?0:parseInt($rootScope.tempRes[$rootScope.designMaterials[$scope.numIndex].id].taxRate),
 
-}
+      price:$rootScope.tempRes[$rootScope.designMaterials[$scope.numIndex].id].price,
+      customText:($rootScope.tempRes[$rootScope.designMaterials[$scope.numIndex].id].hasTax=='Y')?true:false
+
+    }
+  }else {
+    $scope.materialPrice = {
+      unitConsumption:$rootScope.designMaterials[$scope.numIndex].unitConsumption,
+      taxRate:$rootScope.designMaterials[$scope.numIndex].taxRate==''?0:parseInt($rootScope.designMaterials[$scope.numIndex].taxRate),
+
+      price:$rootScope.designMaterials[$scope.numIndex].price,
+      customText:($rootScope.designMaterials[$scope.numIndex].hasTax=='Y')?true:false
+
+    }
+  }
+
   //$scope.materialPrice.cost=$scope.materialPrice.price*(1+$scope.materialPrice.taxRate/100)
 
   //$scope.materialPrice.cost=$scope.materialPrice.price*(1-$scope.materialPrice.taxRate/100)
-  console.log(angular.toJson($scope.materialPrice))
+  console.log(angular.toJson($rootScope.designMaterials[$scope.numIndex]))
   $scope.taxMaterialPrice = function (i) {
-    console.log(angular.toJson($rootScope.designMaterials[$scope.numIndex]))
-    if ($scope.materialPrice.taxRate==null||$scope.materialPrice.taxRate==''||$scope.materialPrice.taxRate==undefined){
+    //console.log(angular.toJson($rootScope.designMaterials[$scope.numIndex]))
+    if ($scope.materialPrice.taxRate==null||isNaN($scope.materialPrice.taxRate)==true||$scope.materialPrice.taxRate==undefined||$scope.materialPrice.price==null||$scope.materialPrice.price==''||$scope.materialPrice.price==undefined){
       return ' '
     }else {
+      console.log($scope.materialPrice.taxRate+'  '+$scope.materialPrice.price)
       return ($scope.materialPrice.price*(1+$scope.materialPrice.taxRate/100)).toFixed(2);
     }
 
@@ -61,8 +75,9 @@ Tailorpus.controller('MaterialPriceCtrl', function($scope,$rootScope,$stateParam
     }else {
       param.cost=$scope.materialPrice.price
     }
+    $rootScope.tempRes[$rootScope.designMaterials[$scope.numIndex].id] = param
 
-    //console.log(angular.toJson(param))
+    console.log(angular.toJson($rootScope.tempRes))
     //return
     if ($scope.state != 1){
       var promise = DataService.modifyDesignMaterial(angular.toJson(param));

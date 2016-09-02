@@ -26,7 +26,7 @@ Tailorpus.controller('OtherCostCtrl', function($scope,$state,$rootScope,$ionicHi
         title: '测试',
         worth: ''
       }, {
-        title: '运货',
+        title: '货运',
         worth: ''
       }, {
         title: 'QC',

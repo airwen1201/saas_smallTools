@@ -25,7 +25,7 @@
       </div>
       <div class="one-cell-left">
         <span class="cell">工缴</span>
-        <span class="cell-info" ng-bind="'¥ '+offerDetail.workersPay"></span>
+        <span class="cell-info" ng-bind="'¥ '+(offerDetail.workersPay?offerDetail.workersPay:0)"></span>
       </div>
     </div>
     <!--<div class="item line-cells">-->
@@ -39,8 +39,8 @@
       <!--</div>-->
     <!--</div>-->
     <div class="item" style="padding: 0; margin: 0;">
-    <div class="item line-cells" ng-repeat="item in jsonOtherDetail" style="float: left;border-left: 0;width: 50%;border-right: 0;">
-      <div class="one-cell"   ><span ng-bind="item.title"></span><span ng-bind="'¥ '+(item.worth?item.worth:0)" style="padding-left: 40px;"></span></div>
+    <div class="item line-cells" ng-if="item.worth" ng-repeat="item in jsonOtherDetail" style="float: left;border-left: 0;width: 50%;border-right: 0;">
+      <div class="one-cell"   ><span ng-bind="item.title" ></span><span ng-bind="'¥ '+(item.worth?item.worth:0)" style="padding-left: 40px;"></span></div>
     </div>
     </div>
     <!--<div class="item line-cells">-->
